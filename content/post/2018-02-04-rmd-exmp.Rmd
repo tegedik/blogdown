@@ -49,3 +49,59 @@ preddf %>%
 
 ```
 
+### With a grouping variable
+
+We can repeat the same analysis, but this time using a grouping variable (`wc`). 
+
+```{r predprod2, echo=TRUE, eval=TRUE, message=FALSE, warning=FALSE}
+df <- car::Mroz # U.S. Women's Labor-Force Participation data
+glmfit <- glm(lfp ~ k5 + wc + age + inc + lwg, df, family=binomial)
+
+library(tidyverse)
+# Take mean values of the other predictors
+mean_val_pred <- df %>% 
+  select(age, inc, lwg) %>% 
+  map_df(., mean)
+
+# Create new data frame for prediction
+# Note that wc is added to the data frame
+preddf <- with(df, data.frame(k5=c(0:3), wc=c(rep("yes",4), rep("no",4)), mean_val_pred))
+
+# Calculate predicted probabilities
+preddf$pred <- predict(glmfit, preddf, type = "response")
+preddf
+```
+
+
+```{r plot2, echo=TRUE, eval=TRUE, message=FALSE, warning=FALSE}
+library(hrbrthemes)
+
+preddf %>% 
+  ggplot(aes(k5, pred, color=wc)) +
+  geom_point() +
+  geom_line() +
+  labs(y="Predicted Probabilities", 
+       x="Number of children 5 years old or younger.", 
+       title="Predicted Probabilities for Labor Force Participation",
+       color="Wife's College\nAttendance") +
+  theme_ipsum_rc() + # from hrbrthemes package 
+  theme(legend.position="bottom")
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

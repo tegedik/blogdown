@@ -69,3 +69,45 @@ preddf %&gt;%
        title=&quot;Predicted Probabilities for Labor Force Participation&quot;) +
   theme_ipsum_rc() # from hrbrthemes package</code></pre>
 <p><img src="/post/2018-02-04-rmd-exmp_files/figure-html/plot-1.png" width="672" /></p>
+<div id="with-a-grouping-variable" class="section level3">
+<h3>With a grouping variable</h3>
+<p>We can repeat the same analysis, but this time using a grouping variable (<code>wc</code>).</p>
+<pre class="r"><code>df &lt;- car::Mroz # U.S. Women&#39;s Labor-Force Participation data
+glmfit &lt;- glm(lfp ~ k5 + wc + age + inc + lwg, df, family=binomial)
+
+library(tidyverse)
+# Take mean values of the other predictors
+mean_val_pred &lt;- df %&gt;% 
+  select(age, inc, lwg) %&gt;% 
+  map_df(., mean)
+
+# Create new data frame for prediction
+# Note that wc is added to the data frame
+preddf &lt;- with(df, data.frame(k5=c(0:3), wc=c(rep(&quot;yes&quot;,4), rep(&quot;no&quot;,4)), mean_val_pred))
+
+# Calculate predicted probabilities
+preddf$pred &lt;- predict(glmfit, preddf, type = &quot;response&quot;)
+preddf</code></pre>
+<pre><code>##   k5  wc      age      inc      lwg       pred
+## 1  0 yes 42.53785 20.12897 1.097115 0.78280676
+## 2  1 yes 42.53785 20.12897 1.097115 0.46264344
+## 3  2 yes 42.53785 20.12897 1.097115 0.17058190
+## 4  3 yes 42.53785 20.12897 1.097115 0.04682807
+## 5  0  no 42.53785 20.12897 1.097115 0.60102192
+## 6  1  no 42.53785 20.12897 1.097115 0.26462269
+## 7  2  no 42.53785 20.12897 1.097115 0.07915511
+## 8  3  no 42.53785 20.12897 1.097115 0.02012059</code></pre>
+<pre class="r"><code>library(hrbrthemes)
+
+preddf %&gt;% 
+  ggplot(aes(k5, pred, color=wc)) +
+  geom_point() +
+  geom_line() +
+  labs(y=&quot;Predicted Probabilities&quot;, 
+       x=&quot;Number of children 5 years old or younger.&quot;, 
+       title=&quot;Predicted Probabilities for Labor Force Participation&quot;,
+       color=&quot;Wife&#39;s College\nAttendance&quot;) +
+  theme_ipsum_rc() + # from hrbrthemes package 
+  theme(legend.position=&quot;bottom&quot;)</code></pre>
+<p><img src="/post/2018-02-04-rmd-exmp_files/figure-html/plot2-1.png" width="672" /></p>
+</div>
