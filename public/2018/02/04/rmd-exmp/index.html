@@ -42,7 +42,7 @@
   <h1> Binomial GLM Predicted Probabilities </h1>
 
   <div id=sub-header>
-    T.E.G. · 2018/02/04 · 3 minute read
+    T.E.G. · 2018/02/04 · 4 minute read
   </div>
 
   <div class="entry-content">
@@ -144,6 +144,53 @@ preddf</code></pre>
   theme_ipsum_rc() + # from hrbrthemes package 
   theme(legend.position=&quot;bottom&quot;)</code></pre>
 <p><img src="/post/2018-02-04-rmd-exmp_files/figure-html/plot2-1.png" width="672" /></p>
+</div>
+<div id="adding-error-bars" class="section level3">
+<h3>Adding Error Bars</h3>
+<p>Adding error bars to the plot requires few additional steps:</p>
+<pre class="r"><code>df &lt;- car::Mroz # U.S. Women&#39;s Labor-Force Participation data
+glmfit &lt;- glm(lfp ~ k5 + wc + age + inc + lwg, df, family=binomial)
+
+# Take mean values of the other predictors
+mean_val_pred &lt;- df %&gt;% 
+  select(age, inc, lwg) %&gt;% 
+  map_df(., mean)
+
+# Create new data frame for prediction
+# Note that wc is added to the data frame
+preddf &lt;- with(df, data.frame(k5=c(0:3), wc=c(rep(&quot;yes&quot;,4), rep(&quot;no&quot;,4)), mean_val_pred))
+
+# Calculate predicted probabilities and standard errors
+pred_se &lt;- predict(glmfit, preddf, type = &quot;response&quot;, se.fit = T)
+predfit &lt;- pred_se$fit
+low_lim &lt;- predfit  - (1.96*pred_se$se.fit)
+upp_lim &lt;- predfit  + (1.96*pred_se$se.fit)
+
+# Add the columns to the data frame
+preddf &lt;- cbind(preddf, predfit, low_lim, upp_lim)
+preddf</code></pre>
+<pre><code>##   k5  wc      age      inc      lwg    predfit       low_lim    upp_lim
+## 1  0 yes 42.53785 20.12897 1.097115 0.78280676  0.7205413155 0.84507220
+## 2  1 yes 42.53785 20.12897 1.097115 0.46264344  0.3593517348 0.56593514
+## 3  2 yes 42.53785 20.12897 1.097115 0.17058190  0.0707470485 0.27041675
+## 4  3 yes 42.53785 20.12897 1.097115 0.04682807 -0.0001973055 0.09385345
+## 5  0  no 42.53785 20.12897 1.097115 0.60102192  0.5528598110 0.64918403
+## 6  1  no 42.53785 20.12897 1.097115 0.26462269  0.1952997156 0.33394567
+## 7  2  no 42.53785 20.12897 1.097115 0.07915511  0.0276018221 0.13070839
+## 8  3  no 42.53785 20.12897 1.097115 0.02012059 -0.0011171785 0.04135836</code></pre>
+<p>To add error bars, <code>geom_errorbar()</code> can be used</p>
+<pre class="r"><code>preddf %&gt;% 
+  ggplot(aes(k5, predfit, color=wc)) +
+  geom_point() +
+  geom_line() +
+  geom_errorbar(aes(ymin=low_lim, ymax=upp_lim), width=0.05) +
+  labs(y=&quot;Predicted Probabilities&quot;, 
+       x=&quot;Number of children 5 years old or younger.&quot;, 
+       title=&quot;Predicted Probabilities for Labor Force Participation&quot;,
+       color=&quot;Wife&#39;s College\nAttendance&quot;) +
+  theme_ipsum_rc() + # from hrbrthemes package 
+  theme(legend.position=&quot;bottom&quot;)</code></pre>
+<p><img src="/post/2018-02-04-rmd-exmp_files/figure-html/plot3-1.png" width="672" /></p>
 </div>
 
   </div>

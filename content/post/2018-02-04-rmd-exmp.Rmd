@@ -86,7 +86,50 @@ preddf %>%
   theme(legend.position="bottom")
 ```
 
+### Adding Error Bars
 
+Adding error bars to the plot requires few additional steps:
+
+```{r predprod3, echo=TRUE, eval=TRUE, message=FALSE, warning=FALSE}
+df <- car::Mroz # U.S. Women's Labor-Force Participation data
+glmfit <- glm(lfp ~ k5 + wc + age + inc + lwg, df, family=binomial)
+
+# Take mean values of the other predictors
+mean_val_pred <- df %>% 
+  select(age, inc, lwg) %>% 
+  map_df(., mean)
+
+# Create new data frame for prediction
+# Note that wc is added to the data frame
+preddf <- with(df, data.frame(k5=c(0:3), wc=c(rep("yes",4), rep("no",4)), mean_val_pred))
+
+# Calculate predicted probabilities and standard errors
+pred_se <- predict(glmfit, preddf, type = "response", se.fit = T)
+predfit <- pred_se$fit
+low_lim <- predfit  - (1.96*pred_se$se.fit)
+upp_lim <- predfit  + (1.96*pred_se$se.fit)
+
+# Add the columns to the data frame
+preddf <- cbind(preddf, predfit, low_lim, upp_lim)
+preddf
+```
+
+To add error bars, `geom_errorbar()` can be used
+
+```{r plot3, echo=TRUE, eval=TRUE, message=FALSE, warning=FALSE}
+
+preddf %>% 
+  ggplot(aes(k5, predfit, color=wc)) +
+  geom_point() +
+  geom_line() +
+  geom_errorbar(aes(ymin=low_lim, ymax=upp_lim), width=0.05) +
+  labs(y="Predicted Probabilities", 
+       x="Number of children 5 years old or younger.", 
+       title="Predicted Probabilities for Labor Force Participation",
+       color="Wife's College\nAttendance") +
+  theme_ipsum_rc() + # from hrbrthemes package 
+  theme(legend.position="bottom")
+```
 
 
 
