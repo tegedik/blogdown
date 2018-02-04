@@ -18,7 +18,7 @@
       
       <guid>/2018/02/04/rmd-exmp/</guid>
       <description>Here is an example of binomial glm (e.g., logistic regression):
-df &amp;lt;- car::Mroz # U.S. Women&amp;#39;s Labor-Force Participation glmfit &amp;lt;- glm(lfp ~ k5 + age + inc + lwg, df, family=binomial) summary(glmfit) ## ## Call: ## glm(formula = lfp ~ k5 + age + inc + lwg, family = binomial, ## data = df) ## ## Deviance Residuals: ## Min 1Q Median 3Q Max ## -1.7987 -1.1326 0.6516 0.9605 2.3122 ## ## Coefficients: ## Estimate Std.</description>
+df &amp;lt;- car::Mroz # U.S. Women&amp;#39;s Labor-Force Participation data glmfit &amp;lt;- glm(lfp ~ k5 + age + inc + lwg, df, family=binomial) summary(glmfit) ## ## Call: ## glm(formula = lfp ~ k5 + age + inc + lwg, family = binomial, ## data = df) ## ## Deviance Residuals: ## Min 1Q Median 3Q Max ## -1.7987 -1.1326 0.6516 0.9605 2.</description>
     </item>
     
     <item>
