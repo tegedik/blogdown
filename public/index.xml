@@ -12,13 +12,13 @@
     
     
     <item>
-      <title>RMD Exmp</title>
+      <title>Binomial GLM Predicted Probabilities</title>
       <link>/2018/02/04/rmd-exmp/</link>
       <pubDate>Sun, 04 Feb 2018 13:59:50 +0000</pubDate>
       
       <guid>/2018/02/04/rmd-exmp/</guid>
-      <description>Here is an example of GLM:
-df &amp;lt;- car::Mroz glmfit &amp;lt;- glm(lfp ~ k5 + k618 + wc + inc, df, family=binomial) summary(glmfit) ## ## Call: ## glm(formula = lfp ~ k5 + k618 + wc + inc, family = binomial, ## data = df) ## ## Deviance Residuals: ## Min 1Q Median 3Q Max ## -1.9218 -1.2061 0.6826 1.0102 2.0769 ## ## Coefficients: ## Estimate Std. Error z value Pr(&amp;gt;|z|) ## (Intercept) 0.</description>
+      <description>Here is an example of binomial glm (e.g., logistic regression):
+df &amp;lt;- car::Mroz # U.S. Women&amp;#39;s Labor-Force Participation glmfit &amp;lt;- glm(lfp ~ k5 + age + inc + lwg, df, family=binomial) summary(glmfit) ## ## Call: ## glm(formula = lfp ~ k5 + age + inc + lwg, family = binomial, ## data = df) ## ## Deviance Residuals: ## Min 1Q Median 3Q Max ## -1.7987 -1.1326 0.6516 0.9605 2.3122 ## ## Coefficients: ## Estimate Std.</description>
     </item>
     
     <item>

@@ -14,7 +14,7 @@
   <title>
     
     
-     RMD Exmp 
+     Binomial GLM Predicted Probabilities 
     
   </title>
   <link rel="canonical" href="/2018/02/04/rmd-exmp/">
@@ -39,43 +39,71 @@
 
 
 <section id=content>
-  <h1> RMD Exmp </h1>
+  <h1> Binomial GLM Predicted Probabilities </h1>
 
   <div id=sub-header>
-    T.E.G. · 2018/02/04 · 1 minute read
+    T.E.G. · 2018/02/04 · 2 minute read
   </div>
 
   <div class="entry-content">
-    <p>Here is an example of <code>GLM</code>:</p>
-<pre class="r"><code>df &lt;- car::Mroz
-glmfit &lt;- glm(lfp ~ k5 + k618 + wc + inc, df, family=binomial)
+    <p>Here is an example of binomial glm (e.g., logistic regression):</p>
+<pre class="r"><code>df &lt;- car::Mroz # U.S. Women&#39;s Labor-Force Participation
+glmfit &lt;- glm(lfp ~ k5 + age + inc + lwg, df, family=binomial)
 summary(glmfit)</code></pre>
 <pre><code>## 
 ## Call:
-## glm(formula = lfp ~ k5 + k618 + wc + inc, family = binomial, 
+## glm(formula = lfp ~ k5 + age + inc + lwg, family = binomial, 
 ##     data = df)
 ## 
 ## Deviance Residuals: 
 ##     Min       1Q   Median       3Q      Max  
-## -1.9218  -1.2061   0.6826   1.0102   2.0769  
+## -1.7987  -1.1326   0.6516   0.9605   2.3122  
 ## 
 ## Coefficients:
 ##              Estimate Std. Error z value Pr(&gt;|z|)    
-## (Intercept)  0.837752   0.183436   4.567 4.95e-06 ***
-## k5          -1.016859   0.163408  -6.223 4.88e-10 ***
-## k618         0.057009   0.059602   0.957    0.339    
-## wcyes        1.101759   0.195987   5.622 1.89e-08 ***
-## inc         -0.034368   0.007643  -4.497 6.91e-06 ***
+## (Intercept)  2.758672   0.534883   5.158 2.50e-07 ***
+## k5          -1.342270   0.190481  -7.047 1.83e-12 ***
+## age         -0.059005   0.011246  -5.247 1.55e-07 ***
+## inc         -0.024638   0.007199  -3.422  0.00062 ***
+## lwg          0.787655   0.148339   5.310 1.10e-07 ***
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 ## 
 ## (Dispersion parameter for binomial family taken to be 1)
 ## 
 ##     Null deviance: 1029.75  on 752  degrees of freedom
-## Residual deviance:  949.87  on 748  degrees of freedom
-## AIC: 959.87
+## Residual deviance:  925.17  on 748  degrees of freedom
+## AIC: 935.17
 ## 
 ## Number of Fisher Scoring iterations: 4</code></pre>
+<p>Calculating Predicted Probabilities for representative values of <code>k5</code>:</p>
+<pre class="r"><code>library(tidyverse)
+# Take mean values of the other predictors
+mean_val_pred &lt;- df %&gt;% 
+  select(age, inc, lwg) %&gt;% 
+  map_df(., mean)
+
+# Create new data frame for prediction
+preddf &lt;- with(df, data.frame(k5=c(0:3), mean_val_pred))
+
+# Calculate predicted probabilities
+preddf$pred &lt;- predict(glmfit, preddf, type = &quot;response&quot;)
+preddf</code></pre>
+<pre><code>##   k5      age      inc      lwg       pred
+## 1  0 42.53785 20.12897 1.097115 0.64952405
+## 2  1 42.53785 20.12897 1.097115 0.32622200
+## 3  2 42.53785 20.12897 1.097115 0.11228675
+## 4  3 42.53785 20.12897 1.097115 0.03198863</code></pre>
+<p>Here is how to plot predicted probabilities using <code>ggplot2</code>:</p>
+<pre class="r"><code>library(hrbrthemes)
+
+preddf %&gt;% 
+  ggplot(aes(k5, pred)) +
+  geom_point() +
+  geom_line() +
+  labs(y=&quot;Predicted Probabilities&quot;, x=&quot;Number of children 5 years old or younger.&quot;, title=&quot;Predicted Probabilities for Labor Force Participation&quot;) +
+  theme_ipsum_rc() # from hrbrthemes package</code></pre>
+<p><img src="/post/2018-02-04-rmd-exmp_files/figure-html/plot-1.png" width="672" /></p>
 
   </div>
 
@@ -109,6 +137,9 @@ summary(glmfit)</code></pre>
 
   
   
+<script src="/js/math-code.js"></script>
+<script async src="//cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
 
 
 </body>

@@ -17,9 +17,6 @@ pygmentscodefences = true
 [[menu.main]]
     name = "About"
     url = "/about/"
-#[[menu.main]]
-#    name = "GitHub"
-#    url = "https://github.com/tegedik/blogdown"
 [[menu.main]]
     name = "Twitter"
     url = "https://twitter.com/tahirenesgedik"
@@ -38,9 +35,8 @@ pygmentscodefences = true
 
     MathJaxCDN = "//cdn.bootcss.com"
     MathJaxVersion = "2.7.1"
-
-    twitter = "https://twitter.com/tahirenesgedik"
-    dateFormat = "Mon, Jan 2, 2006"
+    
+#   dateFormat = "Mon, Jan 2, 2006"
 
 #   [params.logo]
 #   url = "logo.png"

@@ -1,5 +1,5 @@
 ---
-title: RMD Exmp
+title: Binomial GLM Predicted Probabilities
 author: T.E.G.
 date: "2018-02-04T13:59:50"
 slug: rmd-exmp
@@ -7,13 +7,43 @@ categories: []
 tags: []
 ---
 
-Here is an example of `GLM`:
+Here is an example of binomial glm (e.g., logistic regression):
 
-```{r, echo=TRUE, eval=TRUE}
-df <- car::Mroz
-glmfit <- glm(lfp ~ k5 + k618 + wc + inc, df, family=binomial)
+```{r model, echo=TRUE, eval=TRUE}
+df <- car::Mroz # U.S. Women's Labor-Force Participation data
+glmfit <- glm(lfp ~ k5 + age + inc + lwg, df, family=binomial)
 summary(glmfit)
 ```
 
+Calculating Predicted Probabilities for representative values of `k5`:
 
+```{r predprod, echo=TRUE, eval=TRUE, message=FALSE, warning=FALSE}
+library(tidyverse)
+# Take mean values of the other predictors
+mean_val_pred <- df %>% 
+  select(age, inc, lwg) %>% 
+  map_df(., mean)
+
+# Create new data frame for prediction
+preddf <- with(df, data.frame(k5=c(0:3), mean_val_pred))
+
+# Calculate predicted probabilities
+preddf$pred <- predict(glmfit, preddf, type = "response")
+preddf
+```
+
+Here is how to plot predicted probabilities using `ggplot2`:
+
+```{r plot, echo=TRUE, eval=TRUE, message=FALSE, warning=FALSE}
+library(hrbrthemes)
+
+preddf %>% 
+  ggplot(aes(k5, pred)) +
+  geom_point() +
+  geom_line() +
+  labs(y="Predicted Probabilities", x="Number of children 5 years old or younger.", title="Predicted Probabilities for Labor Force Participation") +
+  theme_ipsum_rc() # from hrbrthemes package
+
+
+```
 
