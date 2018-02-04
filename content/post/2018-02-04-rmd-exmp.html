@@ -75,7 +75,6 @@ preddf %&gt;%
 <pre class="r"><code>df &lt;- car::Mroz # U.S. Women&#39;s Labor-Force Participation data
 glmfit &lt;- glm(lfp ~ k5 + wc + age + inc + lwg, df, family=binomial)
 
-library(tidyverse)
 # Take mean values of the other predictors
 mean_val_pred &lt;- df %&gt;% 
   select(age, inc, lwg) %&gt;% 
@@ -97,9 +96,7 @@ preddf</code></pre>
 ## 6  1  no 42.53785 20.12897 1.097115 0.26462269
 ## 7  2  no 42.53785 20.12897 1.097115 0.07915511
 ## 8  3  no 42.53785 20.12897 1.097115 0.02012059</code></pre>
-<pre class="r"><code>library(hrbrthemes)
-
-preddf %&gt;% 
+<pre class="r"><code>preddf %&gt;% 
   ggplot(aes(k5, pred, color=wc)) +
   geom_point() +
   geom_line() +

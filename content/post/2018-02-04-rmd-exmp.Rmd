@@ -57,7 +57,6 @@ We can repeat the same analysis, but this time using a grouping variable (`wc`).
 df <- car::Mroz # U.S. Women's Labor-Force Participation data
 glmfit <- glm(lfp ~ k5 + wc + age + inc + lwg, df, family=binomial)
 
-library(tidyverse)
 # Take mean values of the other predictors
 mean_val_pred <- df %>% 
   select(age, inc, lwg) %>% 
@@ -74,7 +73,6 @@ preddf
 
 
 ```{r plot2, echo=TRUE, eval=TRUE, message=FALSE, warning=FALSE}
-library(hrbrthemes)
 
 preddf %>% 
   ggplot(aes(k5, pred, color=wc)) +
