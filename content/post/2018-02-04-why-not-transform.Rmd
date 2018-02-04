@@ -1,0 +1,35 @@
+---
+title: Why Not Transform?
+author: T.E.G.
+date: '2018-02-04T17:54:34'
+slug: why-not-transform
+categories: []
+tags: []
+bibliography: references.bib
+---
+
+---
+nocite: | 
+  @Agresti2015
+...
+
+Why do we want to deal with the trouble of estimating generalized linear models (GLM) when it is possible to transform the response variable and estimate models using linear regression? It is worth to mention two answers [@Agresti2015]: 
+
+1. It is hard to find a transformation which provides both normality and constant variance (see [assumptions of OLS](https://en.wikipedia.org/wiki/Ordinary_least_squares#Assumptions)). 
+
+2. Interpretability. To illustrate, first see the formula of the transformed-data approach
+
+$$E[g(y_i)]= \beta_0+\beta_1x_1 + \ldots+\beta_kx_k$$
+
+and then check the formula of GLM
+
+$$g[E(y_i)]= \beta_0+\beta_1x_1 + \ldots+\beta_kx_k$$
+
+Following Agresti's example, if we take $g$ (link function) as logarithm here, it is easy to interpret the coefficient estimates using inverse link function ($g^{-1}$), i.e., exponential function. In other words, if we take $\eta(x)$ as the linear predictor ($\eta(x)=\beta_0+\beta_1x_1 + \ldots+\beta_kx_k$),
+
+$$E(y_i)=g^{-1}[\eta(x)]$$
+
+What makes possible to overcome the limitations of the transformed-data approach is separate choices for the stochastic (random) component and the link function (see [three components of GLM](https://en.wikipedia.org/wiki/Generalized_linear_model#Model_components)).
+
+#### **References**
+

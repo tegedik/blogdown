@@ -6,10 +6,22 @@
     <description>Recent content on T.E.G.&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 04 Feb 2018 13:59:50 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 04 Feb 2018 17:54:34 +0000</lastBuildDate>
     
 	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Why Not Transform?</title>
+      <link>/2018/02/04/why-not-transform/</link>
+      <pubDate>Sun, 04 Feb 2018 17:54:34 +0000</pubDate>
+      
+      <guid>/2018/02/04/why-not-transform/</guid>
+      <description>Why do we want to deal with the trouble of estimating generalized linear models (GLM) when it is possible to transform the response variable and estimate models using linear regression? It is worth to mention two answers (Agresti 2015):
+It is hard to find a transformation which provides both normality and constant variance (see assumptions of OLS).
+ Interpretability. To illustrate, first see the formula of the transformed-data approach
+  \[E[g(y_i)]= \beta_0+\beta_1x_1 + \ldots+\beta_kx_k\]</description>
+    </item>
     
     <item>
       <title>Binomial GLM Predicted Probabilities</title>

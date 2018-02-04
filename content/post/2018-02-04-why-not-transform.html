@@ -1,0 +1,31 @@
+---
+title: Why Not Transform?
+author: T.E.G.
+date: '2018-02-04T17:54:34'
+slug: why-not-transform
+categories: []
+tags: []
+bibliography: references.bib
+---
+
+
+
+<p>Why do we want to deal with the trouble of estimating generalized linear models (GLM) when it is possible to transform the response variable and estimate models using linear regression? It is worth to mention two answers <span class="citation">(Agresti 2015)</span>:</p>
+<ol style="list-style-type: decimal">
+<li><p>It is hard to find a transformation which provides both normality and constant variance (see <a href="https://en.wikipedia.org/wiki/Ordinary_least_squares#Assumptions">assumptions of OLS</a>).</p></li>
+<li><p>Interpretability. To illustrate, first see the formula of the transformed-data approach</p></li>
+</ol>
+<p><span class="math display">\[E[g(y_i)]= \beta_0+\beta_1x_1 + \ldots+\beta_kx_k\]</span></p>
+<p>and then check the formula of GLM</p>
+<p><span class="math display">\[g[E(y_i)]= \beta_0+\beta_1x_1 + \ldots+\beta_kx_k\]</span></p>
+<p>Following Agresti’s example, if we take <span class="math inline">\(g\)</span> (link function) as logarithm here, it is easy to interpret the coefficient estimates using inverse link function (<span class="math inline">\(g^{-1}\)</span>), i.e., exponential function. In other words, if we take <span class="math inline">\(\eta(x)\)</span> as the linear predictor (<span class="math inline">\(\eta(x)=\beta_0+\beta_1x_1 + \ldots+\beta_kx_k\)</span>),</p>
+<p><span class="math display">\[E(y_i)=g^{-1}[\eta(x)]\]</span></p>
+<p>What makes possible to overcome the limitations of the transformed-data approach is separate choices for the stochastic (random) component and the link function (see <a href="https://en.wikipedia.org/wiki/Generalized_linear_model#Model_components">three components of GLM</a>).</p>
+<div id="references" class="section level4 unnumbered">
+<h4><strong>References</strong></h4>
+<div id="refs" class="references">
+<div id="ref-Agresti2015">
+<p>Agresti, Alan. 2015. <em>Foundations of Linear and Generalized Linear Models</em>. Hoboken, NJ: Wiley.</p>
+</div>
+</div>
+</div>
