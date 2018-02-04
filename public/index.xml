@@ -6,10 +6,20 @@
     <description>Recent content on T.E.G.&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 04 Feb 2018 17:54:34 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 04 Feb 2018 18:34:54 +0000</lastBuildDate>
     
 	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Maximum Likelihood: Finding the Top of a Hill</title>
+      <link>/2018/02/04/climbing/</link>
+      <pubDate>Sun, 04 Feb 2018 18:34:54 +0000</pubDate>
+      
+      <guid>/2018/02/04/climbing/</guid>
+      <description>I think one of the most intuitive ways of describing maximum likelihood estimation (especially to the beginners) can be found in (Long and Freese 2014):
+ For all but the simplest models, the only way to find the maximum likelihood function is by numerical methods. Numerical methods are the mathematical equivalent of how you would find the top of a hill if you were blindfolded and knew only the slope of the hill at the spot where you are standing and how the slope at that spot is changing which you could figure out by poking your foot in each direction.</description>
+    </item>
     
     <item>
       <title>Why Not Transform?</title>
