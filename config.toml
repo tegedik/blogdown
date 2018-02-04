@@ -6,6 +6,9 @@ googleAnalytics = ""
 disqusShortname = ""
 ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
 
+[Taxonomies]
+    tag = "tags"
+
 [permalinks]
     post = "/:year/:month/:day/:slug/"
 
@@ -15,12 +18,14 @@ ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
 #[[menu.main]]
 #    name = "GitHub"
 #    url = "https://github.com/tegedik/blogdown"
-[[menu.main]]
-    name = "Twitter"
-    url = "https://twitter.com/tahirenesgedik"
+#[[menu.main]]
+#    name = "Twitter"
+#    url = "https://twitter.com/tahirenesgedik"
 
 [params]
-    description = "A blog for future."
+   # intro = true
+   # headline = "My headline"
+   #  description = "A blog for future."
 
     # options for highlight.js (version, additional languages, and theme)
     highlightjsVersion = "9.11.0"
@@ -30,6 +35,9 @@ ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
 
     MathJaxCDN = "//cdn.bootcss.com"
     MathJaxVersion = "2.7.1"
+
+    twitter = "https://twitter.com/tahirenesgedik"
+
 
 #   [params.logo]
 #   url = "logo.png"
