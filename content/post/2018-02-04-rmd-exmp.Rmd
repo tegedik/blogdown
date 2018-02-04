@@ -1,0 +1,18 @@
+---
+title: RMD Exmp
+author: T.E.G.
+date: '2018-02-04'
+slug: rmd-exmp
+categories: []
+tags: []
+---
+
+Here is an example of `GLM`:
+
+```{r, echo=TRUE, eval=TRUE}
+df <- car::Mroz
+glmfit <- glm(lfp ~ k5 + k618 + wc + inc, df, family=binomial)
+summary(glmfit)
+```
+
+

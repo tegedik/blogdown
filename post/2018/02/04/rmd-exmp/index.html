@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="referrer" content="no-referrer">
+  
+
+  <link rel="icon" type="image/png" href="/favicon.png">
+
+  <title>
+    
+    
+     RMD Exmp 
+    
+  </title>
+  <link rel="canonical" href="/2018/02/04/rmd-exmp/">
+
+  <link rel="stylesheet" href="/css/fonts.css" />
+  <link rel="stylesheet" href="/css/style.css" />
+
+  
+</head>
+
+<body>
+<section id=nav>
+  <h1><a href="/">T.E.G.&#39;s Blog</a></h1>
+  <ul>
+    
+    <li><a href="/about/">About</a></li>
+    
+    <li><a href="https://twitter.com/tahirenesgedik">Twitter</a></li>
+    
+  </ul>
+</section>
+
+
+<section id=content>
+  <h1> RMD Exmp </h1>
+
+  <div id=sub-header>
+    T.E.G. · 2018/02/04 · 1 minute read
+  </div>
+
+  <div class="entry-content">
+    <p>Here is an example of <code>GLM</code>:</p>
+<pre class="r"><code>df &lt;- car::Mroz
+glmfit &lt;- glm(lfp ~ k5 + k618 + wc + inc, df, family=binomial)
+summary(glmfit)</code></pre>
+<pre><code>## 
+## Call:
+## glm(formula = lfp ~ k5 + k618 + wc + inc, family = binomial, 
+##     data = df)
+## 
+## Deviance Residuals: 
+##     Min       1Q   Median       3Q      Max  
+## -1.9218  -1.2061   0.6826   1.0102   2.0769  
+## 
+## Coefficients:
+##              Estimate Std. Error z value Pr(&gt;|z|)    
+## (Intercept)  0.837752   0.183436   4.567 4.95e-06 ***
+## k5          -1.016859   0.163408  -6.223 4.88e-10 ***
+## k618         0.057009   0.059602   0.957    0.339    
+## wcyes        1.101759   0.195987   5.622 1.89e-08 ***
+## inc         -0.034368   0.007643  -4.497 6.91e-06 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## (Dispersion parameter for binomial family taken to be 1)
+## 
+##     Null deviance: 1029.75  on 752  degrees of freedom
+## Residual deviance:  949.87  on 748  degrees of freedom
+## AIC: 959.87
+## 
+## Number of Fisher Scoring iterations: 4</code></pre>
+
+  </div>
+
+  <div id=links>
+    
+      <a class="basic-alignment left" href="/2016/12/30/a-plain-markdown-post/">&laquo; A Plain Markdown Post</a>
+    
+    
+      <a class="basic-alignment left" href="/2018/02/04/my-blogdown/">My Blogdown &raquo;</a>
+    
+  </div>
+</section>
+
+<section id="comments">
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+
+(function() {
+      
+      
+      if (window.location.hostname == "localhost")
+                return;
+
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      var disqus_shortname = '';
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</section>
+
+
+  
+  
+
+
+</body>
+</html>
+

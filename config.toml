@@ -1,15 +1,17 @@
 baseurl = "/"
 languageCode = "en-us"
-title = "A Blogdown example."
-theme = "ghostwriter-theme"
+title = "T.E.G.'s Blog"
+author = "TEG"
+theme = "hugo-tanka"
 googleAnalytics = ""
 disqusShortname = ""
 ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
 
-[Taxonomies]
-    tag = "tags"
+canonifyurls = true
+pygmentsstyle      = "vs"
+pygmentscodefences = true
 
-[permalinks]
+[Permalinks]
     post = "/:year/:month/:day/:slug/"
 
 [[menu.main]]
@@ -18,14 +20,15 @@ ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
 #[[menu.main]]
 #    name = "GitHub"
 #    url = "https://github.com/tegedik/blogdown"
-#[[menu.main]]
-#    name = "Twitter"
-#    url = "https://twitter.com/tahirenesgedik"
+[[menu.main]]
+    name = "Twitter"
+    url = "https://twitter.com/tahirenesgedik"
 
 [params]
-   # intro = true
-   # headline = "My headline"
-   #  description = "A blog for future."
+      intro = true
+    # headline = "My headline"
+    # description = "A blog for future."
+      sitename = "T.E.G.'s Blog"
 
     # options for highlight.js (version, additional languages, and theme)
     highlightjsVersion = "9.11.0"
@@ -37,7 +40,7 @@ ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
     MathJaxVersion = "2.7.1"
 
     twitter = "https://twitter.com/tahirenesgedik"
-
+    dateFormat = "Mon, Jan 2, 2006"
 
 #   [params.logo]
 #   url = "logo.png"
