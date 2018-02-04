@@ -1,7 +1,7 @@
 baseurl = "/"
 languageCode = "en-us"
-title = "A Hugo website"
-theme = "hugo-lithium-theme"
+title = "A Blogdown example."
+theme = "ghostwriter-theme"
 googleAnalytics = ""
 disqusShortname = ""
 ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
@@ -12,15 +12,15 @@ ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
 [[menu.main]]
     name = "About"
     url = "/about/"
-[[menu.main]]
-    name = "GitHub"
-    url = "https://github.com/rstudio/blogdown"
+#[[menu.main]]
+#    name = "GitHub"
+#    url = "https://github.com/tegedik/blogdown"
 [[menu.main]]
     name = "Twitter"
-    url = "https://twitter.com/rstudio"
+    url = "https://twitter.com/tahirenesgedik"
 
 [params]
-    description = "A website built through Hugo and blogdown."
+    description = "A blog for future."
 
     # options for highlight.js (version, additional languages, and theme)
     highlightjsVersion = "9.11.0"
@@ -31,9 +31,9 @@ ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
     MathJaxCDN = "//cdn.bootcss.com"
     MathJaxVersion = "2.7.1"
 
-    [params.logo]
-    url = "logo.png"
-    width = 50
-    height = 50
-    alt = "Logo"
+#   [params.logo]
+#   url = "logo.png"
+#   width = 50
+#   height = 50
+#   alt = "Logo"
 
