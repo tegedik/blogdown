@@ -41,7 +41,9 @@ preddf %>%
   ggplot(aes(k5, pred)) +
   geom_point() +
   geom_line() +
-  labs(y="Predicted Probabilities", x="Number of children 5 years old or younger.", title="Predicted Probabilities for Labor Force Participation") +
+  labs(y="Predicted Probabilities", 
+       x="Number of children 5 years old or younger.", 
+       title="Predicted Probabilities for Labor Force Participation") +
   theme_ipsum_rc() # from hrbrthemes package
 
 
