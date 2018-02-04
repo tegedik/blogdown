@@ -27,8 +27,8 @@ df &amp;lt;- car::Mroz glmfit &amp;lt;- glm(lfp ~ k5 + k618 + wc + inc, df, fami
       <pubDate>Sun, 04 Feb 2018 13:59:49 +0000</pubDate>
       
       <guid>/2018/02/04/lorem-ipsum/</guid>
-      <description>Just here because Lorem Ipsum deserves a homoage.
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</description>
+      <description>The passage from Lorem Ipsum is here, because it deserves a homage:
+ What I find remarkable is that this text has been the industry&amp;rsquo;s standard dummy text ever since some printed in the 1500s took a galley of type and scrambled it to make a type specimen book; it has survived not only four centuries of letter-by-letter resetting but even the leap into electronic typesetting, essentially unchanged except for an occasional &amp;lsquo;ing&amp;rsquo; or &amp;lsquo;y&amp;rsquo; thrown in.</description>
     </item>
     
     <item>
