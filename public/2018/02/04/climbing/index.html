@@ -42,19 +42,84 @@
   <h1> Maximum Likelihood: Finding the Top of a Hill </h1>
 
   <div id=sub-header>
-    T.E.G. · 2018/02/04 · 1 minute read
+    T.E.G. · 2018/02/04 · 3 minute read
   </div>
 
   <div class="entry-content">
     <p>I think one of the most intuitive ways of describing maximum likelihood estimation (especially to the beginners) can be found in <span class="citation">Long and Freese (2014)</span>:</p>
 <blockquote>
-<p>For all but the simplest models, the only way to find the maximum likelihood function is by numerical methods.<a href="#fn1" class="footnoteRef" id="fnref1"><sup>1</sup></a> Numerical methods are the mathematical equivalent of how you would find the top of a hill if you were blindfolded and knew only the slope of the hill at the spot where you are standing and how the slope at that spot is changing which you could figure out by poking your foot in each direction. The search begins with starts values corresponding to your location as you start your climb. From the start position, the slope of the likelihood function and the rate of change in the slope determine the next guess for the paramters. The process continues to iterate until the maximum of the likelihood function function is found, called, convergence, and the resulting estimates are reported <span class="citation">(Long and Freese 2014, 84)</span></p>
+<p>For all but the simplest models, the only way to find the maximum likelihood function is by numerical methods.<a href="#fn1" class="footnoteRef" id="fnref1"><sup>1</sup></a> Numerical methods are the mathematical equivalent of how you would find the top of a hill if you were blindfolded and knew only the slope of the hill at the spot where you are standing and how the slope at that spot is changing which you could figure out by poking your foot in each direction. The search begins with start values corresponding to your location as you start your climb. From the start position, the slope of the likelihood function and the rate of change in the slope determine the next guess for the parameters. The process continues to iterate until the maximum of the likelihood function is found, called, convergence, and the resulting estimates are reported <span class="citation">(Long and Freese 2014, 84)</span></p>
 </blockquote>
+<div id="example-logistic-regression" class="section level3">
+<h3>Example: Logistic Regression</h3>
+<p>Data preparation</p>
+<pre class="r"><code>library(tidyverse)
+library(optimx) # or optim depending on the optimization method used, 
+                # BFGS is available in both packages
+df &lt;- car::Mroz
+
+outcome &lt;- fct_recode(df$lfp,
+               &quot;0&quot; = &quot;no&quot;,
+               &quot;1&quot; = &quot;yes&quot;)
+outcome &lt;- as.numeric(as.character(outcome))
+
+predictors &lt;- df %&gt;% 
+  select(k5, age, inc) %&gt;%  # selected predictors
+  mutate(int=rep(1, nrow(df))) %&gt;% # column of 1s (intercept)
+  select(int, everything()) %&gt;% 
+  as.matrix()</code></pre>
+<p>“The search begins with start values…”</p>
+<pre class="r"><code># Use OLS model coefficients as starting values
+lmfit &lt;- lm(outcome ~ predictors[,c(2:4)])
+s_val &lt;- lmfit$coefficients</code></pre>
+<p>“Numerical methods are the mathematical equivalent of how you would find the top of a hill if you were blindfolded and…”</p>
+<pre class="r"><code>logLikelihood &lt;- function(vBeta, mX, vY) {
+  return(-sum(vY*(mX %*% vBeta - log(1+exp(mX %*% vBeta)))
+    + (1-vY)*(-log(1 + exp(mX %*% vBeta)))))  
+}</code></pre>
+<p>“From the start position, the slope of the likelihood function and the rate of change in the slope determine the next guess for the parameters. The process continues to iterate until the maximum of the likelihood function is found, called, convergence, …</p>
+<pre class="r"><code>optimization &lt;- optimx(s_val, logLikelihood, method = &#39;BFGS&#39;, mX = predictors, vY = outcome, hessian=TRUE)</code></pre>
+<p>“…and the resulting estimates are reported.”</p>
+<pre class="r"><code>estimation_optx &lt;- optimization %&gt;%
+  select(1:ncol(predictors)) %&gt;% t()
+estimation_optx</code></pre>
+<pre><code>##                                BFGS
+## X.Intercept.             3.39332484
+## predictors...c.2.4..k5  -1.31311634
+## predictors...c.2.4..age -0.05682900
+## predictors...c.2.4..inc -0.01875491</code></pre>
+<p>Compare them with the result of <code>glm</code> function:</p>
+<pre class="r"><code>summary(glm(lfp ~ k5 + age + inc, df, family = binomial))</code></pre>
+<pre><code>## 
+## Call:
+## glm(formula = lfp ~ k5 + age + inc, family = binomial, data = df)
+## 
+## Deviance Residuals: 
+##    Min      1Q  Median      3Q     Max  
+## -1.867  -1.184   0.731   1.003   1.970  
+## 
+## Coefficients:
+##              Estimate Std. Error z value Pr(&gt;|z|)    
+## (Intercept)  3.394398   0.515576   6.584 4.59e-11 ***
+## k5          -1.313316   0.187535  -7.003 2.50e-12 ***
+## age         -0.056855   0.010991  -5.173 2.31e-07 ***
+## inc         -0.018751   0.006889  -2.722  0.00649 ** 
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## (Dispersion parameter for binomial family taken to be 1)
+## 
+##     Null deviance: 1029.75  on 752  degrees of freedom
+## Residual deviance:  956.75  on 749  degrees of freedom
+## AIC: 964.75
+## 
+## Number of Fisher Scoring iterations: 4</code></pre>
 <div id="references" class="section level4 unnumbered">
 <h4><strong>References</strong></h4>
 <div id="refs" class="references">
 <div id="ref-Long2014">
 <p>Long, Scott J., and Jeremy Freese. 2014. <em>Regression Models for Categorical Dependent Variables Using Stata</em>. Texas: Stata Press.</p>
+</div>
 </div>
 </div>
 </div>
@@ -97,6 +162,9 @@
 
   
   
+<script src="/js/math-code.js"></script>
+<script async src="//cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
 
 
 </body>

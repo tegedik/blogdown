@@ -1,7 +1,7 @@
 ---
 title: "Maximum Likelihood: Finding the Top of a Hill"
 author: T.E.G.
-date: '2018-02-04T18:34:54'
+date: '2018-02-06T18:34:54'
 slug: climbing
 categories: []
 tags: []
@@ -10,7 +10,72 @@ bibliography: references.bib
 
 I think one of the most intuitive ways of describing maximum likelihood estimation (especially to the beginners) can be found in @Long2014:
 
-> For all but the simplest models, the only way to find the maximum likelihood function is by numerical methods ^[For a quick explanation of the difference between analytical and numerical methods: [What’s the difference between analytical and numerical approaches to problems?](https://math.stackexchange.com/a/935458)]. Numerical methods are the mathematical equivalent of how you would find the top of a hill if you were blindfolded and knew only the slope of the hill at the spot where you are standing and how the slope at that spot is changing which you could figure out by poking your foot in each direction. The search begins with starts values corresponding to your location as you start your climb. From the start position, the slope of the likelihood function and the rate of change in the slope determine the next guess for the parameters. The process continues to iterate until the maximum of the likelihood function is found, called, convergence, and the resulting estimates are reported [@Long2014, pp.84]
+> For all but the simplest models, the only way to find the maximum likelihood function is by numerical methods ^[For a quick explanation of the difference between analytical and numerical methods: [What’s the difference between analytical and numerical approaches to problems?](https://math.stackexchange.com/a/935458)]. Numerical methods are the mathematical equivalent of how you would find the top of a hill if you were blindfolded and knew only the slope of the hill at the spot where you are standing and how the slope at that spot is changing which you could figure out by poking your foot in each direction. The search begins with start values corresponding to your location as you start your climb. From the start position, the slope of the likelihood function and the rate of change in the slope determine the next guess for the parameters. The process continues to iterate until the maximum of the likelihood function is found, called, convergence, and the resulting estimates are reported [@Long2014, pp.84]
+
+### Example: Logistic Regression
+
+Data preparation
+```{r data prep, echo=TRUE, eval=TRUE, message=FALSE, warning=FALSE}
+library(tidyverse)
+library(optimx) # or optim depending on the optimization method used, 
+                # BFGS is available in both packages
+df <- car::Mroz
+
+outcome <- fct_recode(df$lfp,
+               "0" = "no",
+               "1" = "yes")
+outcome <- as.numeric(as.character(outcome))
+
+predictors <- df %>% 
+  select(k5, age, inc) %>%  # selected predictors
+  mutate(int=rep(1, nrow(df))) %>% # column of 1s (intercept)
+  select(int, everything()) %>% 
+  as.matrix()
+```
+
+"The search begins with start values..."
+
+```{r star_val, echo=TRUE, eval=TRUE, message=FALSE, warning=FALSE}
+# Use OLS model coefficients as starting values
+lmfit <- lm(outcome ~ predictors[,c(2:4)])
+s_val <- lmfit$coefficients
+```
+
+"Numerical methods are the mathematical equivalent of how you would find the top of a hill if you were blindfolded and..."
+```{r likelihood, echo=TRUE, eval=TRUE, message=FALSE, warning=FALSE}
+logLikelihood <- function(vBeta, mX, vY) {
+  return(-sum(vY*(mX %*% vBeta - log(1+exp(mX %*% vBeta)))
+    + (1-vY)*(-log(1 + exp(mX %*% vBeta)))))  
+}
+```
+
+"From the start position, the slope of the likelihood function and the rate of change in the slope determine the next guess for the parameters. The process continues to iterate until the maximum of the likelihood function is found, called, convergence, ...
+
+```{r optimization, echo=TRUE, eval=TRUE, message=FALSE, warning=FALSE}
+optimization <- optimx(s_val, logLikelihood, method = 'BFGS', mX = predictors, vY = outcome, hessian=TRUE)
+```
+
+"...and the resulting estimates are reported."
+
+```{r res, echo=TRUE, eval=TRUE, message=FALSE, warning=FALSE}
+estimation_optx <- optimization %>%
+  select(1:ncol(predictors)) %>% t()
+estimation_optx
+```
+
+Compare them with the result of `glm` function:
+
+```{r glm, echo=TRUE, eval=TRUE, message=FALSE, warning=FALSE}
+summary(glm(lfp ~ k5 + age + inc, df, family = binomial))
+```
 
 
 #### **References**
+
+
+
+
+
+
+
+
