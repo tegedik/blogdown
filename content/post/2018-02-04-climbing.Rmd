@@ -1,5 +1,5 @@
 ---
-title: "Maximum Likelihood: Finding the Top of a Hill"
+title: "Maximum Likelihood Estimation: Finding the Top of a Hill"
 author: T.E.G.
 date: '2018-02-06T18:34:54'
 slug: climbing
