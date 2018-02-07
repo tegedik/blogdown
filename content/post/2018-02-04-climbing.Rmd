@@ -52,7 +52,8 @@ logLikelihood <- function(vBeta, mX, vY) {
 "From the start position, the slope of the likelihood function and the rate of change in the slope determine the next guess for the parameters. The process continues to iterate until the maximum of the likelihood function is found, called, convergence, ...
 
 ```{r optimization, echo=TRUE, eval=TRUE, message=FALSE, warning=FALSE}
-optimization <- optimx(s_val, logLikelihood, method = 'BFGS', mX = predictors, vY = outcome, hessian=TRUE)
+optimization <- optimx(s_val, logLikelihood, method = 'BFGS', 
+                       mX = predictors, vY = outcome, hessian=TRUE)
 ```
 
 "...and the resulting estimates are reported."
@@ -69,6 +70,7 @@ Compare them with the result of `glm` function:
 summary(glm(lfp ~ k5 + age + inc, df, family = binomial))
 ```
 
+Here is the [wiki](https://en.wikipedia.org/wiki/Broyden%E2%80%93Fletcher%E2%80%93Goldfarb%E2%80%93Shanno_algorithm) page for the `BFGS` (Broyden–Fletcher–Goldfarb–Shanno algorithm) method, which "belongs to quasi-Newton methods, a class of *hill-climbing* optimization techniques...."
 
 #### **References**
 

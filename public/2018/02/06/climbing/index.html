@@ -78,7 +78,8 @@ s_val &lt;- lmfit$coefficients</code></pre>
     + (1-vY)*(-log(1 + exp(mX %*% vBeta)))))  
 }</code></pre>
 <p>“From the start position, the slope of the likelihood function and the rate of change in the slope determine the next guess for the parameters. The process continues to iterate until the maximum of the likelihood function is found, called, convergence, …</p>
-<pre class="r"><code>optimization &lt;- optimx(s_val, logLikelihood, method = &#39;BFGS&#39;, mX = predictors, vY = outcome, hessian=TRUE)</code></pre>
+<pre class="r"><code>optimization &lt;- optimx(s_val, logLikelihood, method = &#39;BFGS&#39;, 
+                       mX = predictors, vY = outcome, hessian=TRUE)</code></pre>
 <p>“…and the resulting estimates are reported.”</p>
 <pre class="r"><code>estimation_optx &lt;- optimization %&gt;%
   select(1:ncol(predictors)) %&gt;% t()
@@ -114,6 +115,7 @@ estimation_optx</code></pre>
 ## AIC: 964.75
 ## 
 ## Number of Fisher Scoring iterations: 4</code></pre>
+<p>Here is the <a href="https://en.wikipedia.org/wiki/Broyden%E2%80%93Fletcher%E2%80%93Goldfarb%E2%80%93Shanno_algorithm">wiki</a> page for the <code>BFGS</code> (Broyden–Fletcher–Goldfarb–Shanno algorithm) method, which “belongs to quasi-Newton methods, a class of <em>hill-climbing</em> optimization techniques….”</p>
 <div id="references" class="section level4 unnumbered">
 <h4><strong>References</strong></h4>
 <div id="refs" class="references">
