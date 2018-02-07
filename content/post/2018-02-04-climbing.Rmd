@@ -33,7 +33,7 @@ predictors <- df %>%
   as.matrix()
 ```
 
-"The search begins with start values corresponding to your location as you start your climb."
+"The search begins with *start values* corresponding to your location as you start your climb."
 
 ```{r star_val, echo=TRUE, eval=TRUE, message=FALSE, warning=FALSE}
 # Use OLS model coefficients as starting values
@@ -41,7 +41,7 @@ lmfit <- lm(outcome ~ predictors[,c(2:4)])
 s_val <- lmfit$coefficients
 ```
 
-"From the start position, the slope of the likelihood function and the rate of change in the slope determine the next guess for the parameters."
+"From the start position, the slope of the *likelihood function* and the rate of change in the slope determine the next guess for the parameters."
 
 ```{r likelihood, echo=TRUE, eval=TRUE, message=FALSE, warning=FALSE}
 logLikelihood <- function(vBeta, mX, vY) {
@@ -50,7 +50,7 @@ logLikelihood <- function(vBeta, mX, vY) {
 }
 ```
 
-"The process continues to iterate until the maximum of the likelihood function is found, called, convergence,..."
+"The process continues to *iterate* until the maximum of the likelihood function is found, called, *convergence*,..."
 
 ```{r optimization, echo=TRUE, eval=TRUE, message=FALSE, warning=FALSE}
 optimization <- optimx(s_val, logLikelihood, method = 'BFGS', 

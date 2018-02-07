@@ -32,16 +32,16 @@ predictors &lt;- df %&gt;%
   mutate(int=rep(1, nrow(df))) %&gt;% # column of 1s (intercept)
   select(int, everything()) %&gt;% 
   as.matrix()</code></pre>
-<p>“The search begins with start values corresponding to your location as you start your climb.”</p>
+<p>“The search begins with <em>start values</em> corresponding to your location as you start your climb.”</p>
 <pre class="r"><code># Use OLS model coefficients as starting values
 lmfit &lt;- lm(outcome ~ predictors[,c(2:4)])
 s_val &lt;- lmfit$coefficients</code></pre>
-<p>“From the start position, the slope of the likelihood function and the rate of change in the slope determine the next guess for the parameters.”</p>
+<p>“From the start position, the slope of the <em>likelihood function</em> and the rate of change in the slope determine the next guess for the parameters.”</p>
 <pre class="r"><code>logLikelihood &lt;- function(vBeta, mX, vY) {
   return(-sum(vY*(mX %*% vBeta - log(1+exp(mX %*% vBeta)))
     + (1-vY)*(-log(1 + exp(mX %*% vBeta)))))  
 }</code></pre>
-<p>“The process continues to iterate until the maximum of the likelihood function is found, called, convergence,…”</p>
+<p>“The process continues to <em>iterate</em> until the maximum of the likelihood function is found, called, <em>convergence</em>,…”</p>
 <pre class="r"><code>optimization &lt;- optimx(s_val, logLikelihood, method = &#39;BFGS&#39;, 
                        mX = predictors, vY = outcome, hessian=TRUE)</code></pre>
 <p>“…and the resulting estimates are reported.”</p>
