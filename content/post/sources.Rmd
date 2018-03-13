@@ -10,29 +10,31 @@ bibliography: references.bib
 
 This page contains links to useful sources on statistics, `R` and other software packages. 
 
-* [Cross Validated](https://stats.stackexchange.com)
-* [CRAN Task Views](https://cran.r-project.org/web/views/)
 * [CRAN Task View: Statistics for the Social Sciences](https://cran.r-project.org/web/views/SocialSciences.html)
-* [R Weekly](https://rweekly.org/)
-* [UCLA IDRE - R](https://stats.idre.ucla.edu/r/#)
-* [Quick-R](http://www.statmethods.net/)
-* [Seeing Theory](http://students.brown.edu/seeing-theory/)
-* [STHDA (Statistical Tools for High-throughput Data Analysis)](http://www.sthda.com/english/)
-* [Statistical Modeling, Causal Inference, and Social Science (a.k.a., Andrew Gelman's Blog)](http://andrewgelman.com)
+* [CRAN Task Views](https://cran.r-project.org/web/views/)
+* [Cross Validated](https://stats.stackexchange.com)
 * [Personality Project](http://personality-project.org/index.html)
+* [Quick-R](http://www.statmethods.net/)
+* [R Weekly](https://rweekly.org/)
 * [R-statistics-co](http://r-statistics.co/)
-* [The R Graph Gallery](http://www.r-graph-gallery.com/)
 * [Rstudio Community](https://community.rstudio.com/)
+* [Seeing Theory](http://students.brown.edu/seeing-theory/)
+* [Statistical Modeling, Causal Inference, and Social Science (a.k.a., Andrew Gelman's Blog)](http://andrewgelman.com)
+* [STHDA (Statistical Tools for High-throughput Data Analysis)](http://www.sthda.com/english/)
+* [The R Graph Gallery](http://www.r-graph-gallery.com/)
+* [UCLA IDRE - R](https://stats.idre.ucla.edu/r/#)
 
-### R Packages
 
-* [RStudio Cheat Sheets](https://www.rstudio.com/resources/cheatsheets/)
-* [Tidyverse](https://www.tidyverse.org/)
-* [Stargazer Cheat Sheet](http://www.jakeruss.com/cheatsheets/stargazer/)
-* [SjPlot-Package](http://www.strengejacke.de/sjPlot/)
+### R package sources
+
 * [An Introduction to Margins](https://cran.r-project.org/web/packages/margins/vignettes/Introduction.html)
-* [Zelig - Everyone's Statistical Software](https://zeligproject.org/)
+* [RStudio Cheat Sheets](https://www.rstudio.com/resources/cheatsheets/)
+* [SjPlot-Package](http://www.strengejacke.de/sjPlot/)
+* [Stargazer Cheat Sheet](http://www.jakeruss.com/cheatsheets/stargazer/)
 * [The lavaan Project](http://lavaan.ugent.be/)
+* [Tidyverse](https://www.tidyverse.org/)
+* [Zelig - Everyone's Statistical Software](https://zeligproject.org/)
+
 
 
 
