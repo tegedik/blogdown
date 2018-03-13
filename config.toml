@@ -20,6 +20,9 @@ canonifyurls = true
     name = "About"
     url = "/about/"
 [[menu.main]]
+    name = "Sources"
+    url = "https://tegedik.netlify.com/2018/02/04/sources/"
+[[menu.main]]
     name = "Twitter"
     url = "https://twitter.com/tahirenesgedik"
 
