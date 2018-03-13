@@ -60,7 +60,7 @@ df &amp;lt;- car::Mroz # U.S. Women&amp;#39;s Labor-Force Participation data glm
       
       <guid>/sources/</guid>
       <description>This page contains links to useful sources on statistics, R and other software packages.
- CRAN Task View: Statistics for the Social Sciences CRAN Task Views Cross Validated DataCamp Math Camp Lectures - UW CSSS Personality Project Quick-R R for Data Science R Weekly R-statistics.co Rseek RStudio Community Seeing Theory Statistical Modeling, Causal Inference, and Social Science (a.k.a., Andrew Gelman’s Blog) STHDA (Statistical Tools for High-throughput Data Analysis) The R Graph Gallery UCLA IDRE - Annotated Output  R package sources  An Introduction to Margins RStudio Cheat Sheets SjPlot-Package Stargazer Cheat Sheet The lavaan Project Tidyverse Zelig - Everyone’s Statistical Software   </description>
+ CRAN Task View: Statistics for the Social Sciences CRAN Task Views Cross Validated DataCamp Math Camp Lectures - UW CSSS Personality Project Quick-R R for Data Science R Weekly R-statistics.co Rseek RStudio Community Seeing Theory Statistical Modeling, Causal Inference, and Social Science (a.k.a., Andrew Gelman’s Blog) STHDA (Statistical Tools for High-throughput Data Analysis) The R Graph Gallery UCLA IDRE - Annotated Output  R package sources  An Introduction to Margins DeclareDesign RStudio Cheat Sheets SjPlot-Package Stargazer Cheat Sheet The lavaan Project Tidyverse Zelig - Everyone’s Statistical Software   </description>
     </item>
     
     <item>
