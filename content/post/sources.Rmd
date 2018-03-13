@@ -17,7 +17,7 @@ This page contains links to useful sources on statistics, `R` and other software
 * [Quick-R](http://www.statmethods.net/)
 * [R Weekly](https://rweekly.org/)
 * [R-statistics-co](http://r-statistics.co/)
-* [Rstudio Community](https://community.rstudio.com/)
+* [RStudio Community](https://community.rstudio.com/)
 * [Seeing Theory](http://students.brown.edu/seeing-theory/)
 * [Statistical Modeling, Causal Inference, and Social Science (a.k.a., Andrew Gelman's Blog)](http://andrewgelman.com)
 * [STHDA (Statistical Tools for High-throughput Data Analysis)](http://www.sthda.com/english/)
