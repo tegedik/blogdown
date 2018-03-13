@@ -1,0 +1,39 @@
+---
+title: "Sources"
+author: T.E.G.
+date: "2018-02-04T13:59:48"
+slug: climbing
+categories: []
+tags: []
+bibliography: references.bib
+---
+
+This page contains links to useful sources on statistics, `R` and other software packages. 
+
+* [Cross Validated](https://stats.stackexchange.com)
+* [CRAN Task Views](https://cran.r-project.org/web/views/)
+* [CRAN Task View: Statistics for the Social Sciences](https://cran.r-project.org/web/views/SocialSciences.html)
+* [R Weekly](https://rweekly.org/)
+* [UCLA IDRE - R](https://stats.idre.ucla.edu/r/#)
+* [Quick-R](http://www.statmethods.net/)
+* [Seeing Theory](http://students.brown.edu/seeing-theory/)
+* [STHDA (Statistical Tools for High-throughput Data Analysis)](http://www.sthda.com/english/)
+* [Statistical Modeling, Causal Inference, and Social Science (a.k.a., Andrew Gelman's Blog)](http://andrewgelman.com)
+* [Personality Project](http://personality-project.org/index.html)
+* [R-statistics-co](http://r-statistics.co/)
+* [The R Graph Gallery](http://www.r-graph-gallery.com/)
+* [Rstudio Community](https://community.rstudio.com/)
+
+### R Packages
+
+* [RStudio Cheat Sheets](https://www.rstudio.com/resources/cheatsheets/)
+* [Tidyverse](https://www.tidyverse.org/)
+* [Stargazer Cheat Sheet](http://www.jakeruss.com/cheatsheets/stargazer/)
+* [SjPlot-Package](http://www.strengejacke.de/sjPlot/)
+* [An Introduction to Margins](https://cran.r-project.org/web/packages/margins/vignettes/Introduction.html)
+* [Zelig - Everyone's Statistical Software](https://zeligproject.org/)
+* [The lavaan Project](http://lavaan.ugent.be/)
+
+
+
+

@@ -53,5 +53,15 @@ df &amp;lt;- car::Mroz # U.S. Women&amp;#39;s Labor-Force Participation data glm
  What I find remarkable is that this text has been the industry&amp;rsquo;s standard dummy text ever since some printed in the 1500s took a galley of type and scrambled it to make a type specimen book; it has survived not only four centuries of letter-by-letter resetting but even the leap into electronic typesetting, essentially unchanged except for an occasional &amp;lsquo;ing&amp;rsquo; or &amp;lsquo;y&amp;rsquo; thrown in.</description>
     </item>
     
+    <item>
+      <title>Sources</title>
+      <link>/2018/02/04/climbing/</link>
+      <pubDate>Sun, 04 Feb 2018 13:59:48 +0000</pubDate>
+      
+      <guid>/2018/02/04/climbing/</guid>
+      <description>This page contains links to useful sources on statistics, R and other software packages.
+ Cross Validated CRAN Task Views CRAN Task View: Statistics for the Social Sciences R Weekly UCLA IDRE - R Quick-R Seeing Theory STHDA (Statistical Tools for High-throughput Data Analysis) Statistical Modeling, Causal Inference, and Social Science (a.k.a., Andrew Gelman’s Blog) Personality Project R-statistics-co The R Graph Gallery Rstudio Community  R Packages  RStudio Cheat Sheets Tidyverse Stargazer Cheat Sheet SjPlot-Package An Introduction to Margins Zelig - Everyone’s Statistical Software The lavaan Project   </description>
+    </item>
+    
   </channel>
 </rss>
