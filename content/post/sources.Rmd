@@ -22,7 +22,7 @@ This page contains links to useful sources on statistics, `R` and other software
 * [Statistical Modeling, Causal Inference, and Social Science (a.k.a., Andrew Gelman's Blog)](http://andrewgelman.com)
 * [STHDA (Statistical Tools for High-throughput Data Analysis)](http://www.sthda.com/english/)
 * [The R Graph Gallery](http://www.r-graph-gallery.com/)
-* [UCLA IDRE - R](https://stats.idre.ucla.edu/r/#)
+* [UCLA IDRE - Annotated Output](https://stats.idre.ucla.edu/other/annotatedoutput/)
 
 
 ### R package sources
