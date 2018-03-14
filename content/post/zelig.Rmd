@@ -1,0 +1,77 @@
+---
+title: "Try Zelig: Everyone's Statistical Software"
+author: T.E.G.
+date: "2018-03-13T20:01:00"
+slug: tryzelig
+categories: []
+tags: []
+bibliography: references.bib
+---
+
+---
+nocite: | 
+  @zeligarticle, @King2000, @texreg
+...
+
+It is quite common to hear complaints about the steep learning curve of `R`. And it is true that it would take time to grasp its versatility (if it is possible at all). Nevertheless, there are many packages that give the opportunity of experiencing the power of `R` for beginners. One notable example is `Zelig` package [@zelig]. The online [documentation](http://docs.zeligproject.org/articles/index.html#section-core-zelig-model-details) provides examples for a wide range of models. As one can see in these examples, `Zelig` favors the use of simulation-based approach in estimating, interpreting, and presenting results of statistical analysis. @King2000 [pp. 348] listed three advantages of this approach:
+
+> <font size="3">  First, and most importantly, it can extract new quantities of interest from standard statistical models, thereby enriching the substance of social science research. Second, our approach allows scholars to assess the uncertainty surrounding any quantity of interest, so it should improve the candor and realism of statistical discourse about politics. Finally, our method can convert raw statistical results into results that everyone, regardless of statistical training, can comprehend.</font> 
+
+Of course, easy-to-use does not necessarily mean easy to interpret and present: "researchers who put [these methods] into practice will have to think much harder about which quantities are of interest and how to communicate to a wider audience" [@King2000, p. 360]. Lets see an example using well-known Mroz' data:
+
+```{r, echo=TRUE, eval=TRUE, warning=FALSE, message=FALSE}
+library(Zelig)
+library(texreg) #for html table
+df <- car::Mroz
+logit_zelig <- zelig(lfp ~ k5 + k618 + age + wc + hc + lwg, data=df, model = "logit", cite=FALSE)
+summary(logit_zelig, odds_ratio=TRUE)
+```
+
+As we can see in the output, `zelig` function calls `glm` from `stats`. The following steps, however, illustrate how simulation approach is used to estimate expected and predicted values.
+
+```{r, echo=TRUE, eval=TRUE, warning=FALSE, message=FALSE, fig.height=20, fig.width=16}
+x_no_college <- setx(logit_zelig, wc = "no")
+x_college <- setx1(logit_zelig, wc = "yes")
+sim_logit_zelig <- sim(logit_zelig, x = x_no_college, x1 = x_college)
+summary(sim_logit_zelig)
+```
+
+Now, we might want to estimate predicted probabilities over the range of a predictor for both levels of `wc`.
+
+```{r, echo=TRUE, eval=TRUE, warning=FALSE, message=FALSE}
+logit_zelig <- zelig(lfp ~ k5 + k618 + age + wc + hc + lwg, 
+                     data=df, model = "logit", cite=FALSE)
+
+x_no_college  <- setx(logit_zelig, wc = "no",  age = 30:60)
+x_college <- setx(logit_zelig, wc = "yes",  age = 30:60)
+sim_logit_zelig <- sim(logit_zelig, x = x_no_college, x1 = x_college)
+ci.plot(sim_logit_zelig, ylab = "Predicted Probability of Labor Force Participation")
+```
+
+Another nice feature of `Zelig` package is the exterior interaction functions which help to extract information from Zelig object. For example, `from_zelig_model()` makes it easy to extract model results and pass them into a table function. 
+
+```{r, echo=TRUE, eval=FALSE, warning=FALSE, message=FALSE, results='asis'}
+df_logit_model <- from_zelig_model(logit_zelig)
+htmlreg(df_logit_model, center=FALSE, caption = " ")
+```
+
+Actually, `texreg` functions accept zelig class objects:
+```{r table, echo=TRUE, eval=TRUE, warning=FALSE, message=FALSE, results='asis'}
+logit_zelig1 <- zelig(lfp ~ k5 + age, 
+                      data=df, model = "logit", cite=FALSE)
+logit_zelig2 <- zelig(lfp ~ k5 + age + wc, 
+                      data=df, model = "logit", cite=FALSE)
+logit_zelig3 <- zelig(lfp ~ k5 + age + wc + lwg, 
+                      data=df, model = "logit", cite=FALSE)
+logit_zelig4 <- zelig(lfp ~ k5 + age + wc + lwg + inc, 
+                      data=df, model = "logit", cite=FALSE)
+htmlreg(list(logit_zelig1, logit_zelig2, logit_zelig3, logit_zelig4), 
+        center=FALSE, caption = " ")
+```
+
+### **References**
+
+
+
+
+

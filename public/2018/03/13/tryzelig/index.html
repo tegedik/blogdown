@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="referrer" content="no-referrer">
+  
+
+  <link rel="icon" type="image/png" href="/favicon.png">
+
+  <title>
+    
+    
+     Try Zelig: Everyone&#39;s Statistical Software 
+    
+  </title>
+  <link rel="canonical" href="/2018/03/13/tryzelig/">
+
+  <link rel="stylesheet" href="/css/fonts.css" />
+  <link rel="stylesheet" href="/css/style.css" />
+
+  
+</head>
+
+<body>
+<section id=nav>
+  <h1><a href="/">T.E.G.&#39;s Blog</a></h1>
+  <ul>
+    
+    <li><a href="/about/">About</a></li>
+    
+    <li><a href="/sources/">Sources</a></li>
+    
+    <li><a href="https://twitter.com/tahirenesgedik">Twitter</a></li>
+    
+  </ul>
+</section>
+
+<link rel="stylesheet" href="/css/github.css" rel="stylesheet" id="theme-stylesheet">
+<script src="/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+<section id=content>
+  <h1> Try Zelig: Everyone&#39;s Statistical Software </h1>
+
+  <div id=sub-header>
+    T.E.G. · 2018/03/13 · 5 minute read
+  </div>
+
+  <div class="entry-content">
+    <p>It is quite common to hear complaints about the steep learning curve of <code>R</code>. And it is true that it would take time to grasp its versatility (if it is possible at all). Nevertheless, there are many packages that give the opportunity of experiencing the power of <code>R</code> for beginners. One notable example is <code>Zelig</code> package <span class="citation">(Choirat et al. 2017)</span>. The online <a href="http://docs.zeligproject.org/articles/index.html#section-core-zelig-model-details">documentation</a> provides examples for a wide range of models. As one can see in these examples, <code>Zelig</code> favors the use of simulation-based approach in estimating, interpreting, and presenting results of statistical analysis. <span class="citation">King, Tomz, and Wittenberg (2000, 348)</span> listed three advantages of this approach:</p>
+<blockquote>
+<p><font size="3"> First, and most importantly, it can extract new quantities of interest from standard statistical models, thereby enriching the substance of social science research. Second, our approach allows scholars to assess the uncertainty surrounding any quantity of interest, so it should improve the candor and realism of statistical discourse about politics. Finally, our method can convert raw statistical results into results that everyone, regardless of statistical training, can comprehend.</font></p>
+</blockquote>
+<p>Of course, easy-to-use does not necessarily mean easy to interpret and present: “researchers who put [these methods] into practice will have to think much harder about which quantities are of interest and how to communicate to a wider audience” <span class="citation">(King, Tomz, and Wittenberg 2000, 360)</span>. Lets see an example using well-known Mroz’ data:</p>
+<pre class="r"><code>library(Zelig)
+library(texreg) #for html table
+df &lt;- car::Mroz
+logit_zelig &lt;- zelig(lfp ~ k5 + k618 + age + wc + hc + lwg, data=df, model = &quot;logit&quot;, cite=FALSE)
+summary(logit_zelig, odds_ratio=TRUE)</code></pre>
+<pre><code>## Model: 
+## 
+## Call:
+## stats::glm(formula = lfp ~ k5 + k618 + age + wc + hc + lwg, family = binomial(&quot;logit&quot;), 
+##     data = as.data.frame(.))
+## 
+## Deviance Residuals: 
+##     Min       1Q   Median       3Q      Max  
+## -2.0875  -1.1168   0.6377   0.9797   2.1894  
+## 
+## Coefficients:
+##             Estimate (OR) Std. Error (OR) z value Pr(&gt;|z|)    
+## (Intercept)      18.88881        11.87495   4.674 2.95e-06 ***
+## k5                0.23725         0.04590  -7.436 1.03e-13 ***
+## k618              0.91635         0.06119  -1.308 0.190810    
+## age               0.93358         0.01168  -5.492 3.98e-08 ***
+## wcyes             1.99876         0.44711   3.096 0.001962 ** 
+## hcyes             0.86741         0.16830  -0.733 0.463476    
+## lwg               1.75248         0.26083   3.769 0.000164 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## (Dispersion parameter for binomial family taken to be 1)
+## 
+##     Null deviance: 1029.75  on 752  degrees of freedom
+## Residual deviance:  924.77  on 746  degrees of freedom
+## AIC: 938.77
+## 
+## Number of Fisher Scoring iterations: 4</code></pre>
+<p>As we can see in the output, <code>zelig</code> function calls <code>glm</code> from <code>stats</code>. The following steps, however, illustrate how simulation approach is used to estimate expected and predicted values.</p>
+<pre class="r"><code>x_no_college &lt;- setx(logit_zelig, wc = &quot;no&quot;)
+x_college &lt;- setx1(logit_zelig, wc = &quot;yes&quot;)
+sim_logit_zelig &lt;- sim(logit_zelig, x = x_no_college, x1 = x_college)
+summary(sim_logit_zelig)</code></pre>
+<pre><code>## 
+##  sim x :
+##  -----
+## ev
+##           mean         sd      50%      2.5%     97.5%
+## [1,] 0.5429624 0.02571747 0.543434 0.4913509 0.5904804
+## pv
+##          0     1
+## [1,] 0.448 0.552
+## 
+##  sim x1 :
+##  -----
+## ev
+##           mean         sd       50%      2.5%     97.5%
+## [1,] 0.6996344 0.04668068 0.7005627 0.6038686 0.7866868
+## pv
+##          0     1
+## [1,] 0.289 0.711
+## fd
+##          mean         sd      50%       2.5%     97.5%
+## [1,] 0.156672 0.04593399 0.156279 0.06684061 0.2465824</code></pre>
+<p>Now, we might want to estimate predicted probabilities over the range of a predictor for both levels of <code>wc</code>.</p>
+<pre class="r"><code>logit_zelig &lt;- zelig(lfp ~ k5 + k618 + age + wc + hc + lwg, 
+                     data=df, model = &quot;logit&quot;, cite=FALSE)
+
+x_no_college  &lt;- setx(logit_zelig, wc = &quot;no&quot;,  age = 30:60)
+x_college &lt;- setx(logit_zelig, wc = &quot;yes&quot;,  age = 30:60)
+sim_logit_zelig &lt;- sim(logit_zelig, x = x_no_college, x1 = x_college)
+ci.plot(sim_logit_zelig, ylab = &quot;Predicted Probability of Labor Force Participation&quot;)</code></pre>
+<p><img src="/post/zelig_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+<p>Another nice feature of <code>Zelig</code> package is the exterior interaction functions which help to extract information from Zelig object. For example, <code>from_zelig_model()</code> makes it easy to extract model results and pass them into a table function.</p>
+<pre class="r"><code>df_logit_model &lt;- from_zelig_model(logit_zelig)
+htmlreg(df_logit_model, center=FALSE, caption = &quot; &quot;)</code></pre>
+<p>Actually, <code>texreg</code> functions accept zelig class objects:</p>
+<pre class="r"><code>logit_zelig1 &lt;- zelig(lfp ~ k5 + age, 
+                      data=df, model = &quot;logit&quot;, cite=FALSE)
+logit_zelig2 &lt;- zelig(lfp ~ k5 + age + wc, 
+                      data=df, model = &quot;logit&quot;, cite=FALSE)
+logit_zelig3 &lt;- zelig(lfp ~ k5 + age + wc + lwg, 
+                      data=df, model = &quot;logit&quot;, cite=FALSE)
+logit_zelig4 &lt;- zelig(lfp ~ k5 + age + wc + lwg + inc, 
+                      data=df, model = &quot;logit&quot;, cite=FALSE)
+htmlreg(list(logit_zelig1, logit_zelig2, logit_zelig3, logit_zelig4), 
+        center=FALSE, caption = &quot; &quot;)</code></pre>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<table cellspacing="0" style="border: none;">
+<caption align="bottom" style="margin-top:0.3em;">
+</caption>
+<tr>
+<th style="text-align: left; border-top: 2px solid black; border-bottom: 1px solid black; padding-right: 12px;">
+<b></b>
+</th>
+<th style="text-align: left; border-top: 2px solid black; border-bottom: 1px solid black; padding-right: 12px;">
+<b>Model 1</b>
+</th>
+<th style="text-align: left; border-top: 2px solid black; border-bottom: 1px solid black; padding-right: 12px;">
+<b>Model 2</b>
+</th>
+<th style="text-align: left; border-top: 2px solid black; border-bottom: 1px solid black; padding-right: 12px;">
+<b>Model 3</b>
+</th>
+<th style="text-align: left; border-top: 2px solid black; border-bottom: 1px solid black; padding-right: 12px;">
+<b>Model 4</b>
+</th>
+</tr>
+<tr>
+<td style="padding-right: 12px; border: none;">
+(Intercept)
+</td>
+<td style="padding-right: 12px; border: none;">
+3.09<sup style="vertical-align: 0px;">***</sup>
+</td>
+<td style="padding-right: 12px; border: none;">
+2.92<sup style="vertical-align: 0px;">***</sup>
+</td>
+<td style="padding-right: 12px; border: none;">
+2.44<sup style="vertical-align: 0px;">***</sup>
+</td>
+<td style="padding-right: 12px; border: none;">
+2.90<sup style="vertical-align: 0px;">***</sup>
+</td>
+</tr>
+<tr>
+<td style="padding-right: 12px; border: none;">
+</td>
+<td style="padding-right: 12px; border: none;">
+(0.50)
+</td>
+<td style="padding-right: 12px; border: none;">
+(0.50)
+</td>
+<td style="padding-right: 12px; border: none;">
+(0.52)
+</td>
+<td style="padding-right: 12px; border: none;">
+(0.54)
+</td>
+</tr>
+<tr>
+<td style="padding-right: 12px; border: none;">
+k5
+</td>
+<td style="padding-right: 12px; border: none;">
+-1.32<sup style="vertical-align: 0px;">***</sup>
+</td>
+<td style="padding-right: 12px; border: none;">
+-1.41<sup style="vertical-align: 0px;">***</sup>
+</td>
+<td style="padding-right: 12px; border: none;">
+-1.41<sup style="vertical-align: 0px;">***</sup>
+</td>
+<td style="padding-right: 12px; border: none;">
+-1.43<sup style="vertical-align: 0px;">***</sup>
+</td>
+</tr>
+<tr>
+<td style="padding-right: 12px; border: none;">
+</td>
+<td style="padding-right: 12px; border: none;">
+(0.19)
+</td>
+<td style="padding-right: 12px; border: none;">
+(0.19)
+</td>
+<td style="padding-right: 12px; border: none;">
+(0.19)
+</td>
+<td style="padding-right: 12px; border: none;">
+(0.19)
+</td>
+</tr>
+<tr>
+<td style="padding-right: 12px; border: none;">
+age
+</td>
+<td style="padding-right: 12px; border: none;">
+-0.06<sup style="vertical-align: 0px;">***</sup>
+</td>
+<td style="padding-right: 12px; border: none;">
+-0.06<sup style="vertical-align: 0px;">***</sup>
+</td>
+<td style="padding-right: 12px; border: none;">
+-0.06<sup style="vertical-align: 0px;">***</sup>
+</td>
+<td style="padding-right: 12px; border: none;">
+-0.06<sup style="vertical-align: 0px;">***</sup>
+</td>
+</tr>
+<tr>
+<td style="padding-right: 12px; border: none;">
+</td>
+<td style="padding-right: 12px; border: none;">
+(0.01)
+</td>
+<td style="padding-right: 12px; border: none;">
+(0.01)
+</td>
+<td style="padding-right: 12px; border: none;">
+(0.01)
+</td>
+<td style="padding-right: 12px; border: none;">
+(0.01)
+</td>
+</tr>
+<tr>
+<td style="padding-right: 12px; border: none;">
+wcyes
+</td>
+<td style="padding-right: 12px; border: none;">
+</td>
+<td style="padding-right: 12px; border: none;">
+0.83<sup style="vertical-align: 0px;">***</sup>
+</td>
+<td style="padding-right: 12px; border: none;">
+0.62<sup style="vertical-align: 0px;">**</sup>
+</td>
+<td style="padding-right: 12px; border: none;">
+0.87<sup style="vertical-align: 0px;">***</sup>
+</td>
+</tr>
+<tr>
+<td style="padding-right: 12px; border: none;">
+</td>
+<td style="padding-right: 12px; border: none;">
+</td>
+<td style="padding-right: 12px; border: none;">
+(0.18)
+</td>
+<td style="padding-right: 12px; border: none;">
+(0.19)
+</td>
+<td style="padding-right: 12px; border: none;">
+(0.21)
+</td>
+</tr>
+<tr>
+<td style="padding-right: 12px; border: none;">
+lwg
+</td>
+<td style="padding-right: 12px; border: none;">
+</td>
+<td style="padding-right: 12px; border: none;">
+</td>
+<td style="padding-right: 12px; border: none;">
+0.57<sup style="vertical-align: 0px;">***</sup>
+</td>
+<td style="padding-right: 12px; border: none;">
+0.62<sup style="vertical-align: 0px;">***</sup>
+</td>
+</tr>
+<tr>
+<td style="padding-right: 12px; border: none;">
+</td>
+<td style="padding-right: 12px; border: none;">
+</td>
+<td style="padding-right: 12px; border: none;">
+</td>
+<td style="padding-right: 12px; border: none;">
+(0.15)
+</td>
+<td style="padding-right: 12px; border: none;">
+(0.15)
+</td>
+</tr>
+<tr>
+<td style="padding-right: 12px; border: none;">
+inc
+</td>
+<td style="padding-right: 12px; border: none;">
+</td>
+<td style="padding-right: 12px; border: none;">
+</td>
+<td style="padding-right: 12px; border: none;">
+</td>
+<td style="padding-right: 12px; border: none;">
+-0.03<sup style="vertical-align: 0px;">***</sup>
+</td>
+</tr>
+<tr>
+<td style="padding-right: 12px; border: none;">
+</td>
+<td style="padding-right: 12px; border: none;">
+</td>
+<td style="padding-right: 12px; border: none;">
+</td>
+<td style="padding-right: 12px; border: none;">
+</td>
+<td style="padding-right: 12px; border: none;">
+(0.01)
+</td>
+</tr>
+<tr>
+<td style="border-top: 1px solid black;">
+AIC
+</td>
+<td style="border-top: 1px solid black;">
+970.48
+</td>
+<td style="border-top: 1px solid black;">
+950.86
+</td>
+<td style="border-top: 1px solid black;">
+937.09
+</td>
+<td style="border-top: 1px solid black;">
+918.46
+</td>
+</tr>
+<tr>
+<td style="padding-right: 12px; border: none;">
+BIC
+</td>
+<td style="padding-right: 12px; border: none;">
+984.36
+</td>
+<td style="padding-right: 12px; border: none;">
+969.36
+</td>
+<td style="padding-right: 12px; border: none;">
+960.21
+</td>
+<td style="padding-right: 12px; border: none;">
+946.20
+</td>
+</tr>
+<tr>
+<td style="padding-right: 12px; border: none;">
+Log Likelihood
+</td>
+<td style="padding-right: 12px; border: none;">
+-482.24
+</td>
+<td style="padding-right: 12px; border: none;">
+-471.43
+</td>
+<td style="padding-right: 12px; border: none;">
+-463.54
+</td>
+<td style="padding-right: 12px; border: none;">
+-453.23
+</td>
+</tr>
+<tr>
+<td style="padding-right: 12px; border: none;">
+Deviance
+</td>
+<td style="padding-right: 12px; border: none;">
+964.48
+</td>
+<td style="padding-right: 12px; border: none;">
+942.86
+</td>
+<td style="padding-right: 12px; border: none;">
+927.09
+</td>
+<td style="padding-right: 12px; border: none;">
+906.46
+</td>
+</tr>
+<tr>
+<td style="border-bottom: 2px solid black;">
+Num. obs.
+</td>
+<td style="border-bottom: 2px solid black;">
+753
+</td>
+<td style="border-bottom: 2px solid black;">
+753
+</td>
+<td style="border-bottom: 2px solid black;">
+753
+</td>
+<td style="border-bottom: 2px solid black;">
+753
+</td>
+</tr>
+<tr>
+<td style="padding-right: 12px; border: none;" colspan="6">
+<span style="font-size:0.8em"><sup style="vertical-align: 0px;"><em><strong></sup>p &lt; 0.001, <sup style="vertical-align: 0px;"></strong></sup>p &lt; 0.01, <sup style="vertical-align: 0px;"></em></sup>p &lt; 0.05</span>
+</td>
+</tr>
+</table>
+<div id="references" class="section level3 unnumbered">
+<h3><strong>References</strong></h3>
+<div id="refs" class="references">
+<div id="ref-zelig">
+<p>Choirat, Christine, James Honaker, Kosuke Imai, Gary King, and Olivia Lau. 2017. <em>Zelig: Everyone’s Statistical Software</em>. <a href="http://zeligproject.org/" class="uri">http://zeligproject.org/</a>.</p>
+</div>
+<div id="ref-zeligarticle">
+<p>Imai, Kosuke, Gary King, and Olivia Lau. 2008. “Toward a Common Framework for Statistical Analysis and Development.” <em>Journal of Computational Graphics and Statistics</em> 17 (4): 892–913. <a href="http://j.mp/msE15c" class="uri">http://j.mp/msE15c</a>.</p>
+</div>
+<div id="ref-King2000">
+<p>King, Gary, Michael Tomz, and Jason Wittenberg. 2000. “Making the most of statistical analyses: Improving interpretation and presentation.” <em>American Journal of Political Science</em> 44 (13-2): 341–55.</p>
+</div>
+<div id="ref-texreg">
+<p>Leifeld, Philip. 2013. “texreg: Conversion of Statistical Model Output in R to LaTeX and HTML Tables.” <em>Journal of Statistical Software</em> 55 (8): 1–24. <a href="http://www.jstatsoft.org/v55/i08/" class="uri">http://www.jstatsoft.org/v55/i08/</a>.</p>
+</div>
+</div>
+</div>
+
+  </div>
+
+  <div id=links>
+    
+      <a class="basic-alignment left" href="/2018/02/06/climbing/">&laquo; Maximum Likelihood Estimation: Finding the Top of a Hill</a>
+    
+    
+  </div>
+</section>
+
+<section id="comments">
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+
+(function() {
+      
+      
+      if (window.location.hostname == "localhost")
+                return;
+
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      var disqus_shortname = '';
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</section>
+
+
+  
+  
+
+
+</body>
+</html>
+

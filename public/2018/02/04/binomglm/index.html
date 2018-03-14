@@ -1,15 +1,57 @@
----
-title: Binomial GLM Predicted Probabilities
-author: T.E.G.
-date: "2018-02-04T13:59:50"
-slug: binomglm
-categories: []
-tags: []
----
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="referrer" content="no-referrer">
+  
 
+  <link rel="icon" type="image/png" href="/favicon.png">
 
+  <title>
+    
+    
+     Binomial GLM Predicted Probabilities 
+    
+  </title>
+  <link rel="canonical" href="/2018/02/04/binomglm/">
 
-<p>Here is an example of binomial glm (e.g., logistic regression):</p>
+  <link rel="stylesheet" href="/css/fonts.css" />
+  <link rel="stylesheet" href="/css/style.css" />
+
+  
+</head>
+
+<body>
+<section id=nav>
+  <h1><a href="/">T.E.G.&#39;s Blog</a></h1>
+  <ul>
+    
+    <li><a href="/about/">About</a></li>
+    
+    <li><a href="/sources/">Sources</a></li>
+    
+    <li><a href="https://twitter.com/tahirenesgedik">Twitter</a></li>
+    
+  </ul>
+</section>
+
+<link rel="stylesheet" href="/css/github.css" rel="stylesheet" id="theme-stylesheet">
+<script src="/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+<section id=content>
+  <h1> Binomial GLM Predicted Probabilities </h1>
+
+  <div id=sub-header>
+    T.E.G. · 2018/02/04 · 4 minute read
+  </div>
+
+  <div class="entry-content">
+    <p>Here is an example of binomial glm (e.g., logistic regression):</p>
 <pre class="r"><code>df &lt;- car::Mroz # U.S. Women&#39;s Labor-Force Participation data
 glmfit &lt;- glm(lfp ~ k5 + age + inc + lwg, df, family=binomial)
 summary(glmfit)</code></pre>
@@ -155,3 +197,46 @@ preddf</code></pre>
   theme(legend.position=&quot;bottom&quot;)</code></pre>
 <p><img src="/post/2018-02-04-rmd-exmp_files/figure-html/plot3-1.png" width="672" /></p>
 </div>
+
+  </div>
+
+  <div id=links>
+    
+      <a class="basic-alignment left" href="/2018/02/04/lorem-ipsum/">&laquo; Lorem Ipsum</a>
+    
+    
+      <a class="basic-alignment left" href="/2018/02/04/why-not-transform/">Why Not Transform? &raquo;</a>
+    
+  </div>
+</section>
+
+<section id="comments">
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+
+(function() {
+      
+      
+      if (window.location.hostname == "localhost")
+                return;
+
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      var disqus_shortname = '';
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</section>
+
+
+  
+  
+<script src="/js/math-code.js"></script>
+<script async src="//cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+
+
+</body>
+</html>
+

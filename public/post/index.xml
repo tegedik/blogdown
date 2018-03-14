@@ -6,10 +6,19 @@
     <description>Recent content in Posts on T.E.G.&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 06 Feb 2018 18:34:54 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 13 Mar 2018 20:01:00 +0000</lastBuildDate>
     
 	<atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Try Zelig: Everyone&#39;s Statistical Software</title>
+      <link>/2018/03/13/tryzelig/</link>
+      <pubDate>Tue, 13 Mar 2018 20:01:00 +0000</pubDate>
+      
+      <guid>/2018/03/13/tryzelig/</guid>
+      <description>It is quite common to hear complaints about the steep learning curve of R. And it is true that it would take time to grasp its versatility (if it is possible at all). Nevertheless, there are many packages that give the opportunity of experiencing the power of R for beginners. One notable example is Zelig package (Choirat et al. 2017). The online documentation provides examples for a wide range of models.</description>
+    </item>
     
     <item>
       <title>Maximum Likelihood Estimation: Finding the Top of a Hill</title>
@@ -35,10 +44,10 @@ It is hard to find a transformation which provides both normality and constant v
     
     <item>
       <title>Binomial GLM Predicted Probabilities</title>
-      <link>/2018/02/04/rmd-exmp/</link>
+      <link>/2018/02/04/binomglm/</link>
       <pubDate>Sun, 04 Feb 2018 13:59:50 +0000</pubDate>
       
-      <guid>/2018/02/04/rmd-exmp/</guid>
+      <guid>/2018/02/04/binomglm/</guid>
       <description>Here is an example of binomial glm (e.g., logistic regression):
 df &amp;lt;- car::Mroz # U.S. Women&amp;#39;s Labor-Force Participation data glmfit &amp;lt;- glm(lfp ~ k5 + age + inc + lwg, df, family=binomial) summary(glmfit) ## ## Call: ## glm(formula = lfp ~ k5 + age + inc + lwg, family = binomial, ## data = df) ## ## Deviance Residuals: ## Min 1Q Median 3Q Max ## -1.7987 -1.1326 0.6516 0.9605 2.</description>
     </item>

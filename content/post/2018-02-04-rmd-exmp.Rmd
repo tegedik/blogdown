@@ -2,7 +2,7 @@
 title: Binomial GLM Predicted Probabilities
 author: T.E.G.
 date: "2018-02-04T13:59:50"
-slug: rmd-exmp
+slug: binomglm
 categories: []
 tags: []
 ---
