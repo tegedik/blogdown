@@ -23,7 +23,8 @@ Of course, easy-to-use does not necessarily mean easy to interpret and present: 
 library(Zelig)
 library(texreg) #for html table
 df <- car::Mroz
-logit_zelig <- zelig(lfp ~ k5 + k618 + age + wc + hc + lwg, data=df, model = "logit", cite=FALSE)
+logit_zelig <- zelig(lfp ~ k5 + k618 + age + wc + hc + lwg, 
+                     data=df, model = "logit", cite=FALSE)
 summary(logit_zelig, odds_ratio=TRUE)
 ```
 

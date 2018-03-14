@@ -59,7 +59,8 @@
 <pre class="r"><code>library(Zelig)
 library(texreg) #for html table
 df &lt;- car::Mroz
-logit_zelig &lt;- zelig(lfp ~ k5 + k618 + age + wc + hc + lwg, data=df, model = &quot;logit&quot;, cite=FALSE)
+logit_zelig &lt;- zelig(lfp ~ k5 + k618 + age + wc + hc + lwg, 
+                     data=df, model = &quot;logit&quot;, cite=FALSE)
 summary(logit_zelig, odds_ratio=TRUE)</code></pre>
 <pre><code>## Model: 
 ## 
@@ -99,23 +100,23 @@ summary(sim_logit_zelig)</code></pre>
 ##  sim x :
 ##  -----
 ## ev
-##           mean         sd      50%      2.5%     97.5%
-## [1,] 0.5429624 0.02571747 0.543434 0.4913509 0.5904804
+##           mean         sd       50%      2.5%     97.5%
+## [1,] 0.5441929 0.02694752 0.5440302 0.4882263 0.5931694
 ## pv
 ##          0     1
-## [1,] 0.448 0.552
+## [1,] 0.444 0.556
 ## 
 ##  sim x1 :
 ##  -----
 ## ev
 ##           mean         sd       50%      2.5%     97.5%
-## [1,] 0.6996344 0.04668068 0.7005627 0.6038686 0.7866868
+## [1,] 0.7030757 0.04743413 0.7058541 0.6037537 0.7875714
 ## pv
 ##          0     1
-## [1,] 0.289 0.711
+## [1,] 0.291 0.709
 ## fd
-##          mean         sd      50%       2.5%     97.5%
-## [1,] 0.156672 0.04593399 0.156279 0.06684061 0.2465824</code></pre>
+##           mean         sd       50%       2.5%    97.5%
+## [1,] 0.1588828 0.04710069 0.1616188 0.05959554 0.249382</code></pre>
 <p>Now, we might want to estimate predicted probabilities over the range of a predictor for both levels of <code>wc</code>.</p>
 <pre class="r"><code>logit_zelig &lt;- zelig(lfp ~ k5 + k618 + age + wc + hc + lwg, 
                      data=df, model = &quot;logit&quot;, cite=FALSE)
