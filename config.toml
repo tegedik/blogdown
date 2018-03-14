@@ -14,7 +14,7 @@ canonifyurls = true
 #pygmentscodefences = true
 
 [Permalinks]
-    post = "/:year/:month/:day/:slug/"
+    post = "/:slug/"
 
 [[menu.main]]
     name = "About"

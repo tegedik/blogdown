@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="referrer" content="no-referrer">
+  
+
+  <link rel="icon" type="image/png" href="/favicon.png">
+
+  <title>
+    
+    
+     Binomial GLM Predicted Probabilities 
+    
+  </title>
+  <link rel="canonical" href="/binomglm/">
+
+  <link rel="stylesheet" href="/css/fonts.css" />
+  <link rel="stylesheet" href="/css/style.css" />
+
+  
+</head>
+
+<body>
+<section id=nav>
+  <h1><a href="/">T.E.G.&#39;s Blog</a></h1>
+  <ul>
+    
+    <li><a href="/about/">About</a></li>
+    
+    <li><a href="/sources/">Sources</a></li>
+    
+    <li><a href="https://twitter.com/tahirenesgedik">Twitter</a></li>
+    
+  </ul>
+</section>
+
+<link rel="stylesheet" href="/css/github.css" rel="stylesheet" id="theme-stylesheet">
+<script src="/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+<section id=content>
+  <h1> Binomial GLM Predicted Probabilities </h1>
+
+  <div id=sub-header>
+    T.E.G. · 2018/02/04 · 4 minute read
+  </div>
+
+  <div class="entry-content">
+    <p>Here is an example of binomial glm (e.g., logistic regression):</p>
+<pre class="r"><code>df &lt;- car::Mroz # U.S. Women&#39;s Labor-Force Participation data
+glmfit &lt;- glm(lfp ~ k5 + age + inc + lwg, df, family=binomial)
+summary(glmfit)</code></pre>
+<pre><code>## 
+## Call:
+## glm(formula = lfp ~ k5 + age + inc + lwg, family = binomial, 
+##     data = df)
+## 
+## Deviance Residuals: 
+##     Min       1Q   Median       3Q      Max  
+## -1.7987  -1.1326   0.6516   0.9605   2.3122  
+## 
+## Coefficients:
+##              Estimate Std. Error z value Pr(&gt;|z|)    
+## (Intercept)  2.758672   0.534883   5.158 2.50e-07 ***
+## k5          -1.342270   0.190481  -7.047 1.83e-12 ***
+## age         -0.059005   0.011246  -5.247 1.55e-07 ***
+## inc         -0.024638   0.007199  -3.422  0.00062 ***
+## lwg          0.787655   0.148339   5.310 1.10e-07 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## (Dispersion parameter for binomial family taken to be 1)
+## 
+##     Null deviance: 1029.75  on 752  degrees of freedom
+## Residual deviance:  925.17  on 748  degrees of freedom
+## AIC: 935.17
+## 
+## Number of Fisher Scoring iterations: 4</code></pre>
+<p>Calculating Predicted Probabilities for representative values of <code>k5</code>:</p>
+<pre class="r"><code>library(tidyverse)
+# Take mean values of the other predictors
+mean_val_pred &lt;- df %&gt;% 
+  select(age, inc, lwg) %&gt;% 
+  map_df(., mean)
+
+# Create new data frame for prediction
+preddf &lt;- with(df, data.frame(k5=c(0:3), mean_val_pred))
+
+# Calculate predicted probabilities
+preddf$pred &lt;- predict(glmfit, preddf, type = &quot;response&quot;)
+preddf</code></pre>
+<pre><code>##   k5      age      inc      lwg       pred
+## 1  0 42.53785 20.12897 1.097115 0.64952405
+## 2  1 42.53785 20.12897 1.097115 0.32622200
+## 3  2 42.53785 20.12897 1.097115 0.11228675
+## 4  3 42.53785 20.12897 1.097115 0.03198863</code></pre>
+<p>Here is how to plot predicted probabilities using <code>ggplot2</code>:</p>
+<pre class="r"><code>library(hrbrthemes)
+
+preddf %&gt;% 
+  ggplot(aes(k5, pred)) +
+  geom_point() +
+  geom_line() +
+  labs(y=&quot;Predicted Probabilities&quot;, 
+       x=&quot;Number of children 5 years old or younger.&quot;, 
+       title=&quot;Predicted Probabilities for Labor Force Participation&quot;) +
+  theme_ipsum_rc() # from hrbrthemes package</code></pre>
+<p><img src="/post/2018-02-04-rmd-exmp_files/figure-html/plot-1.png" width="672" /></p>
+<div id="with-a-grouping-variable" class="section level3">
+<h3>With a grouping variable</h3>
+<p>We can repeat the same analysis, but this time using a grouping variable (<code>wc</code>).</p>
+<pre class="r"><code>df &lt;- car::Mroz # U.S. Women&#39;s Labor-Force Participation data
+glmfit &lt;- glm(lfp ~ k5 + wc + age + inc + lwg, df, family=binomial)
+
+# Take mean values of the other predictors
+mean_val_pred &lt;- df %&gt;% 
+  select(age, inc, lwg) %&gt;% 
+  map_df(., mean)
+
+# Create new data frame for prediction
+# Note that wc is added to the data frame
+preddf &lt;- with(df, data.frame(k5=c(0:3), wc=c(rep(&quot;yes&quot;,4), rep(&quot;no&quot;,4)), mean_val_pred))
+
+# Calculate predicted probabilities
+preddf$pred &lt;- predict(glmfit, preddf, type = &quot;response&quot;)
+preddf</code></pre>
+<pre><code>##   k5  wc      age      inc      lwg       pred
+## 1  0 yes 42.53785 20.12897 1.097115 0.78280676
+## 2  1 yes 42.53785 20.12897 1.097115 0.46264344
+## 3  2 yes 42.53785 20.12897 1.097115 0.17058190
+## 4  3 yes 42.53785 20.12897 1.097115 0.04682807
+## 5  0  no 42.53785 20.12897 1.097115 0.60102192
+## 6  1  no 42.53785 20.12897 1.097115 0.26462269
+## 7  2  no 42.53785 20.12897 1.097115 0.07915511
+## 8  3  no 42.53785 20.12897 1.097115 0.02012059</code></pre>
+<pre class="r"><code>preddf %&gt;% 
+  ggplot(aes(k5, pred, color=wc)) +
+  geom_point() +
+  geom_line() +
+  labs(y=&quot;Predicted Probabilities&quot;, 
+       x=&quot;Number of children 5 years old or younger.&quot;, 
+       title=&quot;Predicted Probabilities for Labor Force Participation&quot;,
+       color=&quot;Wife&#39;s College\nAttendance&quot;) +
+  theme_ipsum_rc() + # from hrbrthemes package 
+  theme(legend.position=&quot;bottom&quot;)</code></pre>
+<p><img src="/post/2018-02-04-rmd-exmp_files/figure-html/plot2-1.png" width="672" /></p>
+</div>
+<div id="adding-error-bars" class="section level3">
+<h3>Adding Error Bars</h3>
+<p>Adding error bars to the plot requires few additional steps:</p>
+<pre class="r"><code>df &lt;- car::Mroz # U.S. Women&#39;s Labor-Force Participation data
+glmfit &lt;- glm(lfp ~ k5 + wc + age + inc + lwg, df, family=binomial)
+
+# Take mean values of the other predictors
+mean_val_pred &lt;- df %&gt;% 
+  select(age, inc, lwg) %&gt;% 
+  map_df(., mean)
+
+# Create new data frame for prediction
+# Note that wc is added to the data frame
+preddf &lt;- with(df, data.frame(k5=c(0:3), wc=c(rep(&quot;yes&quot;,4), rep(&quot;no&quot;,4)), mean_val_pred))
+
+# Calculate predicted probabilities and standard errors
+pred_se &lt;- predict(glmfit, preddf, type = &quot;response&quot;, se.fit = T)
+predfit &lt;- pred_se$fit
+low_lim &lt;- predfit  - (1.96*pred_se$se.fit)
+upp_lim &lt;- predfit  + (1.96*pred_se$se.fit)
+
+# Add the columns to the data frame
+preddf &lt;- cbind(preddf, predfit, low_lim, upp_lim)
+preddf</code></pre>
+<pre><code>##   k5  wc      age      inc      lwg    predfit       low_lim    upp_lim
+## 1  0 yes 42.53785 20.12897 1.097115 0.78280676  0.7205413155 0.84507220
+## 2  1 yes 42.53785 20.12897 1.097115 0.46264344  0.3593517348 0.56593514
+## 3  2 yes 42.53785 20.12897 1.097115 0.17058190  0.0707470485 0.27041675
+## 4  3 yes 42.53785 20.12897 1.097115 0.04682807 -0.0001973055 0.09385345
+## 5  0  no 42.53785 20.12897 1.097115 0.60102192  0.5528598110 0.64918403
+## 6  1  no 42.53785 20.12897 1.097115 0.26462269  0.1952997156 0.33394567
+## 7  2  no 42.53785 20.12897 1.097115 0.07915511  0.0276018221 0.13070839
+## 8  3  no 42.53785 20.12897 1.097115 0.02012059 -0.0011171785 0.04135836</code></pre>
+<p>To add error bars, <code>geom_errorbar()</code> can be used</p>
+<pre class="r"><code>preddf %&gt;% 
+  ggplot(aes(k5, predfit, color=wc)) +
+  geom_point() +
+  geom_line() +
+  geom_errorbar(aes(ymin=low_lim, ymax=upp_lim), width=0.05) +
+  labs(y=&quot;Predicted Probabilities&quot;, 
+       x=&quot;Number of children 5 years old or younger.&quot;, 
+       title=&quot;Predicted Probabilities for Labor Force Participation&quot;,
+       color=&quot;Wife&#39;s College\nAttendance&quot;) +
+  theme_ipsum_rc() + # from hrbrthemes package 
+  theme(legend.position=&quot;bottom&quot;)</code></pre>
+<p><img src="/post/2018-02-04-rmd-exmp_files/figure-html/plot3-1.png" width="672" /></p>
+</div>
+
+  </div>
+
+  <div id=links>
+    
+      <a class="basic-alignment left" href="/why-not-transform/">&laquo; Why Not Transform?</a>
+    
+    
+      <a class="basic-alignment left" href="/climbing/">Maximum Likelihood Estimation: Finding the Top of a Hill &raquo;</a>
+    
+  </div>
+</section>
+
+<section id="comments">
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+
+(function() {
+      
+      
+      if (window.location.hostname == "localhost")
+                return;
+
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      var disqus_shortname = '';
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</section>
+
+
+  
+  
+<script src="/js/math-code.js"></script>
+<script async src="//cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+
+
+</body>
+</html>
+
