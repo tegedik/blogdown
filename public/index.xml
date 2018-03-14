@@ -31,6 +31,16 @@
     </item>
     
     <item>
+      <title>Binomial GLM Predicted Probabilities</title>
+      <link>/2018/02/04/binomglm/</link>
+      <pubDate>Sun, 04 Feb 2018 17:55:34 +0000</pubDate>
+      
+      <guid>/2018/02/04/binomglm/</guid>
+      <description>Here is an example of binomial glm (e.g., logistic regression):
+df &amp;lt;- car::Mroz # U.S. Women&amp;#39;s Labor-Force Participation data glmfit &amp;lt;- glm(lfp ~ k5 + age + inc + lwg, df, family=binomial) summary(glmfit) ## ## Call: ## glm(formula = lfp ~ k5 + age + inc + lwg, family = binomial, ## data = df) ## ## Deviance Residuals: ## Min 1Q Median 3Q Max ## -1.7987 -1.1326 0.6516 0.9605 2.</description>
+    </item>
+    
+    <item>
       <title>Why Not Transform?</title>
       <link>/2018/02/04/why-not-transform/</link>
       <pubDate>Sun, 04 Feb 2018 17:54:34 +0000</pubDate>
@@ -40,16 +50,6 @@
 It is hard to find a transformation which provides both normality and constant variance (see assumptions of OLS).
  Interpretability. To illustrate, first see the formula of the transformed-data approach
   \[E[g(y_i)]= \beta_0+\beta_1x_1 + \ldots+\beta_kx_k\]</description>
-    </item>
-    
-    <item>
-      <title>Binomial GLM Predicted Probabilities</title>
-      <link>/2018/02/04/binomglm/</link>
-      <pubDate>Sun, 04 Feb 2018 13:59:50 +0000</pubDate>
-      
-      <guid>/2018/02/04/binomglm/</guid>
-      <description>Here is an example of binomial glm (e.g., logistic regression):
-df &amp;lt;- car::Mroz # U.S. Women&amp;#39;s Labor-Force Participation data glmfit &amp;lt;- glm(lfp ~ k5 + age + inc + lwg, df, family=binomial) summary(glmfit) ## ## Call: ## glm(formula = lfp ~ k5 + age + inc + lwg, family = binomial, ## data = df) ## ## Deviance Residuals: ## Min 1Q Median 3Q Max ## -1.7987 -1.1326 0.6516 0.9605 2.</description>
     </item>
     
     <item>
