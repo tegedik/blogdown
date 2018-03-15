@@ -3,7 +3,7 @@ title: "About"
 date: "2018-02-04T13:59:47" 
 ---
 
-Random ideas, short notes, quick applications from T.E.G. There will be a lack of organization inevitably. 
+Short notes and quick applications from T.E.G. There will be a lack of organization inevitably. 
 
 Although I am a novice, I answered some questions here:
 <div>
