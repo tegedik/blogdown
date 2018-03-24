@@ -6,10 +6,20 @@
     <description>Recent content in Posts on T.E.G.&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 13 Mar 2018 20:01:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 24 Mar 2018 00:12:00 +0000</lastBuildDate>
     
 	<atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Recoding/Labelling Variables</title>
+      <link>/rec/</link>
+      <pubDate>Sat, 24 Mar 2018 00:12:00 +0000</pubDate>
+      
+      <guid>/rec/</guid>
+      <description>There are various ways of recoding and (re)labelling variables in R. But rec function from sjmisc package (Lüdecke 2018) works best for me. Give it a try:
+library(tidyverse) library(strengejacke) mtcars %&amp;gt;% select(disp, mpg, cyl) %&amp;gt;% rec(cyl,rec= &amp;quot;4=1 [low]; 6=2 [mid]; 8=3 [high]&amp;quot;) %&amp;gt;% to_label(cyl_r) ## # A tibble: 32 x 4 ## disp mpg cyl cyl_r ## &amp;lt;dbl&amp;gt; &amp;lt;dbl&amp;gt; &amp;lt;dbl&amp;gt; &amp;lt;fct&amp;gt; ## 1 160. 21.0 6. mid ## 2 160. 21.</description>
+    </item>
     
     <item>
       <title>Try Zelig: Everyone&#39;s Statistical Software</title>

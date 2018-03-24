@@ -1,0 +1,43 @@
+---
+title: "Recoding/Labelling Variables"
+author: T.E.G.
+date: '2018-03-24T00:12:00'
+slug: rec
+categories: []
+tags: []
+bibliography: references.bib
+---
+
+There are various ways of recoding and (re)labelling variables in `R`. But `rec` function from `sjmisc` package [@sjmisc] works best for me. Give it a try:
+
+```{r rec1, echo=TRUE, eval=TRUE, message=FALSE, warning=FALSE}
+library(tidyverse)
+library(strengejacke)
+
+mtcars %>% 
+  select(disp, mpg, cyl) %>% 
+  rec(cyl,rec= "4=1 [low]; 
+                6=2 [mid]; 
+                8=3 [high]") %>% 
+  to_label(cyl_r)
+```
+
+There are other useful functions to transform and recode variables. For example:
+
+```{r rec2, echo=TRUE, eval=TRUE, message=FALSE, warning=FALSE}
+library(tidyverse)
+library(strengejacke)
+
+mtcars %>% 
+  select(disp, mpg, cyl) %>% 
+  rec(cyl,rec= "4=1 [low]; 
+                6=2 [mid]; 
+                8=3 [high]") %>% 
+  split_var(disp, n=4) %>% 
+  dicho(mpg, dich.by = "mean") 
+```
+
+I recommend checking other strengejacke packages. Especially `sjPlot` which provides a collection of table and plotting functions. Here is the link to the package website: [sjPlot](http://www.strengejacke.de/sjPlot/).
+
+#### **References**
+
