@@ -8,7 +8,7 @@ tags: []
 bibliography: references.bib
 ---
 
-This is a simple topic. And there are various ways of recoding and (re)labelling variables in `R`. But `rec` function from `sjmisc` package [@sjmisc] works best for me. Give it a try:
+This is a simple topic. And there are various ways of recoding and (re)labeling variables in `R`. But `rec` function from `sjmisc` package [@sjmisc] works best for me. Give it a try:
 
 ```{r rec1, echo=TRUE, eval=TRUE, message=FALSE, warning=FALSE}
 library(tidyverse)
