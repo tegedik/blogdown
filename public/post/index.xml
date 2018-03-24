@@ -17,8 +17,8 @@
       <pubDate>Sat, 24 Mar 2018 00:12:00 +0000</pubDate>
       
       <guid>/rec/</guid>
-      <description>There are various ways of recoding and (re)labelling variables in R. But rec function from sjmisc package (Lüdecke 2018) works best for me. Give it a try:
-library(tidyverse) library(strengejacke) mtcars %&amp;gt;% select(disp, mpg, cyl) %&amp;gt;% rec(cyl,rec= &amp;quot;4=1 [low]; 6=2 [mid]; 8=3 [high]&amp;quot;) %&amp;gt;% to_label(cyl_r) ## # A tibble: 32 x 4 ## disp mpg cyl cyl_r ## &amp;lt;dbl&amp;gt; &amp;lt;dbl&amp;gt; &amp;lt;dbl&amp;gt; &amp;lt;fct&amp;gt; ## 1 160. 21.0 6. mid ## 2 160. 21.</description>
+      <description>This is a simple topic. And there are various ways of recoding and (re)labelling variables in R. But rec function from sjmisc package (Lüdecke 2018) works best for me. Give it a try:
+library(tidyverse) library(strengejacke) mtcars %&amp;gt;% select(disp, mpg, cyl) %&amp;gt;% rec(cyl,rec= &amp;quot;4=1 [low]; 6=2 [mid]; 8=3 [high]&amp;quot;) %&amp;gt;% to_label(cyl_r) ## # A tibble: 32 x 4 ## disp mpg cyl cyl_r ## &amp;lt;dbl&amp;gt; &amp;lt;dbl&amp;gt; &amp;lt;dbl&amp;gt; &amp;lt;fct&amp;gt; ## 1 160. 21.</description>
     </item>
     
     <item>
