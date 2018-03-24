@@ -76,10 +76,7 @@ mtcars %&gt;%
 ## 10  168.  19.2    6. mid  
 ## # ... with 22 more rows</code></pre>
 <p>There are other useful functions to transform and recode variables. For example:</p>
-<pre class="r"><code>library(tidyverse)
-library(strengejacke)
-
-mtcars %&gt;% 
+<pre class="r"><code>mtcars %&gt;% 
   select(disp, mpg, cyl) %&gt;% 
   rec(cyl,rec= &quot;4=1 [low]; 
                 6=2 [mid]; 
