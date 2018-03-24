@@ -1,5 +1,5 @@
 ---
-title: "Recoding/Labelling Variables"
+title: "Recoding/Labeling Variables"
 author: T.E.G.
 date: '2018-03-24T00:12:00'
 slug: rec
@@ -43,8 +43,8 @@ mtcars %&gt;%
   rec(cyl,rec= &quot;4=1 [low]; 
                 6=2 [mid]; 
                 8=3 [high]&quot;) %&gt;% 
-  split_var(disp, n=4) %&gt;% 
-  dicho(mpg, dich.by = &quot;mean&quot;) </code></pre>
+  split_var(disp, n=4) %&gt;% #splitting variable into n equal sized groups
+  dicho(mpg, dich.by = &quot;mean&quot;) # dichotomize variable based on a criterion </code></pre>
 <pre><code>## # A tibble: 32 x 6
 ##     disp   mpg   cyl cyl_r disp_g mpg_d
 ##    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;fct&gt;  &lt;fct&gt;

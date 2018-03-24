@@ -1,5 +1,5 @@
 ---
-title: "Recoding/Labelling Variables"
+title: "Recoding/Labeling Variables"
 author: T.E.G.
 date: '2018-03-24T00:12:00'
 slug: rec
@@ -33,8 +33,8 @@ mtcars %>%
   rec(cyl,rec= "4=1 [low]; 
                 6=2 [mid]; 
                 8=3 [high]") %>% 
-  split_var(disp, n=4) %>% 
-  dicho(mpg, dich.by = "mean") 
+  split_var(disp, n=4) %>% #splitting variable into n equal sized groups
+  dicho(mpg, dich.by = "mean") # dichotomize variable based on a criterion 
 ```
 
 I recommend checking other strengejacke packages. Especially `sjPlot` which provides a collection of table and plotting functions. Here is the link to the package website: [sjPlot](http://www.strengejacke.de/sjPlot/).
