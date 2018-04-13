@@ -14,6 +14,7 @@ This page contains links to useful sources on statistics, `R` and other software
 * [Cross Validated](https://stats.stackexchange.com)
 * [DataCamp](https://www.datacamp.com/)
 * [Data Visualization: A Practical Introduction by Kieran Healy](http://socviz.co/)
+* [Forecasting: Principles and Practice by Hyndman and Athanasopoulos](https://otexts.org/fpp2/)
 * [Math Camp Lectures - UW CSSS](http://csss.washington.edu/academics/math-camp/lectures)
 * [Personality Project](http://personality-project.org/index.html)
 * [Quick-R](http://www.statmethods.net/)
