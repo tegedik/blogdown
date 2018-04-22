@@ -41,7 +41,7 @@ So, why is this published in a peer-reviewed journal? Since thinking otherwise w
 
 ### Reference
 
-[^1]: He is also the author of a several useful `R` packages such as `rio`, `margins`, and `tabulizer`. Check his github [repo](https://github.com/leeper).  
+[^1]: He is also the author of several useful `R` packages such as `rio`, `margins`, and `tabulizer`. Check his github [repo](https://github.com/leeper).  
 
 [^2]: The title is inspired by a short story according to this fandom [page](http://literature.wikia.com/wiki/The_Schartz-Metterklume_Method). 
 
