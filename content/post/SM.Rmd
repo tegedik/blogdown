@@ -21,7 +21,7 @@ knitr::opts_chunk$set(echo = TRUE)
 blogdown::shortcode('tweet', '987814478606733313')
 ```
 
-I just saw the above tweet by [Thomas J. Leeper](https://thomasleeper.com/) [^1], and indeed the rabbit hole is deep. One article on the list is titled ["The Schartz-Metterclume Method"](http://journals.sagepub.com/doi/abs/10.1177/095169280201400108) [^2] by Dagobert D. Manteltasche and Otto I.Q. Besser-Wisser (looking at these names, it should be obvious). Following the [Sokal Affair](https://en.wikipedia.org/wiki/Sokal_affair), such an article is not surprising, nor the humor is original. In fact, this is recognized by the "authors" in a footnote:
+I just saw the above tweet by [Thomas J. Leeper](https://thomasleeper.com/) [^1], and indeed the rabbit hole is deep. One article on the list is ["The Schartz-Metterclume Method"](http://journals.sagepub.com/doi/abs/10.1177/095169280201400108) [^2] by Dagobert D. Manteltasche and Otto I.Q. Besser-Wisser (looking at these names, it should be obvious). Following the [Sokal Affair](https://en.wikipedia.org/wiki/Sokal_affair), such an article is not surprising, nor the humor is original. In fact, this is recognized by the "authors" in a footnote:
 
 > We are happy to acknowledge a great debt to Sokal (1996) whose brilliant exegesis of transformative hermeneutics prompted a breakthrough in our own thinking about the conceptualization and measurement of the unknown. 
 
