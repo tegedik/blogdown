@@ -1,0 +1,49 @@
+---
+title: "Schartz-Metterclume Method"
+author: T.E.G.
+date: '2018-04-22T00:00:00'
+slug: sm
+categories: []
+tags: []
+bibliography: references.bib
+---
+
+---
+nocite: | 
+  @Newton2010
+...
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r echo=FALSE}
+blogdown::shortcode('tweet', '987814478606733313')
+```
+
+I just saw the above tweet by [Thomas J. Leeper](https://thomasleeper.com/) [^1], and indeed the rabbit hole is deep. One article on the list is titled ["The Schartz-Metterclume Method"](http://journals.sagepub.com/doi/abs/10.1177/095169280201400108) [^2] by Dagobert D. Manteltasche and Otto I.Q. Besser-Wisser (looking at these names, it should be obvious). Following the [Sokal Affair](https://en.wikipedia.org/wiki/Sokal_affair), such an article is not surprising, nor the humor is original. In fact, this is recognized by the "authors" in a footnote:
+
+> We are happy to acknowledge a great debt to Sokal (1996) whose brilliant exegesis of transformative hermeneutics prompted a breakthrough in our own thinking about the conceptualization and measurement of the unknown. 
+
+Still, the effort is impressive in some paragraphs, for example:
+
+> At the start, SM requires only one bit of information about one variable at a single point in time -- known as a Data Singularity (DS). More information makes the job easier (while making the results less precise and reliable), but one piece of information is entirely sufficient. The DS is first subjected to dodecaphonic log-log-linear orthogonal factor analysis (DLLOFA) to establish its deep sedimented structure. This process is repeated on the deep sedimented structure, but in the reverse order, to establish the second, even deeper tessellated, fractal structure of the first layer of the deep sedimented structure. Only in this way can we probe beyond the superficial and apparent nature of the world to get to its real, underlying core. Then, by means of many trillions of binary-digital permutations a Complete Known Data Matrix (CKDM) is calculated -- that is, a complete data matrix of all known information about a given phenomenon at any point in time.
+
+Their succinct presentation of the elaborate formula behind *SM* is worth noting:
+
+$$SM=BS^2$$
+
+As well as their confidence in the method that it "has produced better results than any of these new approaches [^3], even on Monday mornings before the first cup of coffee and on wet Friday afternoons."
+
+So, why is this published in a peer-reviewed journal? Since thinking otherwise would be an insult to the intelligence of editors and reviewers, I think an answer is provided by the editors of [*The Wit and Humour of Political Science*](http://press.ecpr.eu/book_details.asp?bookTitleID=36) (2010):
+
+> It helps scholars keep an open and skeptical mind, it picks out weak points in theory and methods, it points out how research may be going wrong, and it pricks the balloon of bombast, pretentiousness, and jargon. And, not only that, it’s fun [@Newton2010, p.v].  
+
+### Reference
+
+[^1]: He is also the author of a several useful `R` packages such as `rio`, `margins`, and `tabulizer`. Check his github [repo](https://github.com/leeper).  
+
+[^2]: The title is inspired by a short story according to this fandom [page](http://literature.wikia.com/wiki/The_Schartz-Metterklume_Method). 
+
+[^3]: These new approaches include: "mess and simple survey research, focused gropes, astro-illogical studies, double-bind experiments, qualitative guesswork, scuzzy-set analysis, bald assertion, post-hoc theorizing, self-contented analysis, fashionable choice theory, algorithms and reggae rhythms, multi-dimensional failing, macro-dynamic contingency modelling, and Wuffle's post-rational analysis."
+

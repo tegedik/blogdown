@@ -6,10 +6,20 @@
     <description>Recent content on T.E.G.&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 24 Mar 2018 00:12:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 22 Apr 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Schartz-Metterclume Method</title>
+      <link>/sm/</link>
+      <pubDate>Sun, 22 Apr 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/sm/</guid>
+      <description>Now I&amp;#39;m down an internet rabbit hole thinking about how #polisci journals have published some seriously random crap, including joke articles by fake authors that cite each other. The humor of all of this is lost on me. A few highlights:
+&amp;mdash; Thomas Leeper (@thosjleeper) April 21, 2018  I just saw the above tweet by Thomas J. Leeper,1 and indeed the rabbit hole is deep. One article on the list is titled “The Schartz-Metterclume Method”2 by Dagobert D.</description>
+    </item>
     
     <item>
       <title>Recoding/Labeling Variables</title>
