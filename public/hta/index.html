@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="referrer" content="no-referrer">
+  
+
+  <link rel="icon" type="image/png" href="/favicon.png">
+
+  <title>
+    
+    
+     Sorcerer&#39;s Apprentice Approach to Statistical Analysis 
+    
+  </title>
+  <link rel="canonical" href="/hta/">
+
+  <link rel="stylesheet" href="/css/fonts.css" />
+  <link rel="stylesheet" href="/css/style.css" />
+
+  
+</head>
+
+<body>
+<section id=nav>
+  <h1><a href="/">T.E.G.&#39;s Blog</a></h1>
+  <ul>
+    
+    <li><a href="/about/">About</a></li>
+    
+    <li><a href="/sources/">Sources</a></li>
+    
+    <li><a href="https://twitter.com/tahirenesgedik">Twitter</a></li>
+    
+  </ul>
+</section>
+
+<link rel="stylesheet" href="/css/github.css" rel="stylesheet" id="theme-stylesheet">
+<script src="/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+<section id=content>
+  <h1> Sorcerer&#39;s Apprentice Approach to Statistical Analysis </h1>
+
+  <div id=sub-header>
+    T.E.G. · 2018/04/30 · 6 minute read
+  </div>
+
+  <div class="entry-content">
+    <blockquote>
+<p>Numbers do not produce value. The widespread availability of muscular number-crunching computers has had the untoward effect of yielding power to the sorcerer’s apprentice. Statistics and computers must support the research activity, not motivate it <span class="citation">(Alfred 1987, 3)</span>.</p>
+</blockquote>
+<p>Alfred criticized neglecting the role of theory (which should guide any reseach inquiry) for the sake of “number-crunching.” This is a fair argument and repeated frequently by others.<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a> I would like to talk about an alternative (but related) way of thinking about the metaphor, <em>sorcerer’s apprentice</em>. I am less concerned with the role of theory and its relation to method; I am more interested in how methods are used in practice. So, I will have a much more literal interpretation of the metaphor. But first, what does sorcerer’s apprentice mean?</p>
+<p>It is the name of a poem by Goethe (<em>Der Zauberlehrling</em><a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a>). <a href="https://en.wikipedia.org/wiki/The_Sorcerer%27s_Apprentice">The story</a> is about a sorcerer’s apprentice who is left alone to do some chores:</p>
+<blockquote>
+<p>Tired of fetching water by pail, the apprentice enchants a broom to do the work for him – using magic in which he is not yet fully trained. The floor is soon awash with water, and the apprentice realizes that he cannot stop the broom because he does not know how. The apprentice splits the broom in two with an axe – but each of the pieces becomes a whole new broom that takes up a pail and continues fetching water, now at twice the speed.</p>
+</blockquote>
+<p>In the end, the master returns and saves the apprentice.<a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a> The moral of the story: one should not dare to do things beyond his/her understanding. In our version, apprentice is an academic,<a href="#fn4" class="footnote-ref" id="fnref4"><sup>4</sup></a> and the broom is “statistics and computers” (see Alfred’s critique). Yet, I think computers (or rather the software we use for analysis) could become “broom” alone. And it might lead to a lack of understanding of statistics. In fact, this is different from neglecting the role of theory and might happen even if someone has a strong theoretical guidance.</p>
+<div class="figure">
+<img src="/sa.png" alt="Der Zauberlehrling by Ferdinand Barth (1842–1892)" width="400" />
+<p class="caption"><em>Der Zauberlehrling</em> by Ferdinand Barth (1842–1892)</p>
+</div>
+<p>There are various reasons why this could happen, especially in the social sciences.<a href="#fn5" class="footnote-ref" id="fnref5"><sup>5</sup></a> I would like to discuss three of them. The first and well-known reason (already stated by Alfred) is the availability of computers and increasing (computational) power of statistical software. Now, we have easy access to state-of-art programs which implement complex statistical techniques. The information on where to click or few lines of code are usually available online. The software returns an output and all you need to know is what those numbers in the output mean (I am exaggerating). But the software availability alone is not enough and this takes us to the second (and more important) reason, the <em>golems</em> of the analysis.</p>
+<p>In his book, McElreath <span class="citation">(2015)</span> uses the example of <em>statistical golems</em> which refer to the “tests” widely used in statistical analyses and taught in introductory courses. Those of us who took these courses are familiar with these golems, for example:</p>
+<blockquote>
+<p>Whenever someone deploys even a simple statistical procedure, like a classical <em>t</em>-test, she is deploying a small golem that will obediently carry out an exact calculation, performing it the same way (nearly) every time, without complaint. <span class="citation">(McElreath 2015, 2)</span></p>
+</blockquote>
+<p>It is easy to find compilations of these golems, and guidelines about how to choose among them. A quick google search with <a href="https://www.google.com.tr/search?biw=1422&amp;bih=737&amp;tbm=isch&amp;sa=1&amp;ei=vJ8lW-PTFJKTmgWA9KXwBg&amp;q=which+statistical+test+to+use+&amp;oq=which+statistical+test+to+use+&amp;gs_l=img.3..0i67k1j0l3j0i30k1j0i24k1l5.419359.423511.0.423693.22.19.0.0.0.0.231.2160.0j13j2.15.0....0...1c.1.64.img..8.14.2051....0.7I2-ZKpUkSM">“which statistical test to use”</a> would return dozens of flowcharts (McElreath provided one in his book).</p>
+<p>It is neither possible to deny the usefulness of these golems, nor practical to get rid of them (well, I am not a luddite). But we need to keep in mind McElreath’s warning that “…there is no wisdom in the golem. It doesn’t discern when the context is inappropriate for its answers. It just knows its own procedure, nothing else” <span class="citation">(McElreath 2015, 2)</span>.<a href="#fn6" class="footnote-ref" id="fnref6"><sup>6</sup></a> So, it is not simply a matter of computational power and software implementation, but rather, how we use these two. Unfortunately, the “know-how” about these golems might conceal the ignorance of the analytical techniques.</p>
+<p>These arguments seem to imply that the onus is on the shoulders of the researcher. To a certain extent, this is the case: the researcher should act responsibly, and explain the procedures they use and rationale behind them. This requires giving some thought to the tests instead of treating them as ready-made solutions (<em>golems</em>). But there is a third reason as to why this is not always possible.</p>
+<div id="references" class="section level3 unnumbered">
+<h3>References</h3>
+<div id="refs" class="references">
+<div id="ref-Alfred1987">
+<p>Alfred, Braxton M. 1987. <em>Elements of Statistics for the Life and Social Sciences</em>. London Paris Tokyo: Springer-Verlag.</p>
+</div>
+<div id="ref-Bourdieu1991">
+<p>Bourdieu, Pierre, Jean-Claude Chamboredon, and Jean-Claude Passeron. 1991. <em>The Craft of Sociology: Epistemological Preliminaries</em>. Berlin New York: Walter de Gruyter.</p>
+</div>
+<div id="ref-Cameron2005">
+<p>Cameron, A. Colin, and Pravin K. Trivedi. 2005. <em>Microeconometrics: Methods and Applications</em>. Cambridge: Cambridge University Press.</p>
+</div>
+<div id="ref-McElreath2015">
+<p>McElreath, Richard. 2015. <em>Statistical Rethinking: A Bayesian Course with Examples in R and Stan</em>.</p>
+</div>
+<div id="ref-Stevens1946">
+<p>Stevens, S. S. 1946. “On the Theory of Scales of Measurement.” <em>Science</em> 103: 677–80.</p>
+</div>
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol>
+<li id="fn1"><p>For those who need an authoritative word from French men: “Those who expect miracles from the mythical triad, <em>archives</em>, <em>data</em>, and <em>computers</em>, do not understand the difference between the constructed objects which are scientific facts…and the real objects which are cinserved in museums and which, trough their ‘concrete surplus’, offer unlimited possibilites for new constructions as new questions are put to them. If these epistemological prelimiaries are ignored, there is a great risk of treating identical things differently and different things identically, of comparing incomparable and failing to compare the comparable, because even the most objective ‘data’ are obtained by applying grids…which involve theoretical presuppositions and therefore overlook information which another construction of the facts might have grasped”<span class="citation">(Bourdieu, Chamboredon, and Passeron 1991, 36)</span>.<a href="#fnref1" class="footnote-back">↩</a></p></li>
+<li id="fn2"><p>I think the German word captures the diminutive sense better.<a href="#fnref2" class="footnote-back">↩</a></p></li>
+<li id="fn3"><p>You might not know that this is Goethe’s poem, but maybe the story sounds familiar. The reason is that you can find references to the Sorcerer’s Apprentice from the Communist Manifesto to <a href="https://youtu.be/2DX2yVucz24?t=26s">Disney’s <em>Fantasia</em> (1940)</a>.<a href="#fnref3" class="footnote-back">↩</a></p></li>
+<li id="fn4"><p>It might mean faculty member or graduate student. Honestly, I don’t think it matters a lot here.<a href="#fnref4" class="footnote-back">↩</a></p></li>
+<li id="fn5"><p>I suspect that this could happen in other scientific disciplines, although to a lesser extend. So, I prefer to refrain from passing strong judgments.<a href="#fnref5" class="footnote-back">↩</a></p></li>
+<li id="fn6"><p>The issue is not limited to the tests. For example, in the introductory courses, we learn four scales of measurement <span class="citation">(Stevens 1946)</span>: nominal, ordinal, interval, and ratio. Now imagine we have a variable showing number of children in a household and response categories are “0,1,2,3,4,5+”. How would you classify such a variable based on the four scales above? It is not nominal, not interval or ratio (e.g., 5+). The best candidate seems ordinal here, yet we might lose information by treating it ordinal, especially for the first response categories. A better category would be (right-) censored count variable which can be analyzed (as an outcome) using a censored poisson regression model <span class="citation">(Cameron and Trivedi 2005)</span>.<a href="#fnref6" class="footnote-back">↩</a></p></li>
+</ol>
+</div>
+
+  </div>
+
+  <div id=links>
+    
+      <a class="basic-alignment left" href="/sm/">&laquo; Schartz-Metterclume Method</a>
+    
+    
+      <a class="basic-alignment left" href="/da/">Simple Data Analysis in R &raquo;</a>
+    
+  </div>
+</section>
+
+<section id="comments">
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+
+(function() {
+      
+      
+      if (window.location.hostname == "localhost")
+                return;
+
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      var disqus_shortname = '';
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</section>
+
+
+  
+  
+
+
+</body>
+</html>
+

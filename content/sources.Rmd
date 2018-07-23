@@ -19,6 +19,7 @@ This page contains links to useful sources on statistics, `R` and other software
 * [Personality Project](http://personality-project.org/index.html)
 * [Quick-R](http://www.statmethods.net/)
 * [R for Data Science](http://r4ds.had.co.nz/)
+* [R Markdown: The Definitive Guide by Xie, Allaire, and Grolemund ](https://bookdown.org/yihui/rmarkdown/)
 * [R Weekly](https://rweekly.org/)
 * [R-statistics.co](http://r-statistics.co/)
 * [Rseek](https://rseek.org/)

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="referrer" content="no-referrer">
+  
+
+  <link rel="icon" type="image/png" href="/favicon.png">
+
+  <title>
+    
+    
+     Simple Data Analysis in R 
+    
+  </title>
+  <link rel="canonical" href="/da/">
+
+  <link rel="stylesheet" href="/css/fonts.css" />
+  <link rel="stylesheet" href="/css/style.css" />
+
+  
+</head>
+
+<body>
+<section id=nav>
+  <h1><a href="/">T.E.G.&#39;s Blog</a></h1>
+  <ul>
+    
+    <li><a href="/about/">About</a></li>
+    
+    <li><a href="/sources/">Sources</a></li>
+    
+    <li><a href="https://twitter.com/tahirenesgedik">Twitter</a></li>
+    
+  </ul>
+</section>
+
+<link rel="stylesheet" href="/css/github.css" rel="stylesheet" id="theme-stylesheet">
+<script src="/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+<section id=content>
+  <h1> Simple Data Analysis in R </h1>
+
+  <div id=sub-header>
+    T.E.G. · 2018/05/20 · 8 minute read
+  </div>
+
+  <div class="entry-content">
+    <div id="TOC">
+<ul>
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#installing-r-rstudio">Installing R &amp; RStudio</a></li>
+<li><a href="#data">Data</a></li>
+<li><a href="#references">References</a></li>
+</ul>
+</div>
+
+<p><em>A different version of this post was prepared two years ago. I never had a chance to finish it. So, I decided to revise some parts and rewrite (most) others. I hope it would be helpful now.</em></p>
+<div id="introduction" class="section level1">
+<h1>Introduction</h1>
+<p>My aim is quite modest and straightforward in this post: to provide an example of simple data analysis in R for social scientists. In this sense, it is limited to an audience who is not much exposed to a programming language and statistical computing environment like <code>R</code>. So, those who want to learn some basic analyses and tips about <code>R</code> might find it useful.</p>
+<p>Although Stata is becoming a rival to SPSS nowadays in Social Sciences (which is a step forward, I think) this is mostly the case for the graduate level education. The statistical methods courses (in social sciences) on undergraduate level still relies heavily on SPSS<a href="#fn1" class="footnoteRef" id="fnref1"><sup>1</sup></a>. Meanwhile, the advantages of learning <code>R</code> become clear for many people in various scientific disciplines, especially for those who are witnessing the development of new methods and their implementation in <code>R</code>. However, these developments might seem unrelated to your research interests and needs. Thus, the question, “why do I need to learn R as a social scientist?”, may not be easily answered. Moreover, people might be hesitant about learning a new (and sometimes intimidating) programming language. I want to visit two arguments in this respect.</p>
+<p>First, it is widely argued that the learning curve of <code>R</code> is quite steep. I think there is a considerable exaggeration on this first point. Yes, it will take time to learn the syntax especially if you use only statistical programs relying heavily on graphical interface. However, once the basics are understood, and this only takes reading first few chapters in an introductory book, it is not that difficult to import a data set and conduct statistical analysis. If you want to learn <code>R</code> programming, then, it will take more time, assuming that you haven’t been exposed to any programming language so far. But apart from that, what is required is a little patience.</p>
+<p>Second argument goes deeper into the heart of the matter: If the statistical software is enough for your needs, then why should you learn <code>R</code> instead of dedicating your time to another project? Honestly in this case, you shouldn’t. If all you do is getting frequencies and creating basic plots for preliminary analysis (I am exaggerating here, of course), then it might be better to stick to the software you already know. But I think there are always new ways of looking at the data, new ways of visualization and analysis, which, at one point, you might want to consider. And <code>R</code> is a platform where you can find most of these cutting-edge applications. Since it is a free and open source project, developers take advantage of <code>R</code> immensely in this respect. The packages developed for <code>R</code> has been attracting new users and encouraging others to create theirs. I hope to show some examples from these packages in the following parts.</p>
+<p>I present only few reasons (and not necessarily satisfactory for everyone) to overcome the obstacles, but there are many other reasons and a brief google search will return pages and pages of explanation about why one should use <code>R</code>. As one can come up with a personal list easily, it is up to you to decide. In this post, I will try to do my best to show your efforts are not in vain.</p>
+</div>
+<div id="installing-r-rstudio" class="section level1">
+<h1>Installing R &amp; RStudio</h1>
+<p>As I mentioned above <code>R</code> is a free and <a href="https://en.wikipedia.org/wiki/Open-source_software">open-source</a> project. Another advantage of <code>R</code> is being cross-platfrom, meaning that you can use it in different operating systems (Linux, OS X, Windows). The installation is very easy and straightforward (not different from installing any other software), so it is highly unlikely that you would experience a problem. You can go to the <a href="http://cran.us.r-project.org">Comprehensive R Archive Network</a> website and download the installation files (Here is an <a href="https://cran.r-project.org/doc/manuals/r-release/R-admin.html">installation and administration manual</a>). You can also find tutorials in various websites.</p>
+<p>You may also see that it is usually recommended to use R with <a href="https://www.rstudio.com">RStudio</a>, an integrated development environment (IDE) which provides a graphical interface (and additional features and tools) and greatly improves user experience. Like <code>R</code>, it is also free<a href="#fn2" class="footnoteRef" id="fnref2"><sup>2</sup></a> and open-source.</p>
+</div>
+<div id="data" class="section level1">
+<h1>Data</h1>
+<p>In a real case scenario, your analysis should be guided by a substantive interest on a specific area of research. However, this would be asking too much for present purposes. Instead I will proceed as if there is such an interest.</p>
+<p>In the following sections, I will analyze the relationship between life satisfaction (<em>response variable</em>) and various factors (<em>explanatory variables</em>). Instead of using an example data (or creating one), I am going to use the <a href="http://www.europeansocialsurvey.org/">European Social Survey</a> (ESS) Data. In this way, I hope to illustrate the steps of an actual data analysis as much as possible. To limit its scope, I will analyze the data from Turkey (which took part in the survey in 2004 and 2008 and I will only use 2008 Data).</p>
+<p>It is important to read carefully the country-specific reports on methodology (e.g., sampling, data collection). This will help the researcher to identify obstacles and limitations which should be kept in mind for the later stages of analysis. Also, reading the questionnaire and the codebook is crucial to understand the measurement of variables. For example, life satisfaction is measured by a single item in ESS:</p>
+<blockquote>
+<p>All things considered, how satisfied are you with your life as a whole nowadays? Please answer using this card, where 0 means extremely dissatisfied and 10 means extremely satisfied.</p>
+</blockquote>
+<p>So, it is a subjective measure based on self-report; the response categories range from 0 to 10, etc. As I will show later, this information would influence the analytic strategy.</p>
+<p>In their review article, <span class="citation">Dolan, Peasgood, and White (2008, 95)</span> discussed several factors associated with subjective well-being (“often a response to a single life satisfaction or overall happiness question”). They classified these factors under seven broad headings<a href="#fn3" class="footnoteRef" id="fnref3"><sup>3</sup></a></p>
+<ol style="list-style-type: decimal">
+<li>Income</li>
+<li>Personal characteristics (<em>age, gender, ethnicity, personality</em>)</li>
+<li>Socially developed characteristics (<em>education, health, type of work, unemployment</em>)</li>
+<li>How we spend our time (<em>hours worked, commuting, caring for others, community involvement and volunteering, exercise, religious activities</em>)</li>
+<li>Attitudes and beliefs towards self/others/life (<em>attitudes towards our circumstances, trust, political persuasion, religion</em>)</li>
+<li>Relationships (<em>marriage and intimate relationship, having children, seeing family and friends</em>)</li>
+<li>Wider economic, social and political environment (<em>income inequality, unemployment rates, inflation, welfare system and public insurances, degree of democracy, climate and natural environment, safety and deprivation of the area, urbanisation</em>)</li>
+</ol>
+<p>It is highly unlikely to find measures for all these factors in our data set. Moreover, this might not be desirable at all: the analysis should be guided by specific research question(s) and related hypotheses, which in turn should guide the selection of variables. As I mentioned above, this requires a substantive interest and an adequate grasp of the literature. I will proceed tentatively for now.</p>
+<p>It should be also noted that the analysis is focusing on a single country at a specific time period. Thus, even if we have measures available for some factors (unemployment rates, inflation rates, etc.), it is not possible to take them into account in the analysis. This limitation (which is common in cross-sectional studies), precludes strong (especially causal) interpretation of the results.<a href="#fn4" class="footnoteRef" id="fnref4"><sup>4</sup></a></p>
+</div>
+<div id="references" class="section level1 unnumbered">
+<h1>References</h1>
+<div id="refs" class="references">
+<div id="ref-Dolan2008">
+<p>Dolan, Paul, Tessa Peasgood, and Mathew White. 2008. “Do we really know what makes us happy? A review of the economic literature on the factors associated with subjective well-being.” <em>Journal of Economic Psychology</em> 29 (1): 94–122.</p>
+</div>
+<div id="ref-Shmueli2010">
+<p>Shmueli, Galit. 2010. “To Explain or to Predict?” <em>Statistical Science</em> 25 (3): 289–310.</p>
+</div>
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol>
+<li id="fn1"><p>There are various (and understandable) reasons for using SPSS, but I don’t have any intention to discuss them here.<a href="#fnref1">↩</a></p></li>
+<li id="fn2"><p>Commercial license is available too.<a href="#fnref2">↩</a></p></li>
+<li id="fn3"><p>You might find these categories problematic; it is only for illustration purposes. And again, it is not my area of research.<a href="#fnref3">↩</a></p></li>
+<li id="fn4"><p>Despite this cautionary note, I would like to share Shmueli’s <span class="citation">(2010, 290)</span> observation about causal explanation in the social sciences: “Based on collaborative work with social scientists and economists, on an examination of some of their literature, and on conversations with a diverse group of researchers, I conjecture that, whether statisticians like it or not, the type of statistical models used for testing causal hypotheses in the social sciences are almost always association-based models applied to observational data. Regression models are the most common example. The justification for this practice is that the theory itself provides the causality. In other words, the role of the theory is very strong and the reliance on data and statistical modeling are strictly through the lens of the theoretical model. The theory–data relationship varies in different fields. While the social sciences are very theory-heavy, in areas such as bioinformatics and natural language processing the emphasis on a causal theory is much weaker. Hence, given this reality, I define <em>explaining</em> as causal explanation and <em>explanatory modeling</em> as the use of statistical models for testing causal explanations.”<a href="#fnref4">↩</a></p></li>
+</ol>
+</div>
+
+  </div>
+
+  <div id=links>
+    
+      <a class="basic-alignment left" href="/hta/">&laquo; Sorcerer&#39;s Apprentice Approach to Statistical Analysis</a>
+    
+    
+  </div>
+</section>
+
+<section id="comments">
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+
+(function() {
+      
+      
+      if (window.location.hostname == "localhost")
+                return;
+
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      var disqus_shortname = '';
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</section>
+
+
+  
+  
+
+
+</body>
+</html>
+
