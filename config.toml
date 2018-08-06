@@ -30,7 +30,7 @@ canonifyurls = true
       intro = true
     # headline = "My headline"
     # description = "A blog for future."
-      sitename = "T.E.G.'s Blog"
+      sitename = "Statistical Difficulties"
 
     # options for highlight.js (version, additional languages, and theme)
     #highlightjsVersion = "9.11.0"
