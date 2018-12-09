@@ -52,7 +52,7 @@ After running the model, it is good to keep your guard up and remain suspicious 
 
 <!--Finally, there is nothing wrong about asking for help or feedback. Even if it comes from a colleague who could make similar mistakes, a new perspective might help us to see a problem *hiding in plain sight*.-->
 
-*Note: A friend commented that these arguments mostly apply to secondary data analysis. For example, in experimental research, there are other issues that require more attention (such as randomization, power, treatment, etc.), but they might not encounter the above mentioned problems to the same extent (e.g., variable selection). I agree with my friend, since I had secondary data analysis in my mind while writing this post. But I also think that the experimental researcher is no less susceptible to become a sorcerer's apprentice. However, they might need to adopt different precautionary measures.*
+*Note: A friend commented that these arguments mostly apply to secondary data analysis. For example, in experimental research, there are other issues that require more attention (such as randomization, power, treatment, etc.), but they might not encounter the above mentioned problems to the same extent (e.g., variable selection). I agree with my friend, since I had secondary data analysis in my mind while writing this post. But I also think that the experimental researchers are no less susceptible to become a sorcerer's apprentice. However, they might need to adopt different precautionary measures.*
 
 ### References
 
