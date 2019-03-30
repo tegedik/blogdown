@@ -38,7 +38,7 @@
       
       <guid>/rec/</guid>
       <description>This is a simple topic. And there are various ways of recoding and (re)labeling variables in R. But rec function from sjmisc package (Lüdecke 2018) works best for me. Give it a try:
-library(tidyverse) library(strengejacke) mtcars %&amp;gt;% select(disp, mpg, cyl) %&amp;gt;% rec(cyl,rec= &amp;quot;4=1 [low]; 6=2 [mid]; 8=3 [high]&amp;quot;) %&amp;gt;% to_label(cyl_r) ## # A tibble: 32 x 4 ## disp mpg cyl cyl_r ## &amp;lt;dbl&amp;gt; &amp;lt;dbl&amp;gt; &amp;lt;dbl&amp;gt; &amp;lt;fct&amp;gt; ## 1 160. 21.</description>
+library(tidyverse) library(strengejacke) mtcars %&amp;gt;% select(disp, mpg, cyl) %&amp;gt;% rec(cyl,rec= &amp;quot;4=1 [low]; 6=2 [mid]; 8=3 [high]&amp;quot;) %&amp;gt;% to_label(cyl_r) ## # A tibble: 32 x 4 ## disp mpg cyl cyl_r ## &amp;lt;dbl&amp;gt; &amp;lt;dbl&amp;gt; &amp;lt;dbl&amp;gt; &amp;lt;fct&amp;gt; ## 1 160.</description>
     </item>
     
     <item>
@@ -67,7 +67,7 @@ library(tidyverse) library(strengejacke) mtcars %&amp;gt;% select(disp, mpg, cyl
       
       <guid>/binomglm/</guid>
       <description>Here is an example of binomial glm (e.g., logistic regression):
-df &amp;lt;- car::Mroz # U.S. Women&amp;#39;s Labor-Force Participation data glmfit &amp;lt;- glm(lfp ~ k5 + age + inc + lwg, df, family=binomial) summary(glmfit) ## ## Call: ## glm(formula = lfp ~ k5 + age + inc + lwg, family = binomial, ## data = df) ## ## Deviance Residuals: ## Min 1Q Median 3Q Max ## -1.7987 -1.1326 0.6516 0.9605 2.</description>
+df &amp;lt;- car::Mroz # U.S. Women&amp;#39;s Labor-Force Participation data glmfit &amp;lt;- glm(lfp ~ k5 + age + inc + lwg, df, family=binomial) summary(glmfit) ## ## Call: ## glm(formula = lfp ~ k5 + age + inc + lwg, family = binomial, ## data = df) ## ## Deviance Residuals: ## Min 1Q Median 3Q Max ## -1.7987 -1.1326 0.6516 0.</description>
     </item>
     
     <item>
@@ -78,8 +78,7 @@ df &amp;lt;- car::Mroz # U.S. Women&amp;#39;s Labor-Force Participation data glm
       <guid>/why-not-transform/</guid>
       <description>Why do we want to deal with the trouble of estimating generalized linear models (GLM) when it is possible to transform the response variable and estimate models using linear regression? It is worth to mention two answers (Agresti 2015):
 It is hard to find a transformation which provides both normality and constant variance (see assumptions of OLS).
- Interpretability. To illustrate, first see the formula of the transformed-data approach
-  \[E[g(y_i)]= \beta_0+\beta_1x_1 + \ldots+\beta_kx_k\]</description>
+ Interpretability. To illustrate, first see the formula of the transformed-data approach</description>
     </item>
     
     <item>
@@ -98,8 +97,8 @@ It is hard to find a transformation which provides both normality and constant v
       <pubDate>Sun, 04 Feb 2018 13:59:48 +0000</pubDate>
       
       <guid>/sources/</guid>
-      <description>This page contains links to useful sources on statistics, R and other software packages.
- blogdown: Creating Websites with R Markdown by Xie, Thomas, and Hill (I use blogdown for this website.) CRAN Task View: Statistics for the Social Sciences CRAN Task Views Cross Validated DataCamp Data Visualization: A Practical Introduction by Healy Forecasting: Principles and Practice by Hyndman and Athanasopoulos Math Camp Lectures - UW CSSS Personality Project Quick-R R for Data Science by Grolemund and Wickham R Markdown: The Definitive Guide by Xie, Allaire, and Grolemund R Weekly R-statistics.</description>
+      <description>This page contains links to useful sources on statistics, R, and other software packages.
+ blogdown: Creating Websites with R Markdown by Xie, Thomas, and Hill (I use blogdown to create this website.) CRAN Task View: Statistics for the Social Sciences CRAN Task Views Cross Validated DataCamp Data Visualization: A Practical Introduction by Healy Forecasting: Principles and Practice by Hyndman and Athanasopoulos Math Camp Lectures - UW CSSS Personality Project Quick-R R for Data Science by Grolemund and Wickham R Markdown: The Definitive Guide by Xie, Allaire, and Grolemund R Weekly R-statistics.</description>
     </item>
     
     <item>

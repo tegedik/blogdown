@@ -7,9 +7,9 @@ categories: []
 tags: []
 ---
 
-This page contains links to useful sources on statistics, `R` and other software packages. 
+This page contains links to useful sources on statistics, `R`, and other software packages. 
 
-* [blogdown: Creating Websites with R Markdown by Xie, Thomas, and Hill ](https://bookdown.org/yihui/blogdown/) (I use `blogdown` for this website.)
+* [blogdown: Creating Websites with R Markdown by Xie, Thomas, and Hill ](https://bookdown.org/yihui/blogdown/) (I use `blogdown` to create this website.)
 * [CRAN Task View: Statistics for the Social Sciences](https://cran.r-project.org/web/views/SocialSciences.html)
 * [CRAN Task Views](https://cran.r-project.org/web/views/)
 * [Cross Validated](https://stats.stackexchange.com)
@@ -27,6 +27,7 @@ This page contains links to useful sources on statistics, `R` and other software
 * [RStudio Community](https://community.rstudio.com/)
 * [Seeing Theory](http://students.brown.edu/seeing-theory/)
 * [Statistical Modeling, Causal Inference, and Social Science (a.k.a., Andrew Gelman's Blog)](http://andrewgelman.com)
+* [Statistics, R, Data, Science by Michael Clark](http://m-clark.github.io/)
 * [STHDA (Statistical Tools for High-throughput Data Analysis)](http://www.sthda.com/english/)
 * [The R Graph Gallery](http://www.r-graph-gallery.com/)
 * [UCLA IDRE - Annotated Output](https://stats.idre.ucla.edu/other/annotatedoutput/)
@@ -36,7 +37,7 @@ This page contains links to useful sources on statistics, `R` and other software
 * [An Introduction to Margins](https://cran.r-project.org/web/packages/margins/vignettes/Introduction.html)
 * [DeclareDesign](http://declaredesign.org/)
 * [RStudio Cheat Sheets](https://www.rstudio.com/resources/cheatsheets/)
-* [SjPlot-Package](http://www.strengejacke.de/sjPlot/)
+* [SjPlot-Package](https://strengejacke.github.io/sjPlot/)
 * [Stargazer Cheat Sheet](http://www.jakeruss.com/cheatsheets/stargazer/)
 * [The lavaan Project](http://lavaan.ugent.be/)
 * [Tidyverse](https://www.tidyverse.org/)
