@@ -219,7 +219,7 @@ There is no way for us to know where a single bean would end up. But under certa
 
 [^1]: Although he is an important figure in the history of statistics, Galton is criticized for his eugenics and "scientific racism."
 
-[^2]: *Natural Inheritance* is available as PDF [here](http://galton.org/books/natural-inheritance/index.html).
+[^2]: *Natural Inheritance* is available [here](http://galton.org/books/natural-inheritance/index.html) as PDF.
 
 
 
