@@ -1,0 +1,77 @@
+---
+title: "Poor Man's Galton Board"
+author: T.E.G.
+date: '2019-03-31T01:35:00'
+slug: gb
+categories: []
+tags: []
+bibliography: references.bib
+---
+
+
+
+<p>Some of you might have seen a device called the “Galton Board” (also called the bean machine or quincunx) on social media, or more correctly, its <a href="https://galtonboard.com/">desktop version</a> by Four Pines Publishing. It got popular for a brief moment several months ago. Even Michael from Vsauce posted a video on it:</p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/UCmPmkHqHXk" frameborder="0" allowfullscreen>
+</iframe>
+<p>The device demonstrates central limit theorem, specifically how binomial distribution approximates to normal distribution. As you can see in the video, there are pegs on the board arranged in a rectangular shape. You drop a single bean, the bean hits the peg and falls left or right with some probability (<span class="math inline">\(p\)</span>). Since we assume that the device is constructed well (i.e., unbiased), we expect the bean goes both sides with equal probability, <span class="math inline">\(p=1-p=q=0.5\)</span>. This step is repeated for each row of pegs and the bean ends up in a (corresponding, rectangular) bin. If the probability of bouncing right is <span class="math inline">\(p\)</span> (in our case, <span class="math inline">\(0.5\)</span>), the number of rows is <span class="math inline">\(N\)</span>, and the number of times the bean bounces to right is <span class="math inline">\(n\)</span>, then the probability of the bean ending up in the <span class="math inline">\(n\)</span>th bin from left is,</p>
+<p><span class="math display">\[\left( \begin{array}{c} N \\ n \end{array}\right)=p^nq^{N-n},\]</span></p>
+<p>which is probability mass function of a binomial distribution. Here is the catch: according to de Moivre-Laplace theorem (a special case of CLT), under certain conditions, this binomial distribution will approximate to the probability density function of a normal distribution with mean, <span class="math inline">\(np\)</span> and variance <span class="math inline">\(npq\)</span>. In this case, if the number of rows (of pegs) and beans are large enough, the distribution would approximate to normal distribution, as the small Galton board (with 3000 beads and 12(?) rows of pegs) demonstrates.</p>
+<p>I really like this kind of small devices, but I am not willing to pay $39.95 (on Amazon). And, although the pleasure of watching the beans is missing, I can see the approximation at work using <code>R</code>:</p>
+<pre class="r"><code>library(tidyverse)
+library(hrbrthemes)
+set.seed(12)
+df &lt;- rbinom(3000, 12, 0.5)
+
+df %&gt;% 
+  data.frame() %&gt;% 
+  ggplot(aes(.)) + 
+  geom_histogram(aes(., stat(density)), binwidth = 1, color=&quot;white&quot;) +
+  stat_function(fun=dnorm, color=&quot;black&quot;, args=list(mean=mean(df), sd=sd(df))) +
+  scale_y_continuous(limits=c(0, 0.25), breaks = seq(0, 0.25, 0.05)) +
+  labs(title=&quot;Poor Man&#39;s Galton Board&quot;) +
+  theme_ipsum_rc()</code></pre>
+<p><img src="/post/gb_files/figure-html/mp-1.png" width="672" /></p>
+<p>Moreover, I can change the probability of bouncing to left or right, number of beans, and number of pegs (hence, bins) to see whether approximation works or not. (I also overlay a normal curve on histograms using sample mean and standard deviation.)</p>
+<div id="tilting-the-board" class="section level3">
+<h3>Tilting the Board</h3>
+<p>It is not hard to guess what would happen if I tilt the board to one side or the other. This will increase the probability of bouncing to left (or right) and we will end up with a skewed distribution.</p>
+<p><img src="/post/gb_files/figure-html/tb-1.png" width="672" /></p>
+</div>
+<div id="decreasing-the-number-of-beans" class="section level3">
+<h3>Decreasing the Number of Beans</h3>
+<p>What would happen if I decrease the number of beans? On the left corner, we have the original board with 3000 beans and 12 pegs. Keeping the number of pegs constant, I decrease the number of beans to 1000, 500, and 100. I would say that the distribution of 1000 beans approximate the normal distribution quite well. But it is not the case for the distributions of 500 and 100 beans. One can see some skew, especially in the case of 100 beans.</p>
+<p><img src="/post/gb_files/figure-html/nb-1.png" width="672" /></p>
+</div>
+<div id="increasing-the-number-of-pegs" class="section level3">
+<h3>Increasing the Number of pegs</h3>
+<p>And if I increase the number of pegs (hence, the number of bins), the beans will spread more and more, and the distributions become platykurtic (see the change on x axis labels).</p>
+<p><img src="/post/gb_files/figure-html/np-1.png" width="672" /></p>
+<p>There is no way for us to know where a single bean would end up. But under certain conditions, it is possible to know the distribution of thousands of beans. This is what Galton <span class="citation">(1889)</span> called “Order in Apparent Chaos” (p.66):<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a></p>
+<blockquote>
+<p>I know of scarcely anything so apt to impress the imagination as the wonderful form of cosmic order expressed by the “Law of Frequency of Error.” The law would have been personified by the Greeks and deified, if they had known of it. It reigns with serenity and in complete self-effacement amidst the wildest confusion. The huger the mob, and the greater the apparent anarchy, the more perfect is its sway. It is the supreme law of Unreason. Whenever a large sample of chaotic elemts are taken in hand and marshalled in the order of their magnitude, an unsuspected and most beautiful form of regularity proves to have been latent all along.</p>
+</blockquote>
+<!-- As Michael said at the end of the video: "Thank you randomness. Thank you, even more, statistics." And thank you, Francis Galton. -->
+</div>
+<div id="references" class="section level1 unnumbered">
+<h1>References</h1>
+<div id="refs" class="references">
+<div id="ref-Galton1889">
+<p>Galton, Francis. 1889. <em>Natural Inheritance</em>. MacMillan.</p>
+</div>
+<div id="ref-Pedersen2017">
+<p>Pedersen, Thomas Lin. 2017. <em>Patchwork: The Composer of Ggplots</em>. <a href="https://github.com/thomasp85/patchwork">https://github.com/thomasp85/patchwork</a>.</p>
+</div>
+<div id="ref-Rudis2019">
+<p>Rudis, Bob. 2019. <em>Hrbrthemes: Additional Themes, Theme Components and Utilities for ’Ggplot2’</em>. <a href="https://CRAN.R-project.org/package=hrbrthemes">https://CRAN.R-project.org/package=hrbrthemes</a>.</p>
+</div>
+<div id="ref-Wickham2017">
+<p>Wickham, Hadley. 2017. <em>Tidyverse: Easily Install and Load the ’Tidyverse’</em>. <a href="https://CRAN.R-project.org/package=tidyverse">https://CRAN.R-project.org/package=tidyverse</a>.</p>
+</div>
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol>
+<li id="fn1"><p><em>Natural Inheritance</em> is available as PDF <a href="http://galton.org/books/natural-inheritance/index.html">here</a>.<a href="#fnref1" class="footnote-back">↩</a></p></li>
+</ol>
+</div>

@@ -56,7 +56,7 @@
 
 <p>I think one of the most intuitive descriptions of the maximum likelihood estimation (especially for the beginners) can be found in <span class="citation">Long and Freese (2014)</span>:</p>
 <blockquote>
-<p>For all but the simplest models, the only way to find the maximum likelihood function is by numerical methods.<a href="#fn1" class="footnoteRef" id="fnref1"><sup>1</sup></a> Numerical methods are the mathematical equivalent of how you would find the top of a hill if you were blindfolded and knew only the slope of the hill at the spot where you are standing and how the slope at that spot is changing which you could figure out by poking your foot in each direction. The search begins with start values corresponding to your location as you start your climb. From the start position, the slope of the likelihood function and the rate of change in the slope determine the next guess for the parameters. The process continues to iterate until the maximum of the likelihood function is found, called, convergence, and the resulting estimates are reported <span class="citation">(Long and Freese 2014, 84)</span></p>
+<p>For all but the simplest models, the only way to find the maximum likelihood function is by numerical methods.<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a> Numerical methods are the mathematical equivalent of how you would find the top of a hill if you were blindfolded and knew only the slope of the hill at the spot where you are standing and how the slope at that spot is changing which you could figure out by poking your foot in each direction. The search begins with start values corresponding to your location as you start your climb. From the start position, the slope of the likelihood function and the rate of change in the slope determine the next guess for the parameters. The process continues to iterate until the maximum of the likelihood function is found, called, convergence, and the resulting estimates are reported <span class="citation">(Long and Freese 2014, 84)</span></p>
 </blockquote>
 <div id="example-logistic-regression" class="section level3">
 <h3>Example: Logistic Regression</h3>
@@ -64,7 +64,7 @@
 <pre class="r"><code>library(tidyverse)
 library(optimx) # or optim depending on the optimization method used, 
                 # BFGS is available in both packages
-df &lt;- car::Mroz
+df &lt;- carData::Mroz
 
 outcome &lt;- fct_recode(df$lfp,
                &quot;0&quot; = &quot;no&quot;,
@@ -136,7 +136,7 @@ estimation_optx</code></pre>
 <div class="footnotes">
 <hr />
 <ol>
-<li id="fn1"><p>For a quick explanation of the difference between analytical and numerical methods: <a href="https://math.stackexchange.com/a/935458">What’s the difference between analytical and numerical approaches to problems?</a><a href="#fnref1">↩</a></p></li>
+<li id="fn1"><p>For a quick explanation of the difference between analytical and numerical methods: <a href="https://math.stackexchange.com/a/935458">What’s the difference between analytical and numerical approaches to problems?</a><a href="#fnref1" class="footnote-back">↩</a></p></li>
 </ol>
 </div>
 

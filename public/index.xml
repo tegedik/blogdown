@@ -6,10 +6,20 @@
     <description>Recent content on T.E.G.&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 07 Dec 2018 01:35:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 31 Mar 2019 01:35:00 +0000</lastBuildDate>
     
 	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Poor Man&#39;s Galton Board</title>
+      <link>/gb/</link>
+      <pubDate>Sun, 31 Mar 2019 01:35:00 +0000</pubDate>
+      
+      <guid>/gb/</guid>
+      <description>Some of you might have seen a device called the “Galton Board” (also called the bean machine or quincunx) on social media, or more correctly, its desktop version by Four Pines Publishing. It got popular for a brief moment several months ago. Even Michael from Vsauce posted a video on it:
+ The device demonstrates central limit theorem, specifically how binomial distribution approximates to normal distribution. As you can see in the video, there are pegs on the board arranged in a rectangular shape.</description>
+    </item>
     
     <item>
       <title>Sorcerer&#39;s Apprentice Approach to Statistical Analysis</title>
@@ -38,7 +48,7 @@
       
       <guid>/rec/</guid>
       <description>This is a simple topic. And there are various ways of recoding and (re)labeling variables in R. But rec function from sjmisc package (Lüdecke 2018) works best for me. Give it a try:
-library(tidyverse) library(strengejacke) mtcars %&amp;gt;% select(disp, mpg, cyl) %&amp;gt;% rec(cyl,rec= &amp;quot;4=1 [low]; 6=2 [mid]; 8=3 [high]&amp;quot;) %&amp;gt;% to_label(cyl_r) ## # A tibble: 32 x 4 ## disp mpg cyl cyl_r ## &amp;lt;dbl&amp;gt; &amp;lt;dbl&amp;gt; &amp;lt;dbl&amp;gt; &amp;lt;fct&amp;gt; ## 1 160.</description>
+library(tidyverse) library(strengejacke) mtcars %&amp;gt;% select(disp, mpg, cyl) %&amp;gt;% rec(cyl,rec= &amp;quot;4=1 [low]; 6=2 [mid]; 8=3 [high]&amp;quot;) %&amp;gt;% to_label(cyl_r) ## disp mpg cyl cyl_r ## 1 160.0 21.0 6 mid ## 2 160.0 21.0 6 mid ## 3 108.</description>
     </item>
     
     <item>
@@ -67,7 +77,7 @@ library(tidyverse) library(strengejacke) mtcars %&amp;gt;% select(disp, mpg, cyl
       
       <guid>/binomglm/</guid>
       <description>Here is an example of binomial glm (e.g., logistic regression):
-df &amp;lt;- car::Mroz # U.S. Women&amp;#39;s Labor-Force Participation data glmfit &amp;lt;- glm(lfp ~ k5 + age + inc + lwg, df, family=binomial) summary(glmfit) ## ## Call: ## glm(formula = lfp ~ k5 + age + inc + lwg, family = binomial, ## data = df) ## ## Deviance Residuals: ## Min 1Q Median 3Q Max ## -1.7987 -1.1326 0.6516 0.</description>
+df &amp;lt;- carData::Mroz # U.S. Women&amp;#39;s Labor-Force Participation data glmfit &amp;lt;- glm(lfp ~ k5 + age + inc + lwg, df, family=binomial) summary(glmfit) ## ## Call: ## glm(formula = lfp ~ k5 + age + inc + lwg, family = binomial, ## data = df) ## ## Deviance Residuals: ## Min 1Q Median 3Q Max ## -1.7987 -1.1326 0.6516 0.</description>
     </item>
     
     <item>

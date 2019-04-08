@@ -1,0 +1,226 @@
+---
+title: "Poor Man's Galton Board"
+author: T.E.G.
+date: '2019-03-31T01:35:00'
+slug: gb
+categories: []
+tags: []
+bibliography: references.bib
+---
+---
+nocite: | 
+  @Rudis2019, @Wickham2017, @Pedersen2017
+...
+
+
+Some of you might have seen a device called the "Galton Board" (also called the bean machine or quincunx) on social media, or more correctly, its [desktop version](https://galtonboard.com/) by Four Pines Publishing. It got popular for a brief moment several months ago. Even Michael from Vsauce posted a video on it:
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/UCmPmkHqHXk" frameborder="0" allowfullscreen></iframe>
+
+The device demonstrates central limit theorem, specifically how binomial distribution approximates to normal distribution. As you can see in the video, there are pegs on the board arranged in a rectangular shape. You drop a single bean, the bean hits the peg and falls left or right with some probability ($p$). Since we assume that the device is constructed well (i.e., unbiased), we expect the bean goes both sides with equal probability, $p=1-p=q=0.5$. This step is repeated for each row of pegs and the bean ends up in a (corresponding, rectangular) bin. If the probability of bouncing right is $p$ (in our case, $0.5$), the number of rows is $N$, and the number of times the bean bounces to right is $n$, then the probability of the bean ending up in the $n$th bin from left is,
+
+$$\left( \begin{array}{c} N \\ n \end{array}\right)=p^nq^{N-n},$$
+
+which is probability mass function of a binomial distribution. Here is the catch: according to de Moivre-Laplace theorem (a special case of CLT), under certain conditions, this binomial distribution will approximate to the probability density function of a normal distribution with mean, $np$ and variance $npq$. In this case, if the number of rows (of pegs) and beans are large enough, the distribution would approximate to normal distribution, as the small Galton board (with 3000 beads and 12(?) rows of pegs) demonstrates. 
+
+I really like this kind of small devices, but I am not willing to pay $39.95 (on Amazon). And, although the pleasure of watching the beans is missing, I can see the approximation at work using `R`:
+
+```{r mp, eval=TRUE, echo=TRUE, message=FALSE, warning=FALSE}
+library(tidyverse)
+library(hrbrthemes)
+set.seed(12)
+df <- rbinom(3000, 12, 0.5)
+
+df %>% 
+  data.frame() %>% 
+  ggplot(aes(.)) + 
+  geom_histogram(aes(., stat(density)), binwidth = 1, color="white") +
+  stat_function(fun=dnorm, color="black", args=list(mean=mean(df), sd=sd(df))) +
+  scale_y_continuous(limits=c(0, 0.25), breaks = seq(0, 0.25, 0.05)) +
+  labs(title="Poor Man's Galton Board") +
+  theme_ipsum_rc()
+
+```
+
+Moreover, I can change the probability of bouncing to left or right, number of beans, and number of pegs (hence, bins) to see whether approximation works or not. (I also overlay a normal curve on histograms using sample mean and standard deviation.) 
+
+### Tilting the Board
+
+It is not hard to guess what would happen if I tilt the board to one side or the other. This will increase the probability of bouncing to left (or right) and we will end up with a skewed distribution. 
+
+```{r tb, echo=FALSE, eval=TRUE, message=FALSE, warning=FALSE}
+library(patchwork)
+set.seed(5)
+df9 <- rbinom(3000, 12, 0.1)
+
+p9 <- df9 %>% 
+  data.frame() %>% 
+  ggplot(aes(.)) + 
+  geom_histogram(aes(., stat(density)), binwidth = 1, color="white") +
+  stat_function(fun=dnorm, color="black", args=list(mean=mean(df9), sd=sd(df9))) +
+  scale_y_continuous(limits=c(0, 0.40), breaks = seq(0, 0.40, 0.05)) +
+  theme_ipsum_rc() +
+  labs(title="Tilt left",y=" ", x=" ") 
+
+set.seed(6)
+df10 <- rbinom(3000, 12, 0.9)
+
+p10 <- df10 %>% 
+  data.frame() %>% 
+  ggplot(aes(.)) + 
+  geom_histogram(aes(., stat(density)), binwidth = 1, color="white") +
+  stat_function(fun=dnorm, color="black", args=list(mean=mean(df10), sd=sd(df10))) +
+  scale_y_continuous(limits=c(0, 0.40), breaks = seq(0, 0.40, 0.05)) +
+  theme_ipsum_rc() +
+  theme(axis.text.y = element_blank()) +
+  labs(title="Tilt right",y=" ", x=" ") 
+
+p9 + p10
+
+```
+
+### Decreasing the Number of Beans
+
+What would happen if I decrease the number of beans? On the left corner, we have the original board with 3000 beans and 12 pegs. Keeping the number of pegs constant, I decrease the number of beans to 1000, 500, and 100. I would say that the distribution of 1000 beans approximate the normal distribution quite well. But it is not the case for the distributions of 500 and 100 beans. One can see some skew, especially in the case of 100 beans. 
+
+```{r nb, echo=FALSE, eval=TRUE, message=FALSE, warning=FALSE}
+set.seed(1)
+df1 <- rbinom(3000, 12, 0.5)
+
+p1 <- df1 %>% 
+  data.frame() %>% 
+  ggplot(aes(.)) + 
+  geom_histogram(aes(., stat(density)), binwidth = 1, color="white") +
+  stat_function(fun=dnorm, color="black", args=list(mean=mean(df1), sd=sd(df1))) +
+  scale_y_continuous(limits=c(0, 0.30), breaks = seq(0, 0.30, 0.05)) +
+  theme_ipsum_rc() +
+  labs(title="n=3000",y=" ", x=" ") 
+
+set.seed(2)
+df2 <- rbinom(1000, 12, 0.5)
+
+p2 <- df2 %>% 
+  data.frame() %>% 
+  ggplot(aes(.)) + 
+  geom_histogram(aes(., stat(density)), binwidth = 1, color="white") +
+  stat_function(fun=dnorm, color="black", args=list(mean=mean(df2), sd=sd(df2))) +
+#  scale_x_continuous(limits=c(120, 220), breaks=seq(120, 220, 10)) +
+  scale_y_continuous(limits=c(0, 0.30), breaks = seq(0, 0.30, 0.05)) +
+  theme_ipsum_rc() +
+#  theme(axis.text.y = element_blank()) +
+  labs(title="n=1000",y=" ", x=" ") 
+
+
+
+set.seed(3)
+df3 <- rbinom(500, 12, 0.5)
+
+p3 <- df3 %>% 
+  data.frame() %>% 
+  ggplot(aes(.)) + 
+  geom_histogram(aes(., stat(density)), binwidth = 1, color="white") +
+  stat_function(fun=dnorm, color="black", args=list(mean=mean(df3), sd=sd(df3))) +
+  #  scale_x_continuous(limits=c(120, 220), breaks=seq(120, 220, 10)) +
+  scale_y_continuous(limits=c(0, 0.30), breaks = seq(0, 0.30, 0.05)) +
+  theme_ipsum_rc() +
+  #  theme(axis.text.y = element_blank()) +
+  labs(title="n=500",y=" ", x=" ") 
+
+
+set.seed(4)
+df4 <- rbinom(100, 12, 0.5)
+
+p4 <- df4 %>% 
+  data.frame() %>% 
+  ggplot(aes(.)) + 
+  geom_histogram(aes(., stat(density)), binwidth = 1, color="white") +
+  stat_function(fun=dnorm, color="black", args=list(mean=mean(df4), sd=sd(df4))) +
+  #  scale_x_continuous(limits=c(120, 220), breaks=seq(120, 220, 10)) +
+  scale_y_continuous(limits=c(0, 0.30), breaks = seq(0, 0.30, 0.05)) +
+  theme_ipsum_rc() +
+  #  theme(axis.text.y = element_blank()) +
+  labs(title="n=100",y=" ", x=" ") 
+
+
+(p1 | p2) / (p3 | p4)
+
+```
+
+### Increasing the Number of pegs
+
+And if I increase the number of pegs (hence, the number of bins), the beans will spread more and more, and the distributions become platykurtic (see the change on x axis labels).
+
+```{r np, eval=TRUE, echo=FALSE, warning=FALSE, message=FALSE}
+set.seed(7)
+df5 <- rbinom(3000, 12, 0.5)
+
+p5 <- df5 %>% 
+  data.frame() %>% 
+  ggplot(aes(.)) + 
+  geom_histogram(aes(., stat(density)), binwidth = 1, color="white") +
+  stat_function(fun=dnorm, color="black", args=list(mean=mean(df5), sd=sd(df5))) +
+  #  scale_x_continuous(limits=c(120, 220), breaks=seq(120, 220, 10)) +
+  scale_y_continuous(limits=c(0, 0.30), breaks = seq(0, 0.30, 0.05)) +
+  theme_ipsum_rc() +
+  #  theme(axis.text.y = element_blank()) +
+  labs(title="pegs=12",y=" ", x=" ") 
+
+
+set.seed(8)
+df6 <- rbinom(3000, 50, 0.5)
+
+p6 <- df6 %>% 
+  data.frame() %>% 
+  ggplot(aes(.)) + 
+  geom_histogram(aes(., stat(density)), binwidth = 1, color="white") +
+  stat_function(fun=dnorm, color="black", args=list(mean=mean(df6), sd=sd(df6))) +
+  #  scale_x_continuous(limits=c(120, 220), breaks=seq(120, 220, 10)) +
+  scale_y_continuous(limits=c(0, 0.30), breaks = seq(0, 0.30, 0.05)) +
+  theme_ipsum_rc() +
+  #  theme(axis.text.y = element_blank()) +
+  labs(title="pegs=50",y=" ", x=" ") 
+
+
+set.seed(9)
+df7 <- rbinom(3000, 100, 0.5)
+
+p7 <- df7 %>% 
+  data.frame() %>% 
+  ggplot(aes(.)) + 
+  geom_histogram(aes(., stat(density)), binwidth = 1, color="white") +
+  stat_function(fun=dnorm, color="black", args=list(mean=mean(df7), sd=sd(df7))) +
+  #  scale_x_continuous(limits=c(120, 220), breaks=seq(120, 220, 10)) +
+  scale_y_continuous(limits=c(0, 0.30), breaks = seq(0, 0.30, 0.05)) +
+  theme_ipsum_rc() +
+  #  theme(axis.text.y = element_blank()) +
+  labs(title="pegs=100",y=" ", x=" ") 
+
+set.seed(10)
+df8 <- rbinom(3000, 250, 0.5)
+
+p8 <- df8 %>% 
+  data.frame() %>% 
+  ggplot(aes(.)) + 
+  geom_histogram(aes(., stat(density)), binwidth = 1, color="white") +
+  stat_function(fun=dnorm, color="black", args=list(mean=mean(df8), sd=sd(df8))) +
+  #  scale_x_continuous(limits=c(120, 220), breaks=seq(120, 220, 10)) +
+  scale_y_continuous(limits=c(0, 0.30), breaks = seq(0, 0.30, 0.05)) +
+  theme_ipsum_rc() +
+  #  theme(axis.text.y = element_blank()) +
+  labs(title="pegs=250",y=" ", x=" ") 
+
+
+(p5 + p6)/(p7 + p8)
+```
+
+
+There is no way for us to know where a single bean would end up. But under certain conditions, it is possible to know the distribution of thousands of beans. This is what Galton [-@Galton1889] called "Order in Apparent Chaos" (p.66) [^1]:
+
+> I know of scarcely anything so apt to impress the imagination as the wonderful form of cosmic order expressed by the "Law of Frequency of Error." The law would have been personified by the Greeks and deified, if they had known of it. It reigns with serenity and in complete self-effacement amidst the wildest confusion. The huger the mob, and the greater the apparent anarchy, the more perfect is its sway. It is the supreme law of Unreason. Whenever a large sample of chaotic elemts are taken in hand and marshalled in the order of their magnitude, an unsuspected and most beautiful form of regularity proves to have been latent all along.
+
+<!-- As Michael said at the end of the video: "Thank you randomness. Thank you, even more, statistics." And thank you, Francis Galton. -->
+
+[^1]: *Natural Inheritance* is available as PDF [here](http://galton.org/books/natural-inheritance/index.html).
+
+
+# References

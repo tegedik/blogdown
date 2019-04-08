@@ -19,7 +19,7 @@ Data preparation
 library(tidyverse)
 library(optimx) # or optim depending on the optimization method used, 
                 # BFGS is available in both packages
-df <- car::Mroz
+df <- carData::Mroz
 
 outcome <- fct_recode(df$lfp,
                "0" = "no",

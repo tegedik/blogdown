@@ -10,7 +10,7 @@ tags: []
 Here is an example of binomial glm (e.g., logistic regression):
 
 ```{r model, echo=TRUE, eval=TRUE}
-df <- car::Mroz # U.S. Women's Labor-Force Participation data
+df <- carData::Mroz # U.S. Women's Labor-Force Participation data
 glmfit <- glm(lfp ~ k5 + age + inc + lwg, df, family=binomial)
 summary(glmfit)
 ```
@@ -54,7 +54,7 @@ preddf %>%
 We can repeat the same analysis, but this time using a grouping variable (`wc`). 
 
 ```{r predprod2, echo=TRUE, eval=TRUE, message=FALSE, warning=FALSE}
-df <- car::Mroz # U.S. Women's Labor-Force Participation data
+df <- carData::Mroz # U.S. Women's Labor-Force Participation data
 glmfit <- glm(lfp ~ k5 + wc + age + inc + lwg, df, family=binomial)
 
 # Take mean values of the other predictors
@@ -91,7 +91,7 @@ preddf %>%
 Adding error bars to the plot requires few additional steps:
 
 ```{r predprod3, echo=TRUE, eval=TRUE, message=FALSE, warning=FALSE}
-df <- car::Mroz # U.S. Women's Labor-Force Participation data
+df <- carData::Mroz # U.S. Women's Labor-Force Participation data
 glmfit <- glm(lfp ~ k5 + wc + age + inc + lwg, df, family=binomial)
 
 # Take mean values of the other predictors
