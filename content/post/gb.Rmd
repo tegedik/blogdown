@@ -213,14 +213,14 @@ p8 <- df8 %>%
 (p5 + p6)/(p7 + p8)
 ```
 
-
-There is no way for us to know where a single bean would end up. But under certain conditions, it is possible to know the distribution of thousands of beans. This is what Galton [-@Galton1889] called "Order in Apparent Chaos" (p.66) [^1]:
+There is no way for us to know where a single bean would end up. But under certain conditions, it is possible to know the distribution of thousands of beans. This is what Galton[^1] [-@Galton1889] called "Order in Apparent Chaos" (p.66) [^2]:
 
 > I know of scarcely anything so apt to impress the imagination as the wonderful form of cosmic order expressed by the "Law of Frequency of Error." The law would have been personified by the Greeks and deified, if they had known of it. It reigns with serenity and in complete self-effacement amidst the wildest confusion. The huger the mob, and the greater the apparent anarchy, the more perfect is its sway. It is the supreme law of Unreason. Whenever a large sample of chaotic elements are taken in hand and marshalled in the order of their magnitude, an unsuspected and most beautiful form of regularity proves to have been latent all along.
 
-<!-- As Michael said at the end of the video: "Thank you randomness. Thank you, even more, statistics." And thank you, Francis Galton. -->
+[^1]: Although he is an important figure in the history of statistics, Galton is criticized for his eugenics and "scientific racism."
 
-[^1]: *Natural Inheritance* is available as PDF [here](http://galton.org/books/natural-inheritance/index.html).
+[^2]: *Natural Inheritance* is available as PDF [here](http://galton.org/books/natural-inheritance/index.html).
+
 
 
 # References
