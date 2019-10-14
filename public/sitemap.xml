@@ -8,18 +8,6 @@
   </url>
   
   <url>
-    <loc>/post/</loc>
-    <lastmod>2019-03-31T01:35:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/</loc>
-    <lastmod>2019-03-31T01:35:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>/hta/</loc>
     <lastmod>2018-12-07T01:35:00+00:00</lastmod>
   </url>
@@ -71,6 +59,18 @@
   
   <url>
     <loc>/categories/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/post/</loc>
+    <lastmod>2019-03-31T01:35:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/</loc>
+    <lastmod>2019-03-31T01:35:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   

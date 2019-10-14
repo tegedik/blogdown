@@ -35,6 +35,7 @@ This page contains links to useful sources on statistics, `R`, and other softwar
 
 * [An Introduction to Margins](https://cran.r-project.org/web/packages/margins/vignettes/Introduction.html)
 * [DeclareDesign](http://declaredesign.org/)
+* [The Easyverse](https://github.com/easystats/easystats)
 * [RStudio Cheat Sheets](https://www.rstudio.com/resources/cheatsheets/)
 * [SjPlot-Package](https://strengejacke.github.io/sjPlot/)
 * [Stargazer Cheat Sheet](http://www.jakeruss.com/cheatsheets/stargazer/)
