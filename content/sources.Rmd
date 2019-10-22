@@ -26,6 +26,7 @@ This page contains links to useful sources on statistics, `R`, and other softwar
 * [RStudio Community](https://community.rstudio.com/)
 * [Seeing Theory](http://students.brown.edu/seeing-theory/)
 * [Statistical Modeling, Causal Inference, and Social Science (a.k.a., Andrew Gelman's Blog)](http://andrewgelman.com)
+* [Statistical Rethinking with brms, ggplot2, and the tidyverse by Solomon Kurz](https://bookdown.org/ajkurz/Statistical_Rethinking_recoded/)
 * [Statistics, R, Data, Science by Michael Clark](http://m-clark.github.io/)
 * [STHDA (Statistical Tools for High-throughput Data Analysis)](http://www.sthda.com/english/)
 * [The R Graph Gallery](http://www.r-graph-gallery.com/)
