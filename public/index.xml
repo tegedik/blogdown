@@ -86,7 +86,7 @@ df &amp;lt;- carData::Mroz # U.S. Women&amp;#39;s Labor-Force Participation data
       <pubDate>Sun, 04 Feb 2018 17:54:34 +0000</pubDate>
       
       <guid>/why-not-transform/</guid>
-      <description>denemeWhy do we want to deal with the trouble of estimating generalized linear models (GLM) when it is possible to transform the response variable and estimate models using linear regression? It is worth to mention two answers (Agresti 2015):
+      <description>Why do we want to deal with the trouble of estimating generalized linear models (GLM) when it is possible to transform the response variable and estimate models using linear regression? It is worth to mention two answers (Agresti 2015):
 It is hard to find a transformation which provides both normality and constant variance (see assumptions of OLS).
  Interpretability. To illustrate, first see the formula of the transformed-data approach</description>
     </item>

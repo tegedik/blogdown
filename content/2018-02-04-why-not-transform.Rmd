@@ -13,7 +13,7 @@ nocite: |
   @Agresti2015
 ...
 
-denemeWhy do we want to deal with the trouble of estimating generalized linear models (GLM) when it is possible to transform the response variable and estimate models using linear regression? It is worth to mention two answers [@Agresti2015]: 
+Why do we want to deal with the trouble of estimating generalized linear models (GLM) when it is possible to transform the response variable and estimate models using linear regression? It is worth to mention two answers [@Agresti2015]: 
 
 1. It is hard to find a transformation which provides both normality and constant variance (see [assumptions of OLS](https://en.wikipedia.org/wiki/Ordinary_least_squares#Assumptions)). 
 
