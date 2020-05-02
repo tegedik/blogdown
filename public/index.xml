@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>T.E.G.&#39;s Blog</title>
@@ -86,17 +86,17 @@ df &amp;lt;- carData::Mroz # U.S. Women&amp;#39;s Labor-Force Participation data
       <pubDate>Sun, 04 Feb 2018 17:54:34 +0000</pubDate>
       
       <guid>/why-not-transform/</guid>
-      <description>Why do we want to deal with the trouble of estimating generalized linear models (GLM) when it is possible to transform the response variable and estimate models using linear regression? It is worth to mention two answers (Agresti 2015):
+      <description>denemeWhy do we want to deal with the trouble of estimating generalized linear models (GLM) when it is possible to transform the response variable and estimate models using linear regression? It is worth to mention two answers (Agresti 2015):
 It is hard to find a transformation which provides both normality and constant variance (see assumptions of OLS).
  Interpretability. To illustrate, first see the formula of the transformed-data approach</description>
     </item>
     
     <item>
       <title>Lorem Ipsum</title>
-      <link>/lorem-ipsum/</link>
+      <link>/2015-01-01-lorem-ipsum/</link>
       <pubDate>Sun, 04 Feb 2018 13:59:49 +0000</pubDate>
       
-      <guid>/lorem-ipsum/</guid>
+      <guid>/2015-01-01-lorem-ipsum/</guid>
       <description>The passage from Lorem Ipsum is here, because it deserves a homage:
  What I find remarkable is that this text has been the industry&amp;rsquo;s standard dummy text ever since some printed in the 1500s took a galley of type and scrambled it to make a type specimen book; it has survived not only four centuries of letter-by-letter resetting but even the leap into electronic typesetting, essentially unchanged except for an occasional &amp;lsquo;ing&amp;rsquo; or &amp;lsquo;y&amp;rsquo; thrown in.</description>
     </item>
