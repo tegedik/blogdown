@@ -1,6 +1,10 @@
 ---
 title: "About"
-date: "2018-02-04T13:59:47" 
+author: T.E.G.
+date: "2018-02-04T13:59:47"
+slug: about
+categories: []
+tags: []
 ---
 
 Short notes and quick applications from T.E.G. There will be a lack of organization inevitably. 
@@ -9,5 +13,6 @@ Although I am a novice, I answered some questions here:
 <div>
 <a align="left" href="https://stats.stackexchange.com/users/109647/t-e-g">
 <img align="left" src="https://stats.stackexchange.com/users/flair/109647.png" width="208" height="58" alt="profile for T.E.G. at Cross Validated, Q&amp;A for people interested in statistics, machine learning, data analysis, data mining, and data visualization" title="profile for T.E.G. at Cross Validated, Q&amp;A for people interested in statistics, machine learning, data analysis, data mining, and data visualization">
-</a>
-</div>
+</a></div>
+<br /> 
+
