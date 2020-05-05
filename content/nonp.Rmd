@@ -17,7 +17,7 @@ I am not against using nonparametric tests *per se* (they might even have desira
 
 > More generally, parametric procedures provide a way of *imposing structure* on otherwise unstructured problems. This is very useful and can be viewed as a kind of simplifying heuristic rather than a belief that the model is literally true. Take for instance the problem of predicting a continuous response $y$ based on a vector of predictors $x$ using some regression function $f$ (even assuming that such a function exists is a kind of parametric restriction). If we assume absolutely nothing about $f$ then it's not at all clear how we might proceed in estimating this function. The set of possible answers that we need to search is just too large. But if we restrict the space of possible answers to (for instance) the set of *linear* functions $f(x)=\sum_{j=1}^p \beta_j x_j$ then we can actually start making progress. We don't need to believe that the model holds exactly, we are just making an approximation due to the need to arrive at *some* answer, however imperfect.
 
-Thus, such a simplifying heuristic (e.g., specifiying a regression function) would enable me to estimate the parameters of a complex model.[^1]
+Thus, such a simplifying heuristic (e.g., specifiying a regression function) would enable one to estimate the parameters of a complex model.[^1]
 
 
 
