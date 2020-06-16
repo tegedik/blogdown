@@ -1,0 +1,43 @@
+---
+title: "İstatistik, Sosyal Bilimler ve Diğer Meseleler: Giriş"
+author: T.E.G.
+date: '2020-06-06T1:00:00'
+slug: whystat
+categories: []
+tags: []
+bibliography: references.bib
+---
+
+*Disclaimer: All my blog posts up to this point were in English. But I’ve decided to write also in Turkish. Scholars should discuss the use of statistical methods more often in Turkey. So using this blog, I would like to take part in these discussions on statistical methods and quantitative analysis.*
+
+Kısa bir zaman önce bu blogta Türkçe yazılar yazmaya karar verdim. Bunun arkasındaki en önemli sebep insanlarla tartışırken gönderme yapabileceğim ve gerektiğinde gösterebileceğim, fikirlerimi derli toplu tuttuğum bir yer olması.
+
+Üzerine yazdığım konularda bir uzmanlık iddiam yok. Sosyal bilimciyim (sosyolog) ve coğu sosyal bilimci gibi istatistik yöntemlerini araştırma için öğrendim. Ancak zaman içinde ilgim uygulama kadar istatistiğin temel kavramlarına ve bilimsel pratik içindeki yerine kaydı. Yani sosyal bilimcilerin alet çantasındaki herhangi bir araç olarak değil, *belirsizlik* üzerine düşünmenin sistematik yolu olarak istatistik daha fazla ilgimi çekmeye başladı. Bu kısa açıklamadan sonra aşağıda hangi konular üzerinde durmayı planladığımı ve nedenlerini bulabilirsiniz:
+
+*Sosyal Bilimlerde İstatistik:* Sosyal bilimlerin şüpheli ve yeterince bilimsel olmadığı görüşü sık sık dile getirilir. Bu görüşlerin dile getirilmesinin arkasındaki sebepler (ve geçerlilikleri) bir tarafa, çeşitli nedenlerle (örn. araştırma nesnesi) sosyal bilimlerin belirsizliği daha fazla kucakladığı iddia edilebilir. Tam da bu sebeple "belirsizliğin bilimi olarak istatistik" bize yardımcı olabilir. Yazdıklarımın genel olarak sosyal bilimcilerin istatistikle ilgili fikirlerine ters düştüğünün farkındayım: Kimi sosyal bilimciler istatistiksel yöntemler kullandıklarında araştırmanın daha *nesnel*, *bilimsel* ve *kesin* hale geldiğini düşünebilir. Ancak kanımca bu yanıltıcı. İstatistik kesinlik kazandırmak bir tarafa, bize araştırmanın sınırlarını gösterebilir ve bizi ne tür çıkarımlar yapılabileceği (ve genellikle *yapılamayacağı*) konusunda uyarabilir. Mesela araştırmacı hata (*error*) kaynaklarını, yanlılık (*bias*) sorunlarını ve bunların veri analizine olası etkilerini dikkate alarak karar verme imkanına kavuşur. Bu durumun bizi araştırma sonuçlarını yorumlarken daha temkinli olmaya iteceğini düşünüyorum.[^1] 
+
+Ancak bu yazdıklarımın pratikte fazla geçerli olmadığının farkındayım. İstatistik yöntemlerini ritüel gibi kullanmak sosyal bilimlerde (ve diğer bilimlerde) yaygın. Bunun bazı sebeplerini başka bir [yazıda](https://tegedik.netlify.app/hta/) tartıştım. Ancak yaygınlığı ve benim de bu hatalara zaman zaman düşmem, konuyu tekrar ele almayı gerekli kılıyor. Dolayısıyla genel bir tema olarak, sonraki yazılarda sosyal bilimlerde istatistik konusu üzerinde duracağım. 
+
+*İstatistiksel Çıkarım, Hipotez Testi, p-değeri:* Üzerinde durmayı planladığım konulardan biri istatistiksel çıkarım, özellikle *p*-değerine dayalı çıkarımlar. Sıfır Hipotezi Anlamlılık Testi (*Null Hypothesis Significance Testing*) ve *p*-değerinin sorunları uzun bir süredir tartışılıyor. Bu sorunlarin üstesinden gelmek için çeşitli öneriler mevcut ancak Türkiye'de sosyal bilimcilerin konu üzerinde yeterince durduğunu düşünmüyorum. Hem yapılan eleştirileri hem de mevcut pratik açısından öngorülen değişiklikleri tartışmayı planlıyorum. 
+
+*Bayesyen İstatistik:* Yukarıdaki (klasik) yaklaşıma bir alternatif olarak Bayesyen istatistik son zamanlarda sosyal bilimciler arasında daha bilinir hale geldi. Ancak işleri oldukça kolaylaştıran yazılımlara rağmen bu bilinirliğin uygulamaya yansıdığını düşünmüyorum. Bunun önemli bir sebebi Bayesyen istatistiğin daha fazla olasılık bilgisi ve kullanılan yöntemlere dair daha derin bir kavrayış gerektirmesi. Yani sık kullanılan istatistik testlerinin perde arkasında ne yaptığını bilmek gerekiyor. Literatürde oldukça başarılı giriş kitapları mevcut. Benim amacım da Bayesyen istatistiği yeni öğrenen biri olarak deneyimlerimi paylaşmak.
+
+*Modelleme:*
+
+> Model nedir? Model Avusturya tren tarifesi gibidir. Avusturya'da trenler her zaman geç gelir. Prusyalı bir ziyaretçi Avusturyalı bir kondüktöre neden tarifeyi basmaya zahmet ettiklerini sorar. Kondüktör, "Eğer basmazsak trenin ne kadar geç kaldığını nasıl bileceğiz?" diye cevap verir. 
+
+Yaptığımız en sıradan analizleri bile bir tür modelleme olarak düşünebiliriz. Mesela bir değişkenin ortalamasını almak yani değişken içindeki farklı değerleri tek bir sayıyla özetlemek (yani bir anlamda *indirgemek*) basit bir model kullanmaktır. Ancak McElreath'ın tabiriyle "küçük dünyalar" olarak modeller dışarıdaki büyük dünyanın eksik bir temsilidir; onun karmaşıklığını tam olarak yakalayamazlar.[^2] Ancak bize "ne kadar geç kaldığımızı" söyleyebilirler[^3] Dolayısıyla bir modelin inşasına (*ne, nasıl, hangi amaçla test ediliyor?*), varsayımlarına ve performansına bakmak bize yüzeysel bir yorumun ötesine geçme imkanı verecektir. Bu konu üzerinde durmanın kendi araştırma pratiğimi daha fazla irdelememe de yardımcı olacağını düşünüyorum.
+
+Konuların hepsi oldukça geniş ve başta da belirttiğim gibi bir uzmanlık iddiam yok. Buna rağmen en azından bir tartışma imkanı doğurması için bu konular üzerine yazmak istiyorum. Ayrıca yazıların bi kişisel web sitesinde yayınlandığını hatırlatmalıyım. Belli bir akademik standardı tutturmak istesem de kendimi çok da zorlamayacağımı eklemeliyim. Bu sınırlılıklara rağmen umarım okuyana keyif verir. Takibi zor olduğu ve bence kötü gözüktüğü için (bolca reklam) siteye bir forum eklentisi kurmadım. Ancak bana sosyal medyadan ulaşabilirsiniz. 
+
+
+
+[^1]: Burada istatiksel yöntemlerle veri analizini pozitivizme eşitleyen yaklaşımı yanlış bulduğumu belirtmeliyim. Bu konuda bir tartışma için bknz. [@Jones2010].
+
+[^2]: John Ball bu durumun bir avantaj olduğunu çünkü asla işsiz kalmayacağımızı söyler.
+
+[^3]: G.E.P. Box'un sık sık (hatta fazla sık) alıntılanan sözüyle "bütün modeller yanlıştır ancak bazıları kullanışlıdır." 
+
+# Kaynakça
+
+

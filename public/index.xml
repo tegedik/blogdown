@@ -6,10 +6,29 @@
     <description>Recent content on T.E.G.&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 03 May 2020 01:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 15 Jun 2020 01:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Achen ve Üç Kuralı</title>
+      <link>/ac_rat/</link>
+      <pubDate>Mon, 15 Jun 2020 01:00:00 +0000</pubDate>
+      
+      <guid>/ac_rat/</guid>
+      <description>Yazıya başlamadan önce başlığın Cristopher Achen’ın üç kuralı anlamına gelmediğini, Achen’ın “Toward A New Political Methodology: Microfoundations and ART.” (2002) isimli makalesinde bahsettiği üç kuralı’na (A Rule of Three) gönderme yaptığını belirtmeliyim. Yazıda bu makale ve Üç Kuralı üzerinde duracağım.1 Aslında Üç Kuralına makalenin sonlarında kısaca ve bir öneri olarak değiniliyor. Bu öneriye kadar Achen’ın yaptığı tartışmalar da ilginç. Kısaca bu bölümlere değinmek konuyla ilgili daha iyi bir fikir verebilir.</description>
+    </item>
+    
+    <item>
+      <title>İstatistik, Sosyal Bilimler ve Diğer Meseleler: Giriş</title>
+      <link>/whystat/</link>
+      <pubDate>Sat, 06 Jun 2020 01:00:00 +0000</pubDate>
+      
+      <guid>/whystat/</guid>
+      <description>Disclaimer: All my blog posts up to this point were in English. But I’ve decided to write also in Turkish. Scholars should discuss the use of statistical methods more often in Turkey. So using this blog, I would like to take part in these discussions on statistical methods and quantitative analysis.
+Kısa bir zaman önce bu blogta Türkçe yazılar yazmaya karar verdim. Bunun arkasındaki en önemli sebep insanlarla tartışırken gönderme yapabileceğim ve gerektiğinde gösterebileceğim, fikirlerimi derli toplu tuttuğum bir yer olması.</description>
+    </item>
     
     <item>
       <title>Nonparametric Tests and Why I am Wary of Using Them</title>

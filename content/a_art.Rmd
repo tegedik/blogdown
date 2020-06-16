@@ -1,0 +1,59 @@
+---
+title: "Achen ve Üç Kuralı"
+author: T.E.G.
+date: '2020-06-15T1:00:00'
+slug: ac_rat
+categories: []
+tags: []
+bibliography: references.bib
+---
+
+Yazıya başlamadan önce başlığın Cristopher Achen'ın üç kuralı anlamına gelmediğini, Achen'ın “Toward A New Political Methodology: Microfoundations and ART.” [-@achen2002] isimli makalesinde bahsettiği *üç kuralı*'na (*A Rule of Three*) gönderme yaptığını belirtmeliyim. Yazıda bu makale ve *Üç Kuralı* üzerinde duracağım.[^1]  Aslında *Üç Kuralı*na makalenin sonlarında kısaca ve bir öneri olarak değiniliyor. Bu öneriye kadar Achen'ın yaptığı tartışmalar da ilginç. Kısaca bu bölümlere değinmek konuyla ilgili daha iyi bir fikir verebilir. 
+
+Girişi takip eden üç bölümde Achen bilinen tahminleyicilerin (*estimator*) genelleştirilmesi konusunu tartışıyor. Özellikle logit'in iki genelleştirmesi üzerinde duruyor: scobit (skewed logit) ve power logit. Nicel analizlere aşina olmayanlar için bu bölümler biraz ürkütücü gelebilir, çok sayıda yunan harfi ve formül havada uçuşuyor. Aslında arkadaki fikir oldukça basit. Mesela iki kategorili ("başarı" ve "başarısızlık") bir değişken için bir logit modeli düşünelim. Eğer $P$ bu model altında başarılı olma olasılığı ise, 
+
+$$P = \frac{1}{1 + e^{-z}}$$
+bize lojistik dağılımın kümülafif dağılım fonksiyonunu (*cumulatif distribution function* - cdf) verecektir. Genelde model bir link fonksiyonuyla tamamlanır yani $z$ bağımsız değişkenlerin lineer fonksiyonu olarak ifade edilir ($z_i = X_i\beta$). Achen, scobit ve power logit'in bu modelin bir genelleştirmesi olarak düşünülebileceğini söylüyor. Mesela,
+
+$$P_{i}^{**} = P_{i}^{a} \frac{1}{(1 + e^{-X_i\beta})^\alpha}$$
+bize power logit cdf'sini verir. Achen neden böyle bir genelleştirmeye ihtiyaç duyabileceğimizi, logit modelini *random utility model* olarak ifade ettikten sonra tartışıyor.[^2] Ancak burada daha fazla ayrıntıya girip açıklamamıza gerek yok. Zaten Achen'ın amacı da bu tahminleyicileri okura tanıtmak değil. Bundan ziyade sayıları gittikçe artan tahminleyicilerin gerekliliğini sorgulamak. Achen'a göre tahminleyicileri çoğaltmak sorun değil hatta tartışma sırasında iki tane (sahte) tahminleyici de kendisi uyduruyor (*mixit* ve *clumpit*). Sorun bu tahminleyicilerin istatiksel kesinliği (*precision*) düşürmesi. Mesela scobit, logit'e tek parametre ekliyor ($\alpha$) ancak çok daha büyük örneklem gerektiriyor (Achen'ın örnek verdiği çalışmada 100.000'in üzerinde gözlem var). Achen, sadece eldeki veriye özgü bir durumu hesaba kattığı ya da daha genel olduğu için yeni bir tahminleyici kullanmayı sorunlu buluyor. Ayrıca sürekli daha genel tahminleyiciler üretmeye çalışmanın metodolojistlerin işi olmadığını söylüyor: 
+
+> Statisticians do that for a living, and we will never be as good at their job as they are. Trying to keep up will leave us forever second-rate —at best— and, more importantly, irrelevant to genuine empirical advance in the discipline. [@achen2002, 437]
+
+Makalenin bundan sonra amprik ilerlemeyi mümkün kılacak iki güzergaha işaret ettiğini söyleyebiliriz. İlkinde Achen, tahminleyicileri seçmek ve yapılandırmak için (siyasal) aktörlerin davranışlarına dair formel modellere başvurulması gerektiğini söylüyor. Bu formel modelin hangi teoriden geldiği önemli değil. Önemli olan formel modelin, istatistiksel tanımlamla (*specification*) için mikrotemel olması. Daha kaba bir ifadeyle, istatiksel model, bu formel modelden çıkmalı. Buna göre bir tahminleyici formel modele uygunsa kullanılmalı yoksa sırf yeni,  moda ya da karmaşık olduğu için tercih edilmemeli. Achen'ın ifade şekli kimilerine yabancı gelebilir. Ancak arkasındaki fikir oldukça tanıdık: teori (ve teoriden çıkan model) analizi yönlendirmeli. 
+
+İkinci güzergah ise daha zorlu çünkü ilkinin aksine elimizde formel bir model yok. Achen çoğu durumda araştırmacıların (özellikle daha genç disiplinlerde) sınırlı teorik yönlendirmeyle çalışmak zorunda olduklarını hatırlatıyor. Böyle bir durumda *Üç Kuralı*nı (*A Rule of Three*) öneriyor:
+
+> A Rule of Three (ART): A statistical specification with more than three explanatory variables is meaningless [@achen2002, 446].
+
+Yani Achen'a göre bir sürü kontrol değişkeniyle, karmaşık modeller hesaplamak yerine üç bağımsız değişkenle daha basit bir analiz yapmak, mesela çapraz tablolar kullanmak, çok daha aydınlatıcı olabilir. Hatta Achen bir adım daha ileri gidip örneklemi bölmeyi ve her alt-örneklem üzerinden ayrı ayrı analiz yapmayı öneriyor.[^3] Böylece gruplar arasındaki farkların (*farklı hikayelerin*) daha iyi yakalanabileceğini iddia ediyor. 
+
+Kısaca özetlemek gerekirse, Achen:
+
+1. Teorilerin ve bunlardan çıkan formel modellerin istatiksel analizi yönlendirmesi gerektiğini,
+2. Böyle bir formel model yoksa, analizin çok daha titiz ve tutumlu yapılması, bir sürü değişkenin analize rastgele atılmaması gerektiğini 
+
+söylüyor ve *üç kuralını* öneriyor. 
+
+İlk maddeye en azından kağıt üzerinde çoğu araştırmacının itiraz edeceğini sanmıyorum. Elbette böyle bir uygulama gerçekçi değil. Veri analizi pratikte çok daha karmaşık, kitaplarda sırayla takip edilmesi önerilen adımların içiçe geçtiği bir süreç. Bilimsel makalelerde, sanki öyle değilmişçesine, her şey kitabına uygun yapılmış gibi sunulması durumu değiştirmiyor.  
+
+İkinci maddeye de bir yere kadar itiraz edileceğini düşünmüyorum, yani *üç kuralı*na kadar.  Öncelikle  üç değişken tercihini keyfi bulanlar olacaktır. Achen da neden üçü seçtiğine dair pek ikna edici bir açıklama sunmuyor (deneyim; iki değişkenin az, dört değişkenin fazla olması?). Ancak kanımca Achen'ın derdi de insanları ikna etmek değil, dikkat çekmek. Makaleyi zaman zaman alaycı bir dille yazması da bunun göstergesi.[^4] Ayrıca örneklemi bölme fikri (başka bir tabirle *stratification*) herkes tarafından kabul görmeyecektir. Mesela böyle bir durumda (stratified) parametre tahminleri arasındaki farkı istatiksel olarak test etme imkanı ortadan kalkıyor.[^5] 
+
+Yukarıda bahsettiğim muğlaklık dışında iki muhtemel sorun daha var: (1) *üç kuralı*nın farklı disiplinlerdeki karşılığı ve (2) uygulamada keyfi olarak yorumlanması. Achen metodoloji tartışmasını, başlıktan da anlaşılacağı üzere, siyaset bilimi özelinde yürütüyor. Mesela analiz biriminin ülkeler olduğu bir araştırmada, birden fazla ekonomik ya da idari gösterge kullanmak (örn. World Bank governance indicators) multicollinearity sorununa yol açabilir. Kural böyle bir durumda işlevsel olabilir. Ancak analiz biriminin bireyler olduğu bir araştırmada, sosyodemografik ya da sosyoekonomik kontrolleri kullanmamak (Achen'ın verdiği örneklerin aksine) eleştirilebilir. Mesela sosyoloji ve psikoloji araştırmalarında *üç kuralı*na uymak adına önemli bir sosyodemografik faktörü dışarda bırakmak göze batacaktır. Tam bu noktada sorun, Achen'ın tasfir ettiği gibi formel modelle ilgili keskin bir ayrımın (var/yok) olmaması. 
+
+Diğer mesele ise uygulamada keyfi yorumlama ihtimali. Mesela formel model olmamasına rağmen, literatürde önemli olduğu gösterilen bir faktörü *üç kuralı*na uymak adına dışarıda bırakmak. Bir grup değişkenden neden üçünün seçildiğini, diğerlerinin dışarıda bırakıldığını ya da bir verinin neden belli bir şekilde bölündüğünü açıklamamak vs. Achen'ı takip edip bu keyfi yaklaşımı gösteren makaleler olup olmadığına ayrıca bakmak gerekiyor. Dolayısıyla elimde bir örnek olmadığını, bunu sadece bir risk olarak gördüğümü söylemeliyim. 
+
+Kısacası Achen'ın mesajının ruhunu geçerli bulsam da bunun kendini gösterdiği biçim (*ART*) tartışmalı gözüküyor. Kanımca daha genel olarak alınacak ders, veri analizinde Achen'ın gösterilmesini istediği titizliğin bu tür kuralları birebir uygulamayı zorlaştırması.    
+
+[^1]: Aslında düşününce Achen'ın üç kuralı demekte de bir sıkıntı yok. 
+
+[^2]: Kimi zaman iki kategorili bağımlı değişkeni örtük (*latent*) bir değişken olarak modellemek de denir (örn., $y^*=X_i\beta + u$).  Burada Achen için önemli mesele *gözlemlenmeyen stokastik değişken* (hata (*error*) da denir) olan $u$'nun kümülatif dağılım fonksiyonunun simetrik olması. Böyle simetrik bir dağılımın yarattığı kısıtlamaları aşmak için scobit ya da power logit kullanılmasını tartışıyor [@achen2002, 427-428]. 
+
+[^3]: "If one needs several more controls, then there is too much going on in the sample for reliable inference. No one statistical specification can cope with the religious diversity of the American people with respect to abortion attitudes, for example. We have all done estimations like these, underestimating American differences and damaging our inferences by throwing everyone into one specification and using dummy variables for race and denomination. It’s easy, but it’s useless, and we need to stop." [@achen2002, 446]
+
+[^4]: "At this point, no doubt, empirical investigators and methodologists accustomed to contemporary political science norms will object. “Look,” they will say, “this new Glockenspiel estimator may not have those frou-frou microfoundations you insist on, but it makes theoretical sense by my lights: It takes account of the yodeled nature of my dependent variable, which ordinary regression ignores. Plus it can be derived rigorously from the Cuckoo distribution. Besides, it fits better. The graphs are pretty, at least if not looked at too closely, and the likelihood ratio test rejects the ordinary regression fit at the 0.05 level. Theory-schmeary. Our job is to let the data decide. I’m going to use Glockenspiel. Anything else is choosing a poorer fit.” Nearly all of us methodologists have shared these views at some stage of our professional lives." [@achen2002, 440]
+
+[^5]: Achen böyle bir eleştiriye araştırma amaçlarının farklı olabileceği (mesela karşılaştırma olmadığı) cevabını verebilir. 
+
+
+# Kaynakça
