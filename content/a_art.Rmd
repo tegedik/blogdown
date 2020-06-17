@@ -1,5 +1,5 @@
 ---
-title: "Achen ve Üç Kuralı"
+title: "İstatistik ve Sosyal Bilimler I: Achen ve Üç Kuralı"
 author: T.E.G.
 date: '2020-06-15T1:00:00'
 slug: ac_rat
